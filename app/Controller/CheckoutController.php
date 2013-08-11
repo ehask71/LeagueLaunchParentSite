@@ -10,6 +10,7 @@ class CheckoutController extends AppController {
 
     public $name = 'Checkout';
     public $uses = array('Sites', 'OrderSaaS');
+    public $components = array('AuthorizeNet');
 
     public function beforeFilter() {
         parent::beforeFilter();
@@ -22,7 +23,6 @@ class CheckoutController extends AppController {
     public function ll() {
 
         $this->autoRender = false;
-        print_r($this->request->data);
         if ($this->request->is('post') || $this->request->is('put')) {
             if ($this->request->data['sid'] != '' && $this->request->data['oid'] != '' && $this->request->data['rtn'] != '') {
                 echo "<pre>";
@@ -47,7 +47,13 @@ class CheckoutController extends AppController {
                     }
                 }
             } elseif ($this->request->data['creditcard_num'] != '' && $this->request->data['creditcard_month'] != '' && $this->request->data['creditcard_year'] != '' && $this->request->data['creditcard_code'] != '') {
+                $site = $this->Session->read('Sitedetails');
+                $order = $this->Session->write('Orderdetails');
+                Configure::write('Settings.llcheckout.authorize_net_api_url', $site['Settings']['authorize_net_api_url']);
+                Configure::write('Settings.llcheckout.authorize_net_login', $site['Settings']['authorize_net_login']);
+                Configure::write('Settings.llcheckout.authorize_net_txnkey', $site['Settings']['authorize_net_txnkey']);
                 
+                $txn = $this->
             }
         } else {
             $this->redirect('/');

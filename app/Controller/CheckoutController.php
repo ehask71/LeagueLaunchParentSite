@@ -43,7 +43,7 @@ class CheckoutController extends AppController {
                         $this->render('/Elements/ll_checkout_step1');
                     }
                 }
-            } elseif ($this->request->data['Sites']['creditcard_num'] != '' && $this->request->data['Sites']['creditcard_month'] != '' && $this->request->data['Sites']['creditcard_year'] != '' && $this->request->data['Sites']['creditcard_code'] != '') {
+            } elseif ($this->request->data['Sites']['creditcard_number'] != '' && $this->request->data['Sites']['creditcard_month'] != '' && $this->request->data['Sites']['creditcard_year'] != '' && $this->request->data['Sites']['creditcard_code'] != '') {
                 echo "<pre>";
                 $site = $this->Session->read('Sitedetails');
                 $order = $this->Session->read('Orderdetails');

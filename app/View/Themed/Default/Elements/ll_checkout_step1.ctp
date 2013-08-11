@@ -6,7 +6,7 @@ echo '<h2>'.$this->Session->read('Sitedetails.Sites.leaguename').'</h2>';
         Total: $<?php echo $this->Session->read('Orderdetails.OrderSaaS.total');?>
     </p>
 <?php
-echo $this->Form->create('Checkout',array('controller' => 'checkout', 'action' => 'll', 'id' => 'playerForm'));
+echo $this->Form->create(NULL,array('url' =>array('controller' => 'checkout', 'action' => 'll'), 'id' => 'checkoutForm'));
 echo $this->Form->input('creditcard_num');
 echo $this->Form->input('creditcard_month',array('type'=>'select','label'=>'Month','options'=> array(1,2,3,4,5,6,7,8,9,10,11,12)));
 echo $this->Form->input('creditcard_year',array('type'=>'select','label'=>'Year','options'=> array(2013,2014,2015,2016,2017,2018,2019,2020)));

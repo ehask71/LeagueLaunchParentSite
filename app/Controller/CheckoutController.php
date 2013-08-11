@@ -35,7 +35,7 @@ class CheckoutController extends AppController {
         }
     }
     
-    public function testForm(){
+    public function testform(){
         
     }
 

@@ -6,9 +6,9 @@ class DATABASE_CONFIG {
         'datasource' => 'Database/Mysql',
         'persistent' => false,
         'host' => 'localhost',
-        'login' => 'user',
-        'password' => '',
-        'database' => 'database_name',
+        'login' => 'leaguela_user',
+        'password' => '070693Cory',
+        'database' => 'leaguela_site',
         'prefix' => '',
         'encoding' => 'utf8'
     );

@@ -12,7 +12,7 @@ class Sites extends AppModel {
     var $useDbConfig = 'SaaS';
     public $hasMany = array(
         'Settings' => array(
-            'className' => 'Settings',
+            'className' => 'SettingsSaaS',
             'foreignKey' => 'site_id',
             'dependent' => true
         )

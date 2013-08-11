@@ -33,7 +33,7 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
     public $theme = 'default';
-    public $components = array('Session');
+    //public $components = array('Session');
     
     public function beforeFilter(){
         $this->Session->start();

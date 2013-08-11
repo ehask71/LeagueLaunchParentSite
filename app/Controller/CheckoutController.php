@@ -53,7 +53,9 @@ class CheckoutController extends AppController {
                 Configure::write('Settings.llcheckout.authorize_net_login', $site['Settings']['authorize_net_login']);
                 Configure::write('Settings.llcheckout.authorize_net_txnkey', $site['Settings']['authorize_net_txnkey']);
                 
-                $txn = $this->
+                //$txn = $this->AuthorizeNet->charge();
+            } else {
+                print_r($this->request->data);
             }
         } else {
             $this->redirect('/');

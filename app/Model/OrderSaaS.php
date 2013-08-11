@@ -16,14 +16,6 @@ class OrderSaaS extends AppModel {
             'className' => 'OrderItemSaaS',
             'foreignKey' => 'order_id',
             'dependent' => true,
-            'conditions' => '',
-            'fields' => '',
-            'order' => '',
-            'limit' => '',
-            'offset' => '',
-            'exclusive' => '',
-            'finderQuery' => '',
-            'counterQuery' => '',
         )
     );
 

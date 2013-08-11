@@ -21,6 +21,7 @@ class CheckoutController extends AppController {
 
     public function ll($sid,$oid,$rtn) {
         $this->autoRender = false;
+        print_r($this->request->data);
         //if ($this->request->is('post') || $this->request->is('put')) {
         if ($this->request->data['sid'] != '' && $this->request->data['oid'] != '' && $this->request->data['rtn'] != '') {
             // Here we process the LL Checkouts

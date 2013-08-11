@@ -26,7 +26,7 @@ class CheckoutController extends AppController {
                 'conditions' => array(
                     'Sites.site_id' => $this->request->data['sid'] = 3
                 )));
-            
+            echo "<pre>";
             print_r($site);
         //} else {
           //  $this->redirect('/');

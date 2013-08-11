@@ -46,7 +46,7 @@ class CheckoutController extends AppController {
                         $this->render('/Elements/ll_checkout_step1');
                     }
                 }
-            } elseif ($this->request->data['creditcard_num'] != '' && $this->request->data['creditcard_month'] != '' && $this->request->data['creditcard_year'] != '' && $this->request->data['creditcard_code'] != '') {
+            } elseif ($this->request->data['Sites']['creditcard_num'] != '' && $this->request->data['Sites']['creditcard_month'] != '' && $this->request->data['Sites']['creditcard_year'] != '' && $this->request->data['Sites']['creditcard_code'] != '') {
                 $site = $this->Session->read('Sitedetails');
                 $order = $this->Session->write('Orderdetails');
                 Configure::write('Settings.llcheckout.authorize_net_api_url', $site['Settings']['authorize_net_api_url']);

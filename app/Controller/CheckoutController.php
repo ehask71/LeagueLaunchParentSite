@@ -28,6 +28,7 @@ class CheckoutController extends AppController {
                 // Here we process the LL Checkouts
                 $site = $this->Sites->getSiteById($this->request->data['sid']);
                 if (count($site) > 0) {
+                    $this->Session->write('Sitedetails',$site);
                     Configure::write('Settings.llcheckout.authorize_net_api_url',$site['Settings']['authorize_net_api_url']);
                     Configure::write('Settings.llcheckout.authorize_net_login',$site['Settings']['authorize_net_login']);
                     Configure::write('Settings.llcheckout.authorize_net_txnkey',$site['Settings']['authorize_net_txnkey']);
@@ -39,6 +40,7 @@ class CheckoutController extends AppController {
                             ));
                     if (count($order) > 0) {
                         // We have an order
+                        $this->Session->write('Orderdetails',$order);
                         print_r($order);
                     }
                 }

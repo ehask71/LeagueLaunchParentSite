@@ -20,6 +20,7 @@ class CheckoutController extends AppController {
     }
 
     public function ll() {
+
         $this->autoRender = false;
         print_r($this->request->data);
         if ($this->request->is('post') || $this->request->is('put')) {
@@ -28,10 +29,10 @@ class CheckoutController extends AppController {
                 // Here we process the LL Checkouts
                 $site = $this->Sites->getSiteById($this->request->data['sid']);
                 if (count($site) > 0) {
-                    $this->Session->write('Sitedetails',$site);
-                    Configure::write('Settings.llcheckout.authorize_net_api_url',$site['Settings']['authorize_net_api_url']);
-                    Configure::write('Settings.llcheckout.authorize_net_login',$site['Settings']['authorize_net_login']);
-                    Configure::write('Settings.llcheckout.authorize_net_txnkey',$site['Settings']['authorize_net_txnkey']);
+                    $this->Session->write('Sitedetails', $site);
+                    Configure::write('Settings.llcheckout.authorize_net_api_url', $site['Settings']['authorize_net_api_url']);
+                    Configure::write('Settings.llcheckout.authorize_net_login', $site['Settings']['authorize_net_login']);
+                    Configure::write('Settings.llcheckout.authorize_net_txnkey', $site['Settings']['authorize_net_txnkey']);
                     print_r($site);
                     $order = $this->OrderSaaS->find('first', array(
                         'conditions' => array(
@@ -40,10 +41,13 @@ class CheckoutController extends AppController {
                             ));
                     if (count($order) > 0) {
                         // We have an order
-                        $this->Session->write('Orderdetails',$order);
+                        $this->Session->write('Orderdetails', $order);
                         print_r($order);
+                        $this->render('Elements/ll_checkout_step1');
                     }
                 }
+            } elseif ($this->request->data['creditcard_num'] != '' && $this->request->data['creditcard_month'] != '' && $this->request->data['creditcard_year'] != '' && $this->request->data['creditcard_code'] != '') {
+                
             }
         } else {
             $this->redirect('/');

@@ -1,4 +1,4 @@
-<form id="testform" method="POST">
+<form id="testform" method="POST" action="/checkout/ll">
     <input type="hidden" name="sid" value="3"/>
     <input type="hidden" name="oid" value="tttttt"/>
     <input type="hidden" name="rtn" value="http://eastbaylittleleague.com/registration/success"/>

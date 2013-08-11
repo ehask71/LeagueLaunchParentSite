@@ -8,7 +8,7 @@ App::uses('AppModel', 'Model');
 class SettingsSaaS extends AppModel {
     public $primaryKey = 'id';
     public $useDbConfig = 'SaaS';
-    public $useTable = 'Settings';
+    public $useTable = 'settings';
     
 }
 

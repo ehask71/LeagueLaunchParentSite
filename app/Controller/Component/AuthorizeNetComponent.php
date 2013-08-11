@@ -16,9 +16,9 @@ class AuthorizeNetComponent extends Component {
 
 	public function initialize(Controller $controller) {
 
-		$this->api_url = Configure::read('Settings.llcheckout.authorize_net_api_url');
-		$this->api_login = Configure::read('Settings.llcheckout.authorize_net_login');
-		$this->api_transaction_key = Configure::read('Settings.llcheckout.authorize_net_txnkey');
+		$this->api_url = $this->Session->read('Sitedetails.Settings.authorize_net_api_url');
+		$this->api_login = $this->Session->read('Sitedetails.Settings.authorize_net_login');
+		$this->api_transaction_key = $this->Session->read('Sitedetails.Settings.authorize_net_txnkey');
 
 	}
 

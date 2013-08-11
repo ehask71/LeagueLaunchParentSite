@@ -25,7 +25,6 @@ class CheckoutController extends AppController {
         $this->autoRender = false;
         if ($this->request->is('post') || $this->request->is('put')) {
             if (isset($this->request->data['sid']) && isset($this->request->data['oid']) && isset($this->request->data['rtn'])) {
-                echo "<pre>";
                 // Here we process the LL Checkouts
                 $site = $this->Sites->getSiteById($this->request->data['sid']);
                 if (count($site) > 0) {
@@ -33,7 +32,6 @@ class CheckoutController extends AppController {
                     Configure::write('Settings.llcheckout.authorize_net_api_url', $site['Settings']['authorize_net_api_url']);
                     Configure::write('Settings.llcheckout.authorize_net_login', $site['Settings']['authorize_net_login']);
                     Configure::write('Settings.llcheckout.authorize_net_txnkey', $site['Settings']['authorize_net_txnkey']);
-                    print_r($site);
                     $order = $this->OrderSaaS->find('first', array(
                         'conditions' => array(
                             'OrderSaaS.id' => $this->request->data['oid']
@@ -42,7 +40,6 @@ class CheckoutController extends AppController {
                     if (count($order) > 0) {
                         // We have an order
                         $this->Session->write('Orderdetails', $order);
-                        print_r($order);
                         $this->render('/Elements/ll_checkout_step1');
                     }
                 }

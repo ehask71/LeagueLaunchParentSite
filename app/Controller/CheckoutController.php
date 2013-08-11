@@ -22,7 +22,7 @@ class CheckoutController extends AppController {
     public function ll() {
         $this->autoRender = false;
         //if ($this->request->is('post') || $this->request->is('put')) {
-        if ($this->request->data['sid'] != '' && $this->request->data['order_id'] != '' && $this->request->data['rtn'] != '') {
+        if ($this->request->data['sid'] != '' && $this->request->data['oid'] != '' && $this->request->data['rtn'] != '') {
             // Here we process the LL Checkouts
             $site = $this->Sites->getSiteById($this->request->data['sid']);
             

@@ -9,7 +9,7 @@ App::uses('AppController', 'Controller');
 class CheckoutController extends AppController {
 
     public $name = 'Checkout';
-    public $uses = array('Settings', 'Sites');
+    public $uses = array('Sites');
 
     public function beforeFilter() {
         parent::beforeFilter();

@@ -47,9 +47,9 @@ class CheckoutController extends AppController {
                 echo "<pre>";
                 $site = $this->Session->read('Sitedetails');
                 $order = $this->Session->read('Orderdetails');
-                Configure::write('Settings.llcheckout.authorize_net_api_url', $site['Settings']['authorize_net_api_url']);
+                /*Configure::write('Settings.llcheckout.authorize_net_api_url', $site['Settings']['authorize_net_api_url']);
                 Configure::write('Settings.llcheckout.authorize_net_login', $site['Settings']['authorize_net_login']);
-                Configure::write('Settings.llcheckout.authorize_net_txnkey', $site['Settings']['authorize_net_txnkey']);
+                Configure::write('Settings.llcheckout.authorize_net_txnkey', $site['Settings']['authorize_net_txnkey']);*/
                 print_r($this->request->data);
                 print_r($order);
                 print_r($site);

@@ -13,4 +13,7 @@ echo $this->Form->input('creditcard_year',array('type'=>'select','label'=>'Year'
 echo $this->Form->input('creditcard_code',array('type'=>'input',));
 echo $this->Form->end(__('Submit Payment'));
 ?>
+    <pre>
+       <?php print_r($this->Session->read);?>
+    </pre>
 </div>

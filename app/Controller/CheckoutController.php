@@ -19,10 +19,10 @@ class CheckoutController extends AppController {
         
     }
 
-    public function ll($sid,$oid,$rtn) {
+    public function ll() {
         $this->autoRender = false;
         print_r($this->request->data);
-        //if ($this->request->is('post') || $this->request->is('put')) {
+        if ($this->request->is('post') || $this->request->is('put')) {
         if ($this->request->data['sid'] != '' && $this->request->data['oid'] != '' && $this->request->data['rtn'] != '') {
             // Here we process the LL Checkouts
             $site = $this->Sites->getSiteById($this->request->data['sid']);
@@ -30,9 +30,13 @@ class CheckoutController extends AppController {
             echo "<pre>";
             print_r($site);
         }
-        //} else {
-        //  $this->redirect('/');
-        //}
+        } else {
+          $this->redirect('/');
+        }
+    }
+    
+    public function testForm(){
+        
     }
 
 }

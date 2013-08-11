@@ -34,4 +34,9 @@ App::uses('Controller', 'Controller');
 class AppController extends Controller {
     public $theme = 'default';
     
+    public function beforeFilter(){
+        $this->Session->start();
+        $this->Session->id(session_id());
+    }
+    
 }

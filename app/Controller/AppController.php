@@ -36,7 +36,7 @@ class AppController extends Controller {
     //public $components = array('Session');
     
     public function beforeFilter(){
-        $this->Session->start();
+       // $this->Session->start();
         $this->Session->id(session_id());
     }
     

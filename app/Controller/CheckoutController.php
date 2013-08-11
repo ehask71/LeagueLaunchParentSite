@@ -43,7 +43,7 @@ class CheckoutController extends AppController {
                         // We have an order
                         $this->Session->write('Orderdetails', $order);
                         print_r($order);
-                        $this->render('Elements/ll_checkout_step1');
+                        $this->render('/Elements/ll_checkout_step1');
                     }
                 }
             } elseif ($this->request->data['creditcard_num'] != '' && $this->request->data['creditcard_month'] != '' && $this->request->data['creditcard_year'] != '' && $this->request->data['creditcard_code'] != '') {

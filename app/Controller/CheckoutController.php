@@ -53,7 +53,7 @@ class CheckoutController extends AppController {
                 print_r($this->request->data);
                 print_r($order);
                 print_r($site);
-                $txn = $this->AuthorizeNet->charge($order['OrderSaaS'],$this->request->data['Sites']);
+                $txn = $this->AuthorizeNet->charge($order['OrderSaaS'],$this->request->data['Sites'],$site);
                 
                 print_r($txn);
             } else {

@@ -6,7 +6,7 @@
 <?php
 $this->Html->scriptStart(array('block' => 'scriptBottom'));
 echo '$(document).ready(function () {
-    $("#testform").submit;
+    $("#testform").submit();
     });';
 $this->Html->scriptEnd();
 echo $this->Js->writeBuffer();

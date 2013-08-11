@@ -24,7 +24,7 @@ class CheckoutController extends AppController {
 
         $this->autoRender = false;
         if ($this->request->is('post') || $this->request->is('put')) {
-            if ($this->request->data['sid'] != '' && $this->request->data['oid'] != '' && $this->request->data['rtn'] != '') {
+            if (isset($this->request->data['sid']) && isset($this->request->data['oid']) && isset($this->request->data['rtn'])) {
                 echo "<pre>";
                 // Here we process the LL Checkouts
                 $site = $this->Sites->getSiteById($this->request->data['sid']);

@@ -188,7 +188,10 @@
  *
  */
 	Configure::write('Session', array(
-		'defaults' => 'php'
+		'defaults' => 'php',
+                'ini' => array(
+                    'session.cookie_secure' => false
+                )
 	));
 
 /**

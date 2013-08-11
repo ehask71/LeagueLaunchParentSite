@@ -19,7 +19,7 @@ class CheckoutController extends AppController {
         
     }
 
-    public function ll() {
+    public function ll($sid,$oid,$rtn) {
         $this->autoRender = false;
         //if ($this->request->is('post') || $this->request->is('put')) {
         if ($this->request->data['sid'] != '' && $this->request->data['oid'] != '' && $this->request->data['rtn'] != '') {

@@ -16,20 +16,22 @@ class AuthorizeNetComponent extends Component {
 
 	public function initialize(Controller $controller) {
 
-		$this->api_url = $this->Session->read('Sitedetails.Settings.authorize_net_api_url');
+		/*$this->api_url = $this->Session->read('Sitedetails.Settings.authorize_net_api_url');
 		$this->api_login = $this->Session->read('Sitedetails.Settings.authorize_net_login');
 		$this->api_transaction_key = $this->Session->read('Sitedetails.Settings.authorize_net_txnkey');
+                 * 
+                 */
 
 	}
 
 ////////////////////////////////////////////////////////////
 
-	public function charge($data, $payment) {
-
+	public function charge($data, $payment,$settings) {
+                
 		$post_values = array(
 
-			'x_login'               => $this->api_login,
-			'x_tran_key'            => $this->api_transaction_key,
+			'x_login'               => $settings['Settings']['authorize_net_login'],
+			'x_tran_key'            => $settings['Settings']['authorize_net_txnkey'],
 
 			'x_version'             => '3.1',
 			'x_delim_data'          => 'TRUE',
@@ -82,8 +84,8 @@ class AuthorizeNetComponent extends Component {
 		App::uses('HttpSocket', 'Network/Http');
 		$httpSocket = new HttpSocket();
 
-		$response = $httpSocket->post($this->api_url, $post_values);
-                mail('ehask71@gmail.com','Test Auth.Net','Params'.$this->api_url.' '.$this->api_login.' '.$this->api_transaction_key.' '. $response);
+		$response = $httpSocket->post($settings['Settings']['authorize_net_api_url'], $post_values);
+                mail('ehask71@gmail.com','Test Auth.Net','Params'.$settings['Settings']['authorize_net_api_url'].' '.$settings['Settings']['authorize_net_login'].' '.$settings['Settings']['authorize_net_txnkey'].' '. $response);
 		if (!empty($response['body'])) {
 			$parsed = preg_split("/,(?=(?:[^\"]*\"[^\"]*\")*(?![^\"]*\"))/", $response['body']);
 			foreach ($parsed as $key => $value) {

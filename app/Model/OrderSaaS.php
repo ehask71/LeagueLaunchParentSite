@@ -12,7 +12,7 @@ class OrderSaaS extends AppModel {
     public $useDbConfig = 'SaaS';
     public $useTable = 'orders';
     public $hasMany = array(
-        'OrderItem' => array(
+        'OrderItemSaaS' => array(
             'className' => 'OrderItemSaaS',
             'foreignKey' => 'order_id',
             'dependent' => true,

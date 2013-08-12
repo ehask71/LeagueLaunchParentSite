@@ -64,13 +64,13 @@ class CheckoutController extends AppController {
                     $this->Session->setFlash($e->getMessage());
                     $this->redirect('/checkout/ll/' . $this->request->data['oid'] . '-' . $this->request->data['sid']);
                 }
-                $this->OrderSaaS->id = $order['OrderSaaS']['id'];
-                $order['OrderSaaS']['authorization'] = $authorizeNet[4];
-                $order['OrderSaaS']['transaction'] = $authorizeNet[6];
-                $order['OrderSaaS']['status'] = 2;
+                $data['id'] = $order['OrderSaaS']['id'];
+                $data['authorization'] = $authorizeNet[4];
+                $data['transaction'] = $authorizeNet[6];
+                $data['status'] = 2;
                 
                 // Update the Order
-                $this->OrderSaaS->save($order);
+                $this->OrderSaaS->save($data);
                 
                 foreach($order['OrderItemSaaS'] AS $row){
                     if($row['player_id'] != 0 && $row['season_id'] != 0){

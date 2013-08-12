@@ -11,7 +11,7 @@ class PlayersToSeasonsSaaS extends AppModel {
     public $useTable = 'players_to_seasons';
     
     public function updatePlayerHasPaid($player_id,$season_id,$site_id){
-        $player = $this->field('first', array(
+        $player = $this->find('first', array(
             'conditions' => array(
                 'PlayersToSeasonsSaaS.player_id' => $player_id,
                 'PlayersToSeasonsSaaS.season_id' => $season_id,

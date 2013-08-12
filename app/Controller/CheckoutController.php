@@ -62,7 +62,7 @@ class CheckoutController extends AppController {
                     $authorizeNet = $this->AuthorizeNet->charge($order['OrderSaaS'], $this->request->data['Sites'], $site);
                 } catch (Exception $e) {
                     $this->Session->setFlash($e->getMessage());
-                    $this->redirect('/checkout/ll/' . $this->request->data['oid'] . '-' . $this->request->data['sid']);
+                    $this->redirect('/checkout/ll/' . $this->request->data['oid'] . '-' . $this->request->data['Sites']['sid']);
                 }
                 $data['id'] = $order['OrderSaaS']['id'];
                 $data['authorization'] = $authorizeNet[4];

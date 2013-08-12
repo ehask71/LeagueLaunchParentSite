@@ -62,7 +62,7 @@ class CheckoutController extends AppController {
                     $authorizeNet = $this->AuthorizeNet->charge($order['OrderSaaS'], $this->request->data['Sites'], $site);
                 } catch (Exception $e) {
                     $this->Session->setFlash($e->getMessage());
-                    $this->redirect('/checkout/ll/' . $this->request->data['oid'] . '-' . $this->request->data['Sites']['sid']);
+                    $this->redirect('/checkout/ll/' . $this->request->data['Sites']['oid'] . '-' . $this->request->data['Sites']['sid']);
                 }
                 $data['id'] = $order['OrderSaaS']['id'];
                 $data['authorization'] = $authorizeNet[4];
@@ -75,14 +75,14 @@ class CheckoutController extends AppController {
                 foreach($order['OrderItemSaaS'] AS $row){
                     if($row['player_id'] != 0 && $row['season_id'] != 0){
                         // We need to update a player
-                        $this->PlayersToSeasonsSaaS->updatePlayerHasPaid($row['player_id'], $row['season_id'], $this->request->data['sid']);
+                        $this->PlayersToSeasonsSaaS->updatePlayerHasPaid($row['player_id'], $row['season_id'], $this->request->data['Sites']['sid']);
                     }
                 }
                 $this->Session->destroy();
                 print_r($authorizeNet);
             } else {
 
-                $this->redirect('/checkout/ll/' . $this->request->data['oid'] . '-' . $this->request->data['sid']);
+                $this->redirect('/checkout/ll/' . $this->request->data['Sites']['oid'] . '-' . $this->request->data['Sites']['sid']);
             }
         }
     }

@@ -75,7 +75,7 @@ class CheckoutController extends AppController {
                 foreach($order['OrderItemSaaS'] AS $row){
                     if($row['player_id'] != 0 && $row['season_id'] != 0){
                         // We need to update a player
-                        $this->PlayersToSeasonsSaaS->updatePlayerHasPaid($row['player_id'], $row['season_id'], $site_id);
+                        $this->PlayersToSeasonsSaaS->updatePlayerHasPaid($row['player_id'], $row['season_id'], $this->request->data['sid']);
                     }
                 }
                 $this->Session->destroy();

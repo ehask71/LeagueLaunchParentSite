@@ -90,6 +90,32 @@ class CheckoutController extends AppController {
     public function testform() {
         $this->redirect('/checkout/ll/52083e28-2020-4b59-929a-7926413c2bf7-3');
     }
+    
+    public function resettest(){
+       $order = $this->OrderSaaS->find('first',array(
+            'conditions' => array(
+                'OrderSaaS.id' => '52083e28-2020-4b59-929a-7926413c2bf7',
+                'OrderSaaS.site_id' => 3
+            )
+        ));
+       
+       $order['OrderSaaS']['status'] = 1;
+       
+       if($this->OrderSaaS->save($order)){
+           $ptos = $this->PlayersToSeasonsSaaS->find('first',array(
+              'conditions' => array(
+                  'PlayersToSeasonsSaaS.id' => 53
+              ) 
+           ));
+           
+           $ptos['PlayersToSeasonsSaaS']['haspaid'] = 0;
+           if($this->PlayersToSeasonsSaaS->save($ptos)){
+               $this->redirect('/checkout/testform');
+           }
+       } else {
+           echo 'Fail';
+       }
+    }
 
 }
 

@@ -9,7 +9,7 @@ App::uses('AppController', 'Controller');
 class CheckoutController extends AppController {
 
     public $name = 'Checkout';
-    public $uses = array('Sites', 'OrderSaaS');
+    public $uses = array('Sites', 'OrderSaaS','PlayersToSeasonsSaaS');
     public $components = array('AuthorizeNet');
 
     public function beforeFilter() {
@@ -72,6 +72,12 @@ class CheckoutController extends AppController {
                 // Update the Order
                 $this->OrderSaaS->save($order);
                 
+                foreach($order['OrderItemSaaS'] AS $row){
+                    if($row['player_id'] != 0 && $row['season_id'] != 0){
+                        // We need to update a player
+                        $this->PlayersToSeasonsSaaS->updatePlayerHasPaid($row['player_id'], $row['season_id'], $site_id);
+                    }
+                }
                 print_r($authorizeNet);
             } else {
 

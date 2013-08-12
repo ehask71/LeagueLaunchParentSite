@@ -78,6 +78,7 @@ class CheckoutController extends AppController {
                         $this->PlayersToSeasonsSaaS->updatePlayerHasPaid($row['player_id'], $row['season_id'], $site_id);
                     }
                 }
+                $this->Session->destroy();
                 print_r($authorizeNet);
             } else {
 

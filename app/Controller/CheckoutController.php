@@ -20,7 +20,7 @@ class CheckoutController extends AppController {
         
     }
 
-    public function ll($oid = false,$sid = false) {
+    public function ll($oid = false, $sid = false) {
 
         $this->autoRender = false;
         if ($sid && $oid) {
@@ -35,10 +35,14 @@ class CheckoutController extends AppController {
                         ));
                 if (count($order) > 0) {
                     // We have an order
-                    $this->set(compact('sid'));
-                    $this->set(compact('oid'));
-                    $this->Session->write('Orderdetails', $order);
-                    $this->render('/Elements/ll_checkout_step1');
+                    if ($order['OrderSaaS']['status'] == '2') {
+                        $this->render('/Elements/ll_checkout_order_status_complete');
+                    } else {
+                        $this->set(compact('sid'));
+                        $this->set(compact('oid'));
+                        $this->Session->write('Orderdetails', $order);
+                        $this->render('/Elements/ll_checkout_step1');
+                    }
                 }
             }
         } else {
@@ -58,15 +62,20 @@ class CheckoutController extends AppController {
                     $authorizeNet = $this->AuthorizeNet->charge($order['OrderSaaS'], $this->request->data['Sites'], $site);
                 } catch (Exception $e) {
                     $this->Session->setFlash($e->getMessage());
-                    $this->redirect('/checkout/ll/'.$this->request->data['oid'].'-'.$this->request->data['sid']);
+                    $this->redirect('/checkout/ll/' . $this->request->data['oid'] . '-' . $this->request->data['sid']);
                 }
+                $this->OrderSaaS->id = $order['OrderSaaS']['id'];
                 $order['OrderSaaS']['authorization'] = $authorizeNet[4];
                 $order['OrderSaaS']['transaction'] = $authorizeNet[6];
-
+                $order['OrderSaaS']['status'] = 2;
+                
+                // Update the Order
+                $this->OrderSaaS->save($order);
+                
                 print_r($authorizeNet);
             } else {
-                
-                $this->redirect('/checkout/ll/'.$this->request->data['oid'].'-'.$this->request->data['sid']);
+
+                $this->redirect('/checkout/ll/' . $this->request->data['oid'] . '-' . $this->request->data['sid']);
             }
         }
     }

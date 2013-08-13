@@ -174,5 +174,5 @@ echo $this->Form->end(__('Submit Payment'));
     </pre>
 </div>
 <div id="LL-CC-Footer">
-    <img src="<?=$this->Html->image('/img/visa.png')?>" /> <img src="<?=$this->Html->image('/img/mastercard.png')?>" />
+    <?=$this->Html->image('/img/visa.png')?><?=$this->Html->image('/img/mastercard.png')?>
 </div>

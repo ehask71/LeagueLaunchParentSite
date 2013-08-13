@@ -4,6 +4,10 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
 .clear {
     clear:both;
 }
+body{
+    font-family: Arial, Tahoma, sans-serif;
+    font-size: 14px
+}
 #LL-CC-Info{
     width:93.75%;
     max-width:768px;

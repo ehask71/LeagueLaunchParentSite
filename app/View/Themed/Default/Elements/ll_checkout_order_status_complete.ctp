@@ -44,7 +44,7 @@ body{
     
 }
 </style>
-<div class="LL-CC-Info">
+<div id="LL-CC-Info">
     <h2>Oops!</h2>
     <p>
         It appears this order has already been completed. If you think this is an error please contact us 

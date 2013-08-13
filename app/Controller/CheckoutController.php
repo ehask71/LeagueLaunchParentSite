@@ -61,7 +61,7 @@ class CheckoutController extends AppController {
 		$authorizeNet = $this->AuthorizeNet->charge($order['OrderSaaS'], $this->request->data['Sites'], $site);
 		if (is_string($authorizeNet)) {
 		    $this->Session->setFlash($authorizeNet);
-		    $this->redirect('/checkout/ll/' . $this->request->data['Sites']['oid'] . '-' . $this->request->data['Sites']['sid']);
+		    $this->redirect('/checkout/ll/' . $this->request->data['Sites']['oid'] . '-' . $this->request->data['Sites']['sid']. '-' . base64_encode($this->request->data['Sites']['rtn']));
 		    exit();
 		}
 		$data['id'] = $order['OrderSaaS']['id'];
@@ -81,7 +81,7 @@ class CheckoutController extends AppController {
 		$this->Session->destroy();
 		//print_r($authorizeNet);
 	    } else {
-		$this->redirect('/checkout/ll/' . $this->request->data['Sites']['oid'] . '-' . $this->request->data['Sites']['sid']);
+		$this->redirect('/checkout/ll/' . $this->request->data['Sites']['oid'] . '-' . $this->request->data['Sites']['sid']. '-' . base64_encode($this->request->data['Sites']['rtn']));
 	    }
 	}
     }

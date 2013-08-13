@@ -18,9 +18,48 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
     
 }
 #LL-CC-Process{
-
+    display:block;
+    position:relative;
+    width:93.75%;   
+    max-width:500px;    
+    min-width:300px;    
+    margin:30px auto;
+    padding:20px;
+    overflow:hidden;
+    border-radius:6px;
+    z-index:1;
+    background: linear-gradient(to bottom, #4D9DCE 1%, #2C59A8 100%) repeat scroll 0 0 transparent;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.8), 0 1px 3px rgba(255, 255, 255, 0.3) inset, 0 0 2px rgba(255, 255, 255, 0.3) inset;
+    color: #FFFFFF;
 }
-            
+#LL-CC-Process h2{
+    text-shadow: 0 1px 1px #2D4DAA;
+}
+#LL-CC-Process label{
+    display:block;
+    margin-bottom:8px;
+    color:rgba(255,255,255,0.6);
+    text-transform:uppercase;
+    font-size:1.1em;
+    font-weight:bold;
+    text-shadow:0px 1px 2px rgba(17,123,173,0.6);
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+}
+#LL-CC-Process input {
+    display:block;
+    padding:12px 10px;
+    color:#999;
+    font-size:1.2em;
+    font-weight:bold;
+    text-shadow:1px  1px 1px #fff;
+    border:1px solid rgba(16,103,133,0.6);
+    box-shadow:0px 0px 3px rgba(255,255,255,0.5), inset 0px 1px 4px rgba(0,0,0,0.2);
+    border-radius:3px;
+}
+
+#LL-CC-Process input.full {
+    width:100%;
+}
 </style>
 <div id="LL-CC-Info"> 
 <?php
@@ -31,10 +70,11 @@ echo '<h2>'.$this->Session->read('Sitedetails.Sites.leaguename').'</h2>';
     </p>
 </div>
 <div id="LL-CC-Process">
+    <h2>Payment Details</h2>
 <?php
 
 echo $this->Form->create(NULL,array('url' =>array('controller' => 'checkout', 'action' => 'process'), 'id' => 'checkoutForm'));
-echo $this->Form->input('creditcard_number',array('label'=>'Credit Card:','value'=>'5555555555555555'));
+echo $this->Form->input('creditcard_number',array('label'=>'Credit Card:','value'=>'5555555555555555','class'=>'full'));
 echo $this->Form->input('creditcard_month',array('label'=>'Month:','value'=>'01'));
 echo $this->Form->input('creditcard_year',array('label'=>'Year:','value'=>'2013'));
 //echo $this->Form->input('creditcard_month',array('type'=>'select','label'=>'Month','options'=> array(1=>1,2=>2,3=>3,4=>4,5=>5,6=>6,7=>7,8=>8,9=>9,10=>10,11=>11,12=>12)));

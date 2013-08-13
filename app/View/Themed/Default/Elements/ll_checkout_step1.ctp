@@ -63,7 +63,12 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
     box-shadow:0px 0px 3px rgba(255,255,255,0.5), inset 0px 1px 4px rgba(0,0,0,0.2);
     border-radius:3px;
 }
-
+#LL-CC-Process div.text.text{
+    display: inline-block;
+}
+#LL-CC-Process div.text.text:first-of-type{
+    display:block;
+}
 #LL-CC-Process input.full {
     width:100%;
 }

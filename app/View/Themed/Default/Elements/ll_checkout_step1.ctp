@@ -48,7 +48,7 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
     text-shadow:0px 1px 2px rgba(17,123,173,0.6);
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
 }
-#LL-CC-Process .text{
+#LL-CC-Process div.part{
     display: inline-block;
     float: left;
 }
@@ -67,6 +67,18 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
 #LL-CC-Process input.full {
     width:100%;
 }
+#LL-CC-Process input.month{
+    margin-right: 5%;
+    width: 60%;
+}
+#LL-CC-Process input.year{
+    margin-right: 5%;
+    width: 60%;
+}
+#LL-CC-Process input.cvv{
+    float: left;
+    width: 25%;
+}
 </style>
 <div id="LL-CC-Info"> 
 <?php
@@ -83,11 +95,11 @@ echo '<h2>'.$this->Session->read('Sitedetails.Sites.leaguename').'</h2>';
 echo $this->Form->create(NULL,array('url' =>array('controller' => 'checkout', 'action' => 'process'), 'id' => 'checkoutForm'));
 echo $this->Form->input('creditcard_number',array('label'=>'Credit Card:','value'=>'5555555555555555','class'=>'full'));
 echo '<div class="clear"></div>';
-echo $this->Form->input('creditcard_month',array('label'=>'Month:','value'=>'01'));
-echo $this->Form->input('creditcard_year',array('label'=>'Year:','value'=>'2013'));
+echo $this->Form->input('creditcard_month',array('label'=>'Month:','value'=>'01','class'=>'month'));
+echo $this->Form->input('creditcard_year',array('label'=>'Year:','value'=>'2013','class'=>'year'));
 //echo $this->Form->input('creditcard_month',array('type'=>'select','label'=>'Month','options'=> array(1=>1,2=>2,3=>3,4=>4,5=>5,6=>6,7=>7,8=>8,9=>9,10=>10,11=>11,12=>12)));
 //echo $this->Form->input('creditcard_year',array('type'=>'select','label'=>'Year','options'=> array(2013=>2013,2014=>2014,2015=>2015,2016=>2016,2017=>2017,2018=>2018,2019=>2019,2020=>2020)));
-echo $this->Form->input('creditcard_code',array('label'=>'CVV'));
+echo $this->Form->input('creditcard_code',array('label'=>'CVV','value'=>'111','class'=>'cvv'));
 echo '<div class="clear"></div>';
 echo $this->Form->input('sid',array('type'=>'hidden','value'=>$sid));
 echo $this->Form->input('oid',array('type'=>'hidden','value'=>$oid));

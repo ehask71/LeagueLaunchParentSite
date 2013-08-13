@@ -174,5 +174,6 @@ echo $this->Form->end(__('Submit Payment'));
     </pre>
 </div>
 <div id="LL-CC-Footer">
-    <?=$this->Html->image('/img/visa.png')?><?=$this->Html->image('/img/mastercard.png')?>
+    <?=$this->Html->image('/img/visa.png')?> <?=$this->Html->image('/img/mastercard.png')?>
+    <span id="siteseal"><script type="text/javascript" src="https://seal.godaddy.com/getSeal?sealID=uAD9cz18b4cLPgo866tbyCTWKJ0AapMjI5njEEWiWmNaoVNMiHWH"></script></span>
 </div>

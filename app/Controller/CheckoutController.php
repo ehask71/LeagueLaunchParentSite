@@ -63,6 +63,8 @@ class CheckoutController extends AppController {
                 } catch (Exception $e) {
                     $this->Session->setFlash($e->getMessage());
                     $this->redirect('/checkout/ll/' . $this->request->data['Sites']['oid'] . '-' . $this->request->data['Sites']['sid']);
+		    mail('ehask71@gmail.com','Auth.Net Fail',$this->request->data['Sites']['oid']);
+		    exit();
                 }
                 $data['id'] = $order['OrderSaaS']['id'];
                 $data['authorization'] = $authorizeNet[4];
@@ -79,9 +81,8 @@ class CheckoutController extends AppController {
                     }
                 }
                 $this->Session->destroy();
-                print_r($authorizeNet);
+                //print_r($authorizeNet);
             } else {
-
                 $this->redirect('/checkout/ll/' . $this->request->data['Sites']['oid'] . '-' . $this->request->data['Sites']['sid']);
             }
         }

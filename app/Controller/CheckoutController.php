@@ -52,10 +52,9 @@ class CheckoutController extends AppController {
     }
 
     public function process() {
+	$this->autoRender = false;
 	if ($this->request->is('post') || $this->request->is('put')) {
-	    $this->autoRender = false;
 	    if ($this->request->data['Sites']['creditcard_number'] != '' && $this->request->data['Sites']['creditcard_month'] != '' && $this->request->data['Sites']['creditcard_year'] != '' && $this->request->data['Sites']['creditcard_code'] != '') {
-		echo "<pre>";
 		$site = $this->Session->read('Sitedetails');
 		$order = $this->Session->read('Orderdetails');
 

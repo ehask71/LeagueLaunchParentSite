@@ -23,7 +23,7 @@ class CheckoutController extends AppController {
     public function ll($oid = false, $sid = false, $rtn = false) {
 
 	$this->autoRender = false;
-	if ($sid && $oid) {
+	if ($sid && $oid && $rtn) {
 	    // Here we process the LL Checkouts
 	    $site = $this->Sites->getSiteById($sid);
 	    if (count($site) > 0) {

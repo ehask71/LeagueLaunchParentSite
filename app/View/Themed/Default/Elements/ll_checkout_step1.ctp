@@ -97,10 +97,17 @@ echo '<h2>'.$this->Session->read('Sitedetails.Sites.leaguename').'</h2>';
     <h2>Payment Details</h2>
 <?php
 
-echo $this->Form->create(NULL,array('url' =>array('controller' => 'checkout', 'action' => 'process'), 'id' => 'checkoutForm'));
+echo $this->Form->create(NULL,array('url' =>array('controller' => 'checkout', 'action' => 'process'), 'id' => 'checkoutForm',
+	'inputDefaults' => array(
+                                'div' => false,
+                                'label' => false,
+                                'before' => '<section class="form_row"><div class="grid_2">',
+                                'between' => '</div><div class="grid_10"><div class="block_content">',
+				'after' => '</div></div><div class="clear"></div></section>'
+                            )));
 echo $this->Form->input('creditcard_number',array('label'=>'Credit Card:','value'=>'5555555555555555','class'=>'full'));
 echo '<div class="clear"></div>';
-echo $this->Form->input('creditcard_month',array('label'=>'Month:','value'=>'01','class'=>'month'));
+echo $this->Form->input('creditcard_month',array('label'=>'Month:','value'=>'01','class'=>'month','between'=>'</div><div class="ccmonth">'));
 echo $this->Form->input('creditcard_year',array('label'=>'Year:','value'=>'2013','class'=>'year'));
 //echo $this->Form->input('creditcard_month',array('type'=>'select','label'=>'Month','options'=> array(1=>1,2=>2,3=>3,4=>4,5=>5,6=>6,7=>7,8=>8,9=>9,10=>10,11=>11,12=>12)));
 //echo $this->Form->input('creditcard_year',array('type'=>'select','label'=>'Year','options'=> array(2013=>2013,2014=>2014,2015=>2015,2016=>2016,2017=>2017,2018=>2018,2019=>2019,2020=>2020)));

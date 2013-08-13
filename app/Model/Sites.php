@@ -24,7 +24,7 @@ class Sites extends AppModel {
                 'Sites.site_id' => $id
                 )));
         
-        if(count($site['Sites'])>0 && count($site['Settings'])>0){
+        if(count($site)>0){
             $settings = array();
             foreach ($site['Settings'] AS $set){
                 $settings[$set['name']] = $set['value'];

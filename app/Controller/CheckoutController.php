@@ -61,11 +61,9 @@ class CheckoutController extends AppController {
 		$authorizeNet = $this->AuthorizeNet->charge($order['OrderSaaS'], $this->request->data['Sites'], $site);
 		if (is_string($authorizeNet)) {
 		    $this->Session->setFlash($authorizeNet);
-		    mail('ehask71@gmail.com', 'Auth.Net Fail', $this->request->data['Sites']['oid']);
 		    $this->redirect('/checkout/ll/' . $this->request->data['Sites']['oid'] . '-' . $this->request->data['Sites']['sid']);
 		    exit();
 		}
-		mail('ehask71@gmail.com', 'Auth.Net Approve', $this->request->data['Sites']['oid']);
 		$data['id'] = $order['OrderSaaS']['id'];
 		$data['authorization'] = $authorizeNet[4];
 		$data['transaction'] = $authorizeNet[6];

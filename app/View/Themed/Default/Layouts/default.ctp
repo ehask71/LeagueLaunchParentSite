@@ -5,8 +5,8 @@
         <meta name="keywords" content="League Launch,LeagueLaunch,Sports Team,League management,Team Websites">
         <meta name="description" content="LeagueLaunch.com is a total site,League, and Team Management solution for all your leagues needs no matter what sport!">
         <?
-            echo $this->Html->css('reset');
-            echo $this->Html->css('style');
+            echo $this->Html->css('css/reset.css');
+            echo $this->Html->css('css/style.css');
         ?>
         <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
     </head>

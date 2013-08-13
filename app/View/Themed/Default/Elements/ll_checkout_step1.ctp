@@ -70,6 +70,7 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
 #LL-CC-Process div.ccyear, #LL-CC-Process div.ccmonth, #LL-CC-Process div.cccvv{
     width:33%;
     margin-bottom: 10px;
+    float: left;
 }
 #LL-CC-Process input.full {
     width:100%;

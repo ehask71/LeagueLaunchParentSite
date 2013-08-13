@@ -77,7 +77,7 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
 }
 #LL-CC-Process input.month{
     margin-right: 5%;
-    width: 900%;
+    width: 90%;
 }
 #LL-CC-Process input.year{
     margin-right: 5%;

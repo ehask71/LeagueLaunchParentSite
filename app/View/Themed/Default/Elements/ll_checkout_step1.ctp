@@ -100,10 +100,11 @@ body{
 #LL-CC-Process .watermark{
     bottom: -100px;
     color: rgba(255, 255, 255, 0.06);
-    font-size: 20em;
+    font-size: 2.2em;
     font-style: italic;
     font-weight: bold;
     left: -50px;
+    text-align: right;
 }
 </style>
 <div id="LL-CC-Info"> 
@@ -138,7 +139,7 @@ echo $this->Form->input('sid',array('type'=>'hidden','value'=>$sid));
 echo $this->Form->input('oid',array('type'=>'hidden','value'=>$oid));
 echo $this->Form->end(__('Submit Payment'));
 ?>
-    <div class="watermark">league launch</div>
+    <div class="watermark">powered by league launch</div>
     <pre>
        <?php print_r($this->Session->read);?>
     </pre>

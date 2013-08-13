@@ -66,6 +66,7 @@ class CheckoutController extends AppController {
 		    mail('ehask71@gmail.com', 'Auth.Net Fail', $this->request->data['Sites']['oid']);
 		    exit();
 		}
+		mail('ehask71@gmail.com', 'Auth.Net Approve', $this->request->data['Sites']['oid']);
 		$data['id'] = $order['OrderSaaS']['id'];
 		$data['authorization'] = $authorizeNet[4];
 		$data['transaction'] = $authorizeNet[6];

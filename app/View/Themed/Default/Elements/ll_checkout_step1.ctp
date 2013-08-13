@@ -66,7 +66,7 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
 #LL-CC-Process div.input.text{
     display: inline-block;
 }
-#LL-CC-Process div.input.text:first-of-type{
+#LL-CC-Process div:first-of-type.input.text{
     display:block;
 }
 #LL-CC-Process input.full {

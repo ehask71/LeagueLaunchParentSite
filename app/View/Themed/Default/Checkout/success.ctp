@@ -44,7 +44,7 @@ body{
     
 }
 </style>
-<div class="#LL-CC-Info">
+<div class="LL-CC-Info">
     <h2>Success!</h2>
     <p>
         Your card was processed successfully! Thank You!<br/>

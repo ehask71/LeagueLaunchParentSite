@@ -68,22 +68,23 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
     width:100%;
 }
 #LL-CC-Process div.ccyear, #LL-CC-Process div.ccmonth, #LL-CC-Process div.cccvv{
-    width:30%;
+    width:33%;
+    margin-bottom: 10px;
 }
 #LL-CC-Process input.full {
     width:100%;
 }
 #LL-CC-Process input.month{
     margin-right: 5%;
-    width: 60%;
+    width: 900%;
 }
 #LL-CC-Process input.year{
     margin-right: 5%;
-    width: 35%;
+    width: 90%;
 }
 #LL-CC-Process input.cvv{
     float: left;
-    width: 25%;
+    width: 90%;
 }
 </style>
 <div id="LL-CC-Info"> 

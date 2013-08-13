@@ -127,6 +127,14 @@ body{
     text-align: right;
     position:absolute;
 }
+#LL-CC-Footer{
+    width:93.75%;
+    max-width:768px;
+    margin:50px auto 40px auto;
+    text-align:right;
+    margin-bottom:40px;
+    text-shadow:1px 1px 1px rgba(255,255,255,0.2);
+}
 </style>
 <div id="LL-CC-Info"> 
 <?php
@@ -164,4 +172,7 @@ echo $this->Form->end(__('Submit Payment'));
     <pre>
        <?php print_r($this->Session->read);?>
     </pre>
+</div>
+<div id="LL-CC-Footer">
+    <img src="<?=$this->Html->image('/img/visa.png')?>" /> <img src="<?=$this->Html->image('/img/mastercard.png')?>" />
 </div>

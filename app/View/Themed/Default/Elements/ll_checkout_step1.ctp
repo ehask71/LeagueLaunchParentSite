@@ -169,9 +169,6 @@ echo $this->Form->input('oid',array('type'=>'hidden','value'=>$oid));
 echo $this->Form->end(__('Submit Payment'));
 ?>
     <div class="watermark">powered by leaguelaunch.com</div>
-    <pre>
-       <?php print_r($this->Session->read);?>
-    </pre>
 </div>
 <div id="LL-CC-Footer">
     <?=$this->Html->image('/img/visa.png')?> <?=$this->Html->image('/img/mastercard.png')?>

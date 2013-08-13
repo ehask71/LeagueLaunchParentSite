@@ -79,13 +79,22 @@ class CheckoutController extends AppController {
 		    }
 		}
 		$this->Session->destroy();
+		if($this->request->data['Sites']['rtn'] != ''){
+		    $this->redirect($this->request->data['Sites']['rtn']);
+		} else {
+		    $this->redirect(array('action'=>'success'));
+		}
 		//print_r($authorizeNet);
 	    } else {
 		$this->redirect('/checkout/ll/' . $this->request->data['Sites']['oid'] . '-' . $this->request->data['Sites']['sid']. '-' . base64_encode($this->request->data['Sites']['rtn']));
 	    }
 	}
     }
-
+    
+    public function success(){
+	// We redirect to here if we dont have a rtn Url
+    }
+    
     public function testform() {
 	$this->redirect('/checkout/ll/52083e28-2020-4b59-929a-7926413c2bf7-3');
     }

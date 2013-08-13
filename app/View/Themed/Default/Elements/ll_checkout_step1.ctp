@@ -20,7 +20,7 @@ body{
 }
 #flashMessage{
     border: 1px solid;
-    margin: 10px 0px;
+    margin: 10px auto;
     padding:15px 10px 15px 50px;
     background-repeat: no-repeat;
     background-position: 10px center;
@@ -127,6 +127,14 @@ body{
     text-align: right;
     position:absolute;
 }
+#LL-CC-Footer{
+    width:93.75%;
+    max-width:768px;
+    margin:50px auto 40px auto;
+    text-align:right;
+    margin-bottom:40px;
+    text-shadow:1px 1px 1px rgba(255,255,255,0.2);
+}
 </style>
 <div id="LL-CC-Info"> 
 <?php
@@ -164,4 +172,8 @@ echo $this->Form->end(__('Submit Payment'));
     <pre>
        <?php print_r($this->Session->read);?>
     </pre>
+</div>
+<div id="LL-CC-Footer">
+    <?=$this->Html->image('/img/visa.png')?> <?=$this->Html->image('/img/mastercard.png')?>
+    <span id="siteseal"><script type="text/javascript" src="https://seal.godaddy.com/getSeal?sealID=uAD9cz18b4cLPgo866tbyCTWKJ0AapMjI5njEEWiWmNaoVNMiHWH"></script></span>
 </div>

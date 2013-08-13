@@ -34,9 +34,9 @@ Router::connect('/', array('controller' => 'home', 'action' => 'index'));
 Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
 
 Router::connect(
-        '/checkout/ll/:oid-:sid', // E.g. /blog/3-CakePHP_Rocks
+        '/checkout/ll/:oid-:sid-:rtn', // E.g. /blog/3-CakePHP_Rocks
         array('controller' => 'checkout', 'action' => 'll'), array(
-            'pass' => array('oid', 'sid')
+            'pass' => array('oid', 'sid','rtn')
         )
 );
 /**

@@ -20,7 +20,7 @@ class CheckoutController extends AppController {
 	
     }
 
-    public function ll($oid = false, $sid = false) {
+    public function ll($oid = false, $sid = false, $rtn = false) {
 
 	$this->autoRender = false;
 	if ($sid && $oid) {
@@ -40,13 +40,13 @@ class CheckoutController extends AppController {
 		    } else {
 			$this->set(compact('sid'));
 			$this->set(compact('oid'));
+			$this->set(compact('rtn'));
 			$this->Session->write('Orderdetails', $order);
 			$this->render('/Elements/ll_checkout_step1');
 		    }
 		}
 	    }
 	} else {
-	    print_r($this->request->data);
 	    $this->redirect('/');
 	}
     }

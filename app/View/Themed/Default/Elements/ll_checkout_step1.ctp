@@ -8,6 +8,26 @@ body{
     font-family: Arial, Tahoma, sans-serif;
     font-size: 14px;
 }
+.message{
+    width:93.75%;
+    max-width:768px;
+    margin:50px auto 40px auto;
+    text-align:center;
+    margin-bottom:40px;
+    text-shadow:1px 1px 1px rgba(255,255,255,0.2);
+    color: #D8000C;
+    background-color: #FFBABA;
+}
+#flashMessage{
+    border: 1px solid;
+    margin: 10px 0px;
+    padding:15px 10px 15px 50px;
+    background-repeat: no-repeat;
+    background-position: 10px center;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+}
 #LL-CC-Info{
     width:93.75%;
     max-width:768px;
@@ -76,6 +96,7 @@ body{
 #LL-CC-Process div.ccnumber{
     display:block;
     width:100%;
+    margin-bottom: 20px;
 }
 #LL-CC-Process div.ccyear, #LL-CC-Process div.ccmonth, #LL-CC-Process div.cccvv{
     width:33%;

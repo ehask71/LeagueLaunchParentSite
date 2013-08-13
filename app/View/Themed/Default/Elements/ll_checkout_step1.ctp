@@ -166,7 +166,7 @@ echo $this->Form->input('creditcard_code',array('label'=>'CVV','value'=>'111','c
 echo '<div class="clear"></div>';
 echo $this->Form->input('sid',array('type'=>'hidden','value'=>$sid));
 echo $this->Form->input('oid',array('type'=>'hidden','value'=>$oid));
-echo $this->Form->input('rtn',array('type'=>'hidden','value'=>$rtn));
+echo $this->Form->input('rtn',array('type'=>'hidden','value'=>  base64_decode($rtn)));
 echo $this->Form->end(__('Submit Payment'));
 ?>
     <div class="watermark">powered by leaguelaunch.com</div>

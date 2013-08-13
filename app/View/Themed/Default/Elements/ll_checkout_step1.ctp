@@ -6,7 +6,7 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
 }
 body{
     font-family: Arial, Tahoma, sans-serif;
-    font-size: 14px
+    font-size: 14px;
 }
 #LL-CC-Info{
     width:93.75%;
@@ -67,6 +67,12 @@ body{
     box-shadow:0px 0px 3px rgba(255,255,255,0.5), inset 0px 1px 4px rgba(0,0,0,0.2);
     border-radius:3px;
 }
+#LL-CC-Process div.submit{
+    text-align: right;
+}
+#LL-CC-Process input[type=submit]{
+    cursor: pointer;
+}
 #LL-CC-Process div.ccnumber{
     display:block;
     width:100%;
@@ -90,6 +96,14 @@ body{
 #LL-CC-Process input.cvv{
     float: left;
     width: 90%;
+}
+#LL-CC-Process .watermark{
+    bottom: -100px;
+    color: rgba(255, 255, 255, 0.06);
+    font-size: 20em;
+    font-style: italic;
+    font-weight: bold;
+    left: -50px;
 }
 </style>
 <div id="LL-CC-Info"> 
@@ -124,6 +138,7 @@ echo $this->Form->input('sid',array('type'=>'hidden','value'=>$sid));
 echo $this->Form->input('oid',array('type'=>'hidden','value'=>$oid));
 echo $this->Form->end(__('Submit Payment'));
 ?>
+    <div class="watermark">league launch</div>
     <pre>
        <?php print_r($this->Session->read);?>
     </pre>

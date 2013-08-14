@@ -14,9 +14,10 @@
  * @link          http://cakephp.org CakePHP(tm) Project
  * @package       app.View.Layouts.Email.text
  * @since         CakePHP(tm) v 0.10.0.1076
- * @license       http://www.opensource.org/licenses/mit-license.php MIT License
+ * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
 ?>
 <?php echo $this->fetch('content'); ?>
 
-This email was sent using the CakePHP Framework, http://cakephp.org.
+
+This email was sent from http://leaguelaunch.com ~ League Launch Sports Team Management.

@@ -65,6 +65,7 @@ class CheckoutController extends AppController {
 		    exit();
 		}
 		$data['id'] = $order['OrderSaaS']['id'];
+                $data['order_type'] = 'authnet';
 		$data['authorization'] = $authorizeNet[4];
 		$data['transaction'] = $authorizeNet[6];
 		$data['status'] = 2;

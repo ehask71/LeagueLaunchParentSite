@@ -72,13 +72,13 @@ class CheckoutController extends AppController {
 
 		App::uses('CakeEmail', 'Network/Email');
 		$email = new CakeEmail();
-		$email->from(array('do-not-reply@leaguelaunch.com' => $site['Settings']['leaguename']))
+		$email->from(array('do-not-reply@leaguelaunch.com' => $site['Sites']['leaguename']))
 			->config(array('host' => 'mail.leaguelaunch.com', 'port' => 25, 'username' => 'do-not-reply@leaguelaunch.com', 'password' => '87.~~?ZG}eI}', 'transport' => 'Smtp'))
 			->sender($site['Settings']['admin_email'])
 			->replyTo($site['Settings']['admin_email'])
 			->cc($site['Settings']['admin_email'])
 			->to($order['OrderSaaS']['email'])
-			->subject($site['Settings']['leaguename'] . ' Payment')
+			->subject($site['Sites']['leaguename'] . ' Payment')
 			->template('credit_card_paid')
 			->theme(Configure::read('Settings.theme'))
 			->emailFormat('text')

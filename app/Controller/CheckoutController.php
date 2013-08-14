@@ -61,15 +61,30 @@ class CheckoutController extends AppController {
 		$authorizeNet = $this->AuthorizeNet->charge($order['OrderSaaS'], $this->request->data['Sites'], $site);
 		if (is_string($authorizeNet)) {
 		    $this->Session->setFlash($authorizeNet);
-		    $this->redirect('/checkout/ll/' . $this->request->data['Sites']['oid'] . '-' . $this->request->data['Sites']['sid']. '-' . base64_encode($this->request->data['Sites']['rtn']));
+		    $this->redirect('/checkout/ll/' . $this->request->data['Sites']['oid'] . '-' . $this->request->data['Sites']['sid'] . '-' . base64_encode($this->request->data['Sites']['rtn']));
 		    exit();
 		}
 		$data['id'] = $order['OrderSaaS']['id'];
-                $data['order_type'] = 'authnet';
+		$data['order_type'] = 'authnet';
 		$data['authorization'] = $authorizeNet[4];
 		$data['transaction'] = $authorizeNet[6];
 		$data['status'] = 2;
 
+		App::uses('CakeEmail', 'Network/Email');
+		$email = new CakeEmail();
+		$email->from(array('do-not-reply@leaguelaunch.com' => $site['Settings']['leaguename']))
+			->config(array('host' => 'mail.leaguelaunch.com', 'port' => 25, 'username' => 'do-not-reply@leaguelaunch.com', 'password' => '87.~~?ZG}eI}', 'transport' => 'Smtp'))
+			->sender($site['Settings']['admin_email'])
+			->replyTo($site['Settings']['admin_email'])
+			->cc($site['Settings']['admin_email'])
+			->to($order['OrderSaaS']['email'])
+			->subject($site['Settings']['leaguename'] . ' Payment')
+			->template('credit_card_paid')
+			->theme(Configure::read('Settings.theme'))
+			->emailFormat('text')
+			->viewVars(array('order' => $order,'site'=>$site))
+			->send();
+		
 		// Update the Order
 		$this->OrderSaaS->save($data);
 
@@ -80,24 +95,24 @@ class CheckoutController extends AppController {
 		    }
 		}
 		$this->Session->destroy();
-		if($this->request->data['Sites']['rtn'] != ''){
+		if ($this->request->data['Sites']['rtn'] != '') {
 		    $this->redirect($this->request->data['Sites']['rtn']);
 		} else {
-		    $this->redirect(array('action'=>'success'));
+		    $this->redirect(array('action' => 'success'));
 		}
 		//print_r($authorizeNet);
 	    } else {
-		$this->redirect('/checkout/ll/' . $this->request->data['Sites']['oid'] . '-' . $this->request->data['Sites']['sid']. '-' . base64_encode($this->request->data['Sites']['rtn']));
+		$this->redirect('/checkout/ll/' . $this->request->data['Sites']['oid'] . '-' . $this->request->data['Sites']['sid'] . '-' . base64_encode($this->request->data['Sites']['rtn']));
 	    }
 	}
     }
-    
-    public function success(){
+
+    public function success() {
 	// We redirect to here if we dont have a rtn Url
     }
-    
+
     public function testform() {
-	$this->redirect('/checkout/ll/52083e28-2020-4b59-929a-7926413c2bf7-3-'.  base64_encode('https://leaguelaunch.com/checkout/success/'));
+	$this->redirect('/checkout/ll/52083e28-2020-4b59-929a-7926413c2bf7-3-' . base64_encode('https://leaguelaunch.com/checkout/success/'));
     }
 
     public function resettest() {

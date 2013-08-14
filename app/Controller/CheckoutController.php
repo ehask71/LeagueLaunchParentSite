@@ -81,6 +81,7 @@ class CheckoutController extends AppController {
 			->subject($site['Sites']['leaguename'] . ' Payment')
 			->template('credit_card_paid')
 			->emailFormat('text')
+			->theme('default')
 			->viewVars(array('order' => $order,'site'=>$site))
 			->send();
 		

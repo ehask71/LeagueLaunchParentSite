@@ -82,7 +82,7 @@ class CheckoutController extends AppController {
 			->template('credit_card_paid')
 			->emailFormat('text')
 			->theme('default')
-			->viewVars(array('order' => $order,'site'=>$site))
+			->viewVars(array('order' => $order,'site'=>$site,'authnet'=>$data))
 			->send();
 		
 		// Update the Order

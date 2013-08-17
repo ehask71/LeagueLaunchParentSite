@@ -28,7 +28,7 @@
  * to use (in this case, /app/View/Pages/home.ctp)...
  */
 Router::connect('/', array('controller' => 'home', 'action' => 'index'));
-Router::connect('/dialog.html', array('controller' => 'checkout', 'action' => 'dialog'));
+Router::connect('/xinterface.html', array('controller' => 'checkout', 'action' => 'dialog'));
 /**
  * ...and connect the rest of 'Pages' controller's urls.
  */

@@ -140,6 +140,10 @@ class CheckoutController extends AppController {
 	    echo 'Fail';
 	}
     }
+    
+    public function dialog(){
+        $this->theme = 'dialog';
+    }
 
 }
 

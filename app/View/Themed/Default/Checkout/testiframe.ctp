@@ -182,7 +182,7 @@ var body = document.getElementsByTagName('body')[0],
     xinterfaceUrl = 'http://demo.leaguelaunch.com/xinterface.html';
 
 function closeParent(){
-    communicate('log','close|'+window.name);
+    communicate('log','close');
 }
 function communicate(key, value){
     var src = xinterfaceUrl +'?key='+ key +'&value=' + value,

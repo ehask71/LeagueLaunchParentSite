@@ -179,7 +179,7 @@ echo $this->Form->end(__('Submit Payment'));
 
 <script type="text/javascript">
 var body = document.getElementsByTagName('body')[0],
-    xinterfaceUrl = 'http://mysite.com/xinterface.html';
+    xinterfaceUrl = 'http://demo.leaguelaunch.com/xinterface.html';
 
 function closeParent(){
     communicate('log','close|'+window.name);

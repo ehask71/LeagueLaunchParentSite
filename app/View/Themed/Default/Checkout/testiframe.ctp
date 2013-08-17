@@ -138,10 +138,10 @@ body{
 </style>
 <div id="LL-CC-Info"> 
 <?php
-echo '<h2>'.$this->Session->read('Sitedetails.Sites.leaguename').'</h2>';
+echo '<h2>IFrame Test</h2>';
 ?>
     <p>
-        Total: $<?php echo $this->Session->read('Orderdetails.OrderSaaS.total');?>
+        Total: 
     </p>
 </div>
 <div id="LL-CC-Process">

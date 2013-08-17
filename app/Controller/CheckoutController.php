@@ -144,6 +144,10 @@ class CheckoutController extends AppController {
     public function dialog(){
         $this->theme = 'dialog';
     }
+    
+    public function testiframe(){
+        
+    }
 
 }
 

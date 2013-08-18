@@ -31,7 +31,7 @@ body{
 #LL-CC-Info{
     width:93.75%;
     max-width:768px;
-    margin:50px auto 40px auto;
+    margin:10px auto 10px auto;
     text-align:center;
     margin-bottom:40px;
     text-shadow:1px 1px 1px rgba(255,255,255,0.2);

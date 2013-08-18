@@ -141,7 +141,8 @@ body{
 echo '<h2>IFrame Test</h2>';
 ?>
     <p>
-        Total: 
+        Total: <br/>
+        <a href="#" onclick="closeParent();"/>Close Me</a>
     </p>
 </div>
 <div id="LL-CC-Process">
@@ -175,7 +176,6 @@ echo $this->Form->end(__('Submit Payment'));
     <?=$this->Html->image('/img/visa.png')?> <?=$this->Html->image('/img/mastercard.png')?>
     <span id="siteseal"><script type="text/javascript" src="https://seal.godaddy.com/getSeal?sealID=uAD9cz18b4cLPgo866tbyCTWKJ0AapMjI5njEEWiWmNaoVNMiHWH"></script></span>
 </div>
-<a href="#" onclick="closeParent();"/>Close Me</a>
 
 <script type="text/javascript">
 var body = document.getElementsByTagName('body')[0],

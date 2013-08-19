@@ -94,10 +94,10 @@ class CheckoutController extends AppController {
                         $players = explode(",", $row['player_id']);
                         if (is_array($players)) {
                             foreach ($players AS $player) {
-                                $this->PlayersToSeasonsSaaS->updatePlayerHasPaid($row['player_id'], $row['season_id'], $this->request->data['Sites']['sid']);
+                                $this->PlayersToSeasonsSaaS->updatePlayerHasPaid($player, $row['season_id'], $this->request->data['Sites']['sid']);
                             }
                         } else {
-                            $this->PlayersToSeasonsSaaS->updatePlayerHasPaid($player, $row['season_id'], $this->request->data['Sites']['sid']);
+                            $this->PlayersToSeasonsSaaS->updatePlayerHasPaid($row['player_id'], $row['season_id'], $this->request->data['Sites']['sid']);
                         }
                     }
                 }

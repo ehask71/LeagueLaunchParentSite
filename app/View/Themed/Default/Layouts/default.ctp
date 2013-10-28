@@ -4,9 +4,9 @@
 	<!-- start: Meta -->
 	<meta charset="utf-8">
 	<title>League Launch .::. Sports League Management .::.</title>
-	<meta name="description" content="Metro Admin Template.">
-	<meta name="author" content="High Octane Brands">
-	<meta name="keyword" content="Metro, Metro UI, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+	<meta name="description" content="League Launch is a Sports League Management solutions provider">
+	<meta name="author" content="High Octane Brands LLC">
+	<meta name="keyword" content="">
 	<!-- end: Meta -->
 
 	<!-- start: Mobile Specific -->

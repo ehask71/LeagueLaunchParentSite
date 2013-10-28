@@ -1,0 +1,11 @@
+/* 
+    Created on : Oct 28, 2013, 1:37:06 PM
+    Author     : Eric
+*/
+
+.non-fluid {
+    max-width: 1170px;
+    float: none;
+    margin: 0 auto;
+}
+

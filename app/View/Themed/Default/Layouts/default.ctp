@@ -48,8 +48,8 @@
 	<? echo $this->fetch('header'); ?>
 	<? echo $this->fetch('navigation'); ?>
 	<div class="container-fluid-full">
-	    <div class="span12">
-		<div class="row-fluid">
+	    <div class="row-fluid">
+		<div class="non-fluid">
 		    <?php echo $this->Session->flash(); ?>
 		    <?php echo $this->fetch('content'); ?>    
 		</div>

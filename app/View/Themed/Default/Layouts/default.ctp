@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<title>League Launch .::. Sports League Management .::.</title>
 	<meta name="description" content="Metro Admin Template.">
-	<meta name="author" content="Łukasz Holeczek">
+	<meta name="author" content="High Octane Brands">
 	<meta name="keyword" content="Metro, Metro UI, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 	<!-- end: Meta -->
 

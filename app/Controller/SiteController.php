@@ -17,5 +17,8 @@ class SiteController extends AppController {
         
     }
     
+    public function admin_index(){
+	
+    }
 }
 

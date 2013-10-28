@@ -33,21 +33,24 @@ App::uses('Controller', 'Controller');
  * @link		http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
-    
+
     public $viewClass = 'Theme';
     public $theme = 'default';
     public $helpers = array(
-        'Session',
-        'Html' => array('className' => 'BoostCake.BoostCakeHtml'),
-        'Form' => array('className' => 'BoostCake.BoostCakeForm'),
-        'Paginator' => array('className' => 'BoostCake.BoostCakePaginator'),
+	'Session',
+	'Html' => array('className' => 'BoostCake.BoostCakeHtml'),
+	'Form' => array('className' => 'BoostCake.BoostCakeForm'),
+	'Paginator' => array('className' => 'BoostCake.BoostCakePaginator'),
     );
 
     //public $components = array('Session');
 
     public function beforeFilter() {
-        // $this->Session->start();
-        $this->Session->id(session_id());
+	// $this->Session->start();
+	if (isset($this->params['prefix']) && $this->params['prefix'] == 'admin') {
+	    $this->theme = 'admin';
+	}
+	$this->Session->id(session_id());
     }
 
 }

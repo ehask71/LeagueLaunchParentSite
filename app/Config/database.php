@@ -12,6 +12,7 @@ class DATABASE_CONFIG {
         'prefix' => '',
         'encoding' => 'utf8'
     );
+    // demo.leagueLaunch.com
     public $SaaS = array(
         'datasource' => 'Database/Mysql',
         'persistent' => false,
@@ -24,5 +25,6 @@ class DATABASE_CONFIG {
         'prefix' => '',
         'encoding' => ''
     );
+    
 
 }

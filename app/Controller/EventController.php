@@ -22,6 +22,7 @@ class EventController extends AppController {
 	    ));
 	    $this->redirect('/');
 	}
+	$this->set('slug',$slug);
 	$this->theme = 'evtbaseball1';
     }
 

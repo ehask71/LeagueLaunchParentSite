@@ -6,17 +6,17 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <?php 
-	$this->Html->css('bootstrap');
-	$this->Html->css('style');
-	$this->Html->css('//fonts.googleapis.com/css?family=Open+Sans:400,700');
-	?>
+	echo $this->Html->css('bootstrap');
+	echo $this->Html->css('style');
+	echo $this->Html->css('//fonts.googleapis.com/css?family=Open+Sans:400,700');
+    ?>
 </head>
 <body>
 
 <div class="container">
 	<div class="row">
 		<div class="span6" id="masthead">
-			<a href="/" title="Back to Home Page"><img src="img/logon-png.png" width="523" height="66" /></a>
+		    <a href="/event/<?php echo $slug;?>" title="Back to Home Page"><?php echo $this->Html->image('logon-png.png',array(width=>"523",height=>"66"));?></a>
 		</div>
 		<div class="span6">
 		
@@ -83,7 +83,7 @@ the game, and get each individual to another level.
 		</div>
 		<div class="span6" >
 			<div id="sidebar">
-				<img src="img/callout.jpg" title="Addison Maruszak Teaches Professional Level Skills to Little League Player of all ages" />
+				<?php echo $this->Html->image('callout.jpg',array('title'=>"Addison Maruszak Teaches Professional Level Skills to Little League Player of all ages"));?>
 				<div  id="coaches">
 					<h4>Camp Coaches</h4>
 				<p>

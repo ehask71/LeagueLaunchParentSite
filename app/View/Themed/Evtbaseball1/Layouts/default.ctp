@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Professional Camps </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <?php 
+	$this->Html->css('bootstrap');
+	$this->Html->css('style');
+	$this->Html->css('//fonts.googleapis.com/css?family=Open+Sans:400,700');
+	?>
+</head>
+<body>
+
+<div class="container">
+	<div class="row">
+		<div class="span6" id="masthead">
+			<a href="/" title="Back to Home Page"><img src="img/logon-png.png" width="523" height="66" /></a>
+		</div>
+		<div class="span6">
+		
+		</div>
+	</div>
+	<div class="row" id="body-content">
+		<div class="span6" >
+		
+			<div class="row">
+				<div class="span6" id="goals">
+				<h4>Our Goal</h4>
+				<p>
+					To bring professional 
+
+training to a little league level. 
+
+With our elite team of instructors we provide each individual 
+ with a better understanding and knowledge of the game. Campers 
+
+will be put through drills that 
+
+they not only take home but take their game to the next level. From 
+
+hitting drills that support getting more connected and powerful,
+
+to infield instruction that will
+
+create smoothness and fluidity, to pitching mechanics that will create consistency. Let us share our knowledge for 
+
+the game, and get each individual to another level.
+					</p>
+				</div>
+			</div>	
+			<div class="row">
+				<div class="span6" id="form-container">
+					<form >
+					 <legend>Sign Up</legend>
+					  <div class="control-group">
+						<label class="control-label" for="inputEmail">Email</label>
+						<div class="controls">
+						  <input type="text" id="inputEmail" placeholder="Email">
+						</div>
+					  </div>
+					  <div class="control-group">
+						<label class="control-label" for="inputPassword">Password</label>
+						<div class="controls">
+						  <input type="password" id="inputPassword" placeholder="Password">
+						</div>
+					  </div>
+					  <div class="control-group">
+						<div class="controls">
+						  <label class="checkbox">
+							<input type="checkbox"> Remember me
+						  </label>
+						  <button type="submit" class="btn">Sign in</button>
+						</div>
+					  </div>
+					</form>
+				</div>				
+			</div>
+			
+					
+			
+		</div>
+		<div class="span6" >
+			<div id="sidebar">
+				<img src="img/callout.jpg" title="Addison Maruszak Teaches Professional Level Skills to Little League Player of all ages" />
+				<div  id="coaches">
+					<h4>Camp Coaches</h4>
+				<p>
+					Each instructor is playing or coaching in professional baseball. We 
+
+strive to have a 15-1 camper to coach ratio to help maximize each individual's potential 
+
+growth. Each instructor has been in your little palyer's shoes, and has made it 
+
+up to the ranks to professional baseball, even to the major league level. They 
+
+know the ins and outs to the game, and each loves to share their knowledge to 
+
+help the next generation get where they are now.
+				</p>
+				</div>
+			
+			</div>
+		</div>
+	</div>
+	<div class="row" id="footer">
+		<div class="span12">
+			<div id="disclaimer">
+				<p>Lunch and water for campers will <strong>NOT</strong> be provided. We recommend bringing lots of water and a packed lunch. Concession stands will be open for business. The coaches will be available for autographs once the camp has concluded.</p> 
+				<p>We will have a camp party, with food provided, on the last day.</p>
+			</div>
+		</div>
+	</div>
+</div>
+<?php
+    echo $this->Html->script('//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js');
+    echo $this->Html->script('bootstrap');
+?>
+</body>
+</html>

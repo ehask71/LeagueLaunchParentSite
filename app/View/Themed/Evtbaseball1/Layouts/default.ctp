@@ -16,7 +16,7 @@
 <div class="container">
 	<div class="row">
 		<div class="span6" id="masthead">
-		    <a href="/event/<?php echo $slug;?>" title="Back to Home Page"><?php echo $this->Html->image('logon-png.png',array(width=>"523",height=>"66"));?></a>
+		    <a href="/event/<?php echo $slug;?>" title="Back to Home Page"><?php echo $this->Html->image('logon-png.png',array('width'=>"523",'height'=>"66"));?></a>
 		</div>
 		<div class="span6">
 		

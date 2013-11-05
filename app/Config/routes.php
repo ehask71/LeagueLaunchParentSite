@@ -34,7 +34,8 @@ Router::connect('/xinterface.html', array('controller' => 'checkout', 'action' =
  */
 Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
 // Hosted Event Payment Pages
-Router::connect('/event/:slug', array('controller' => 'event', 'action' => 'index'));
+Router::connect('/event/:slug', array('controller' => 'event', 'action' => 'index'),
+	array('pass' => array('slug')));
 
 Router::connect(
         '/checkout/ll/:oid-:sid-:rtn', // E.g. /blog/3-CakePHP_Rocks

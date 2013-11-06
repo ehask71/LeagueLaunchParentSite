@@ -8,6 +8,7 @@ App::uses('Model', 'Model');
 class Hostedevent extends Model {
     
     public $name = 'Hostedevent';
+    public $useDbConfig = 'default';
     public $primaryKey = 'id';
    
     public function getHostedEventBySlug($slug){

@@ -15,11 +15,11 @@ class EventController extends AppController {
     public function beforeFilter() {
 	parent::beforeFilter();
 	$this->Security->blackHoleCallback = 'forceSSL';
-	$this->Security->requireSecure('index','confirm');
+	$this->Security->requireSecure('index', 'confirm');
     }
 
     public function index($slug = null) {
-        $evt = $this->Hostedevent->getHostedEventBySlug($slug);
+	$evt = $this->Hostedevent->getHostedEventBySlug($slug);
 	if ($slug == null || count($evt) < 1) {
 	    $this->Session->setFlash(__('We Were Unable To Locate That Event'), 'alert', array(
 		'plugin' => 'BoostCake',
@@ -27,12 +27,19 @@ class EventController extends AppController {
 	    ));
 	    $this->redirect('/');
 	}
-	$this->set('slug',$slug);
+	$this->Session->write('LLEvent', $evt);
+	$this->set('slug', $slug);
 	$this->theme = $evt['Hostedevent']['theme'];
     }
-    
-    public function confirm(){
-	
+
+    public function confirm() {
+	if (!$this->Session->check('LLEvent')) {
+	    $this->Session->setFlash(__('We Were Unable To Locate That Event'), 'alert', array(
+		'plugin' => 'BoostCake',
+		'class' => 'alert-error'
+	    ));
+	    $this->redirect('/');
+	}
     }
 
 }

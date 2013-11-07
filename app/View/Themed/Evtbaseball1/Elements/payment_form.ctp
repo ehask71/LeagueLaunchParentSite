@@ -25,6 +25,15 @@
 	echo $this->Form->input('country', array('type' => 'select', 'options' => Configure::read('Countries'), 'label' => array('text' => 'Billing Country', 'class' => 'control-label')));
 	echo $this->Form->input('phone', array('type' => 'text', 'label' => array('text' => 'Phone', 'class' => 'control-label')));
 	echo $this->Form->input('email', array('label' => array('text' => 'Email', 'class' => 'control-label')));
+	?>
+	</fieldset>
+	<fieldset> 
+	    <legend>Payment Details</legend>
+	<?php
+	echo $this->Form->input('ccnum', array('label' => array('text' => 'Card Number', 'class' => 'control-label')));
+	echo $this->Form->input('ccmonth',array('label' => array('text' => 'Exp Month', 'class' => 'control-label'),'value'=>'01','onfocus'=>'this.value=\'\''));
+	echo $this->Form->input('ccyear',array('label' => array('text' => 'Exp Year', 'class' => 'control-label'),'value'=>'2013','onfocus'=>'this.value=\'\''));
+	echo $this->Form->input('cc_code',array('label' => array('text' => 'CVV', 'class' => 'control-label'),'value'=>'111','onfocus'=>'this.value=\'\''));
 	echo $this->Form->input('agreeterms', array('type' => 'checkbox', 'value' => 1, 'label' => array('text' => 'I agree to the <a href="/terms" target="_blank">Terms & Conditions</a>', 'class' => 'control-label')));
 	echo $this->Form->submit('Proceed',array('div'=>false,'class'=>'btn'));
 	?>

@@ -28,7 +28,7 @@ class EventController extends AppController {
 	    $this->redirect('/');
 	}
 	$this->set('slug',$slug);
-	$this->theme = 'evtbaseball1';
+	$this->theme = $evt['Hostedevent']['theme'];
     }
     
     public function confirm(){

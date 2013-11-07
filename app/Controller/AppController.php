@@ -53,4 +53,13 @@ class AppController extends Controller {
 	$this->Session->id(session_id());
     }
 
+    function forceSSL() {
+	$redirect = '';
+	if (!empty($this->params['url']['redirect'])) {
+	    $redirect = '?redirect=' . $this->params['url']['redirect'];
+	}
+
+	$this->redirect('https://' . rtrim(env('SERVER_NAME'), '/') . $this->here . $redirect);
+    }
+
 }

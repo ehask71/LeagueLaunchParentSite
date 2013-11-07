@@ -14,7 +14,7 @@ class EventController extends AppController {
 
     public function beforeFilter() {
 	parent::beforeFilter();
-	SecurityComponent::requireSecure('index','proceed');
+	$this->Security->requireSecure('index','proceed');
     }
 
     public function index($slug = null) {

@@ -15,7 +15,7 @@ class EventController extends AppController {
     public function beforeFilter() {
 	parent::beforeFilter();
 	$this->Security->blackHoleCallback = 'forceSSL';
-	$this->Security->requireSecure('index','proceed');
+	$this->Security->requireSecure('index','confirm');
     }
 
     public function index($slug = null) {
@@ -29,6 +29,10 @@ class EventController extends AppController {
 	}
 	$this->set('slug',$slug);
 	$this->theme = 'evtbaseball1';
+    }
+    
+    public function confirm(){
+	
     }
 
 }

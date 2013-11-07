@@ -14,6 +14,7 @@ class EventController extends AppController {
 
     public function beforeFilter() {
 	parent::beforeFilter();
+	$this->Security->blackHoleCallback = 'forceSSL';
 	$this->Security->requireSecure('index','proceed');
     }
 

@@ -10,9 +10,11 @@ class EventController extends AppController {
 
     public $name = 'Event';
     public $uses = array('Hostedevent');
+    public $components = array('Security');
 
     public function beforeFilter() {
 	parent::beforeFilter();
+	SecurityComponent::requireSecure('index','proceed');
     }
 
     public function index($slug = null) {

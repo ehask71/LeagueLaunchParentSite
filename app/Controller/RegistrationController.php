@@ -13,7 +13,11 @@ class RegistrationController extends AppController {
 
 
     public function index(){
-        
+        if(isset($this->request->query['siteid']) && $this->request->query['siteid'] != ''){
+            
+        } else {
+            $this->redirect('/registration/notvalid');
+        }
     }
     
     public function step1(){
@@ -42,6 +46,10 @@ class RegistrationController extends AppController {
     
     public function pay() {
 	
+    }
+    
+    public function notvalid(){
+        
     }
     
 }

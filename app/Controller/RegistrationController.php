@@ -13,7 +13,9 @@ class RegistrationController extends AppController {
     public $components = array(
         'Session',
         'Auth' => array(
-            'authorize' => array('Tiny'),
+            'authorize' => array('Tiny' => array(
+                'aclModel' => 'RoleSaaS'
+            )),
             'authenticate' => array(
                 'all' => array('userModel' => 'AccountSaaS'),
                 'Form' => array(
@@ -22,14 +24,14 @@ class RegistrationController extends AppController {
                         'AccountSaaS.is_active' => 'yes'
                     ),
                     'recursive' => 1,
-            )),
+                )),
             'loginRedirect' => array('controller' => 'registration', 'action' => 'step1'),
         ),
     );
 
     public function beforeFilter() {
         parent::beforeFilter();
-        $this->Auth->allow('index','notvalid','login','register');
+        $this->Auth->allow('index', 'notvalid', 'login', 'register');
         if ($this->params['action'] != 'index' || $this->params['action'] != 'notvalid') {
             if (!$this->Session->check('Registration.site')) {
                 $this->Session->setFlash(__('Your Session Expired!'), 'alert', array(
@@ -99,8 +101,16 @@ class RegistrationController extends AppController {
     public function notvalid() {
         
     }
-    
-    public function login(){
-        
+
+    public function login() {
+        if ($this->request->is('ajax')) {
+            $this->layout = 'ajax';
+            if ($this->Auth->login()) {
+                
+            } else {
+                
+            }
+        }
     }
+
 }

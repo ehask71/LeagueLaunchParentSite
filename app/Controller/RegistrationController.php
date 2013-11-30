@@ -17,7 +17,7 @@ class RegistrationController extends AppController {
         if(isset($this->request->query['siteid']) && $this->request->query['siteid'] != ''){
             $site = $this->Sites->find('first', array(
                 'conditions' => array(
-                    'MD5(Sites.id) ' => $this->request->query['siteid']
+                    'MD5(Sites.site_id) ' => $this->request->query['siteid']
                 )
             ));
             echo '<pre>';

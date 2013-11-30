@@ -10,7 +10,22 @@ class RegistrationController extends AppController {
 
     public $name = 'Registration';
     public $uses = array('Sites');
-    public $components = array('Session');
+    public $components = array(
+        'Session',
+        'Auth' => array(
+            'authorize' => array('Tiny'),
+            'authenticate' => array(
+                'all' => array('userModel' => 'AccountSaaS'),
+                'Form' => array(
+                    'fields' => array('username' => 'email', 'password' => 'password'),
+                    'scope' => array(
+                        'AccountSaaS.is_active' => 'yes'
+                    ),
+                    'recursive' => 1,
+            )),
+            'loginRedirect' => array('controller' => 'registration', 'action' => 'step1'),
+        ),
+    );
 
     public function beforeFilter() {
         parent::beforeFilter();

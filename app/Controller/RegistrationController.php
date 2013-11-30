@@ -11,7 +11,11 @@ class RegistrationController extends AppController {
     public $uses = array('Sites');
     public $components = array('Session');
 
-
+    public function beforeFilter() {
+        parent::beforeFilter();
+        $this->theme = (isset($this->Session->read('Registration.theme')))?$this->Session->read('Registration.theme'):'regclean';
+    }
+    
     public function index(){
         $this->autoRender = false;
         if(isset($this->request->query['siteid']) && $this->request->query['siteid'] != ''){
@@ -36,7 +40,6 @@ class RegistrationController extends AppController {
     }
     
     public function step1(){
-	$this->autoRender = false;
         $site = $this->Session->read('Registration.site');
         echo '<pre>';
         print_r($site);

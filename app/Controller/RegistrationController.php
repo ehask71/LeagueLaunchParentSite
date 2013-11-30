@@ -13,7 +13,7 @@ class RegistrationController extends AppController {
 
     public function beforeFilter() {
         parent::beforeFilter();
-        $this->theme = (isset($this->Session->read('Registration.theme')))?$this->Session->read('Registration.theme'):'regclean';
+        $this->theme = (@$this->Session->read('Registration.theme') != '')?$this->Session->read('Registration.theme'):'regclean';
     }
     
     public function index(){

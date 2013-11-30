@@ -24,7 +24,7 @@ class RegistrationController extends AppController {
             $site = $this->Sites->find('first', array(
                 'conditions' => array(
                     'MD5(Sites.site_id) ' => $this->request->query['siteid'],
-                    'Sites.is_active' => 'yes'
+                    'Sites.isactive' => 'yes'
                 )
             ));
             if(count($site) > 0){

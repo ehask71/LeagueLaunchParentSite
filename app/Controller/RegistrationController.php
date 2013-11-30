@@ -110,6 +110,15 @@ class RegistrationController extends AppController {
             } else {
                 
             }
+        } else {
+           if ($this->Auth->login()) {
+                $this->redirect($this->Auth->redirect());
+            } else {
+                $this->Session->setFlash(__('Invalid Login! Please Try Again!'), 'alert', array(
+                    'plugin' => 'BoostCake',
+                    'class' => 'alert-error'
+                ),'auth');
+            } 
         }
     }
 

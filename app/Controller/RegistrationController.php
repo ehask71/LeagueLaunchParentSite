@@ -20,16 +20,19 @@ class RegistrationController extends AppController {
                     'MD5(Sites.site_id) ' => $this->request->query['siteid']
                 )
             ));
-            echo '<pre>';
-            print_r($site);
-            echo '</pre>';
+            $this->Session->write('Registration.site', $site);
+            $this->redirect('/registration/step1');
         } else {
             $this->redirect('/registration/notvalid');
         }
     }
     
     public function step1(){
-	
+	$this->autoRender = false;
+        $site = $this->Session->read('Registration.site');
+        echo '<pre>';
+        print_r($site);
+        echo '</pre>';
     }
     
     public function step2() {

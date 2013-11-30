@@ -15,13 +15,21 @@ class RegistrationController extends AppController {
     public function index(){
         $this->autoRender = false;
         if(isset($this->request->query['siteid']) && $this->request->query['siteid'] != ''){
+            $theme = (isset($this->request->query['theme']))?$this->request->query['theme']:'regclean';
+            
             $site = $this->Sites->find('first', array(
                 'conditions' => array(
-                    'MD5(Sites.site_id) ' => $this->request->query['siteid']
+                    'MD5(Sites.site_id) ' => $this->request->query['siteid'],
+                    'Sites.is_active' => 'yes'
                 )
             ));
-            $this->Session->write('Registration.site', $site);
-            $this->redirect('/registration/step1');
+            if(count($site) > 0){
+                $this->Session->write('Registration.theme',$theme);
+                $this->Session->write('Registration.site', $site);
+                $this->redirect('/registration/step1');
+            } else {
+                $this->redirect('/registration/notvalid');
+            }
         } else {
             $this->redirect('/registration/notvalid');
         }

@@ -38,7 +38,7 @@ class AccountSaaS extends AppModel {
     );
     
     function __construct($id = false, $table = null, $ds = null) {
-	$this->hasAndBelongsToMany['RoleSaaS']['conditions'] = array('RolesUserSaaS.site_id' => Configure::read('Registration.site_id'));
+	$this->hasAndBelongsToMany['RoleSaaS']['conditions'] = array('RoleUserSaaS.site_id' => Configure::read('Registration.site_id'));
 	//$this->hasMany['Players']['conditions'] = array('Players.site_id' => Configure::read('Settings.site_id'));
 	parent::__construct($id, $table, $ds);
     }

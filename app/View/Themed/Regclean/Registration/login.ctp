@@ -4,7 +4,7 @@
             <div class="center span4 well" style="float: none;margin: 0 auto;">
                 <legend>Please Sign In</legend>
                 <?php
-                echo $this->Form->create('Payment', array(
+                echo $this->Form->create('AccountSaaS', array(
                     'inputDefaults' => array(
                         'div' => 'control-group',
                         'label' => array(

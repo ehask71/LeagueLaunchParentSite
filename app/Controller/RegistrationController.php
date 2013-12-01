@@ -13,9 +13,7 @@ class RegistrationController extends AppController {
     public $components = array(
         'Session',
         'Auth' => array(
-            'authorize' => array('Tiny' => array(
-                'aclModel' => 'RoleSaaS'
-            )),
+            'authorize' => array('Tiny'),
             'authenticate' => array(
                 'all' => array('userModel' => 'AccountSaaS'),
                 'Form' => array(

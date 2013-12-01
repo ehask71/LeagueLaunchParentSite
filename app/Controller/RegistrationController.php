@@ -24,7 +24,7 @@ class RegistrationController extends AppController {
                     ),
                     'recursive' => 1,
                 )),
-            //'flash' => array('key' => 'auth', 'element' => 'alertauth'),
+            'flash' => array('key' => 'auth', 'element' => 'alertauth','params' => array()),
             'loginRedirect' => array('controller' => 'registration', 'action' => 'step1'),
             'logoutRedirect' => array('controller' => 'registration', 'action' => 'login'),
             'loginAction' => array('controller' => 'registration', 'action' => 'login'),

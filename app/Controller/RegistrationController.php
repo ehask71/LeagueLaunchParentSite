@@ -26,6 +26,7 @@ class RegistrationController extends AppController {
                     'recursive' => 1,
                 )),
             'loginRedirect' => array('controller' => 'registration', 'action' => 'step1'),
+            'loginAction' => array('controller' => 'registration', 'action' => 'login'),
         ),
     );
 

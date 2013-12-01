@@ -15,7 +15,7 @@
                     'class' => 'form-horizontal'
                 ));
                 echo $this->Form->input('email',array('placeholder'=>'Email','label'=>FALSE));
-                echo $this->Form->input('password',array('placeholder'=>'Password','label'=>FALSE,'after'=>'<span class="help-block">Need an Account?<a href="/registration/register">Click Here</a></span>'));
+                echo $this->Form->input('password',array('placeholder'=>'Password','label'=>FALSE,'after'=>'<span class="help-block">Need an Account? <a href="/registration/register">Click Here</a></span>'));
                 echo $this->Form->submit('Sign in', array('class' => 'btn  btn-primary btn-block'));
                 echo $this->Form->end();
                 ?>

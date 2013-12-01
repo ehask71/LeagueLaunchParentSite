@@ -33,7 +33,7 @@ class RegistrationController extends AppController {
 
     public function beforeFilter() {
         parent::beforeFilter();
-        $this->Auth->allow('login','notvalid','index');
+        $this->Auth->allow('login','logout','notvalid','index');
         if ($this->params['action'] != 'index' || $this->params['action'] != 'notvalid' || $this->params['action'] != 'login') {
            /* if (!$this->Session->check('Registration.site')) {
                 $this->Session->setFlash(__('Your Session Expired!'), 'alert', array(
@@ -122,6 +122,10 @@ class RegistrationController extends AppController {
                         ), 'auth');
             }
         }
+    }
+    
+    public function logout() {
+        $this->redirect($this->Auth->logout());
     }
 
 }

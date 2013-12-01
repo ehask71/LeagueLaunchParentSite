@@ -17,9 +17,9 @@ echo $this->Form->input('lastname', array('after'=>'<span class="help-block">Par
 echo $this->Form->input('address');
 echo $this->Form->input('address2');
 echo $this->Form->input('city');
-echo $this->Form->input('state');
+echo $this->Form->input('state',array('options'=> Configure::read('States')));
 echo $this->Form->input('zip');
-echo $this->Form->input('country', array('type' => 'select', 'options' => $countries));
+echo $this->Form->input('country',array('type'=>'select','options'=> Configure::read('Countries')));
 echo $this->Form->input('phone', array('type' => 'text'));
 echo $this->Form->input('birthdate', array('id' => 'birthDate', 'label' => array('text'=>'Your Birthdate','class'=>'control-label'), 'minYear' => '1950', 'maxYear' => date('Y')));
 echo $this->Form->input('gender', array('type' => 'radio', 'options' => array('m', 'f')));

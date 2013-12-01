@@ -74,6 +74,7 @@ class RegistrationController extends AppController {
         // Select Players
         $players = $this->PlayersSaaS->getPlayersByUser($id, $this->Session->read('Registration.site_id'));
         
+        $this->set(compact('players'));
     }
 
     public function step2() {

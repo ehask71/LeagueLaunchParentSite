@@ -33,13 +33,13 @@ class RegistrationController extends AppController {
         parent::beforeFilter();
         $this->Auth->allow('login','notvalid','index');
         if ($this->params['action'] != 'index' || $this->params['action'] != 'notvalid' || $this->params['action'] != 'login') {
-            if (!$this->Session->check('Registration.site')) {
+           /* if (!$this->Session->check('Registration.site')) {
                 $this->Session->setFlash(__('Your Session Expired!'), 'alert', array(
                     'plugin' => 'BoostCake',
                     'class' => 'alert-error'
                 ));
                 $this->redirect('/registration/notvalid');
-            }
+            }*/
         }
         $this->theme = (@$this->Session->read('Registration.theme') != '') ? $this->Session->read('Registration.theme') : 'regclean';
     }

@@ -32,7 +32,7 @@ class RegistrationController extends AppController {
 
     public function beforeFilter() {
         parent::beforeFilter();
-        $this->Auth->allow('index', 'notvalid', 'login', 'register');
+        $this->Auth->allow('*');
         if ($this->params['action'] != 'index' || $this->params['action'] != 'notvalid') {
             if (!$this->Session->check('Registration.site')) {
                 $this->Session->setFlash(__('Your Session Expired!'), 'alert', array(

@@ -9,7 +9,7 @@ App::uses('AppController', 'Controller');
 class RegistrationController extends AppController {
 
     public $name = 'Registration';
-    public $uses = array('Sites','RoleSaaS','AccountSaaS');
+    public $uses = array('Sites','RoleSaaS','AccountSaaS','PlayersSaaS');
     public $helpers = array('Session');
     public $components = array(
         'Session',
@@ -60,6 +60,7 @@ class RegistrationController extends AppController {
             if (count($site) > 0) {
                 $this->Session->write('Registration.theme', $theme);
                 $this->Session->write('Registration.site', $site);
+                $this->Session->write('Registration.site_id',$site['Sites']['site_id']);
                 $this->redirect('/registration/step1');
             } else {
                 $this->redirect('/registration/notvalid');
@@ -70,10 +71,9 @@ class RegistrationController extends AppController {
     }
 
     public function step1() {
-        $site = $this->Session->read('Registration.site');
-        echo '<pre>';
-        print_r($site);
-        echo '</pre>';
+        // Select Players
+        $players = $this->PlayersSaaS->getPlayersByUser($id, $this->Session->read('Registration.site_id'));
+        
     }
 
     public function step2() {

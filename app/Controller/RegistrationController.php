@@ -108,6 +108,8 @@ class RegistrationController extends AppController {
         if($this->request->is('post')){
             
         }
+        $this->set('site_id',$this->Session->read('Registration.site_id'));
+        $this->set('user_id',$this->Auth->user('id'));
     }
     
     public function register(){

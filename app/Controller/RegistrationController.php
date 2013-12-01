@@ -103,7 +103,14 @@ class RegistrationController extends AppController {
     public function notvalid() {
         $this->autoRender = false;
     }
-
+    
+    public function register(){
+        if($this->request->is('post')){
+            
+        }
+        $this->set('site_id',$this->Session->read('Registration.site.Sites.site_id'));
+    } 
+    
     public function login() {
         if ($this->request->is('ajax')) {
             $this->layout = 'ajax';

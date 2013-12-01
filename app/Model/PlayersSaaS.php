@@ -7,7 +7,7 @@ class PlayersSaaS extends AppModel {
     public $useDbConfig = 'SaaS';
     public $primaryKey = 'player_id';
     public $belongsTo = array(
-        'Account' => array(
+        'AccountSaaS' => array(
             'className' => 'AccountSaaS',
             'foreignKey' => 'user_id',
             'conditions' => '',

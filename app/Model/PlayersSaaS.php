@@ -35,13 +35,38 @@ class PlayersSaaS extends AppModel {
             'gender' => array(
                 'mustNotEmpty' => array(
                     'rule' => 'notEmpty',
-                    'message' => 'Please select player gender')
+                    'message' => 'Please select players gender')
             ),
             'birthday' => array(
                 'age' => array(
                     'rule' => 'checkOver3',
                     'message' => 'Player must be 3 years old or older'
                 )
+            ),
+            'phone' => array(
+                'mustNotEmpty' => array(
+                    'rule' => 'notEmpty',
+                    'message' => 'Please enter players contact phone number')
+            ),
+            'address' => array(
+                'mustNotEmpty' => array(
+                    'rule' => 'notEmpty',
+                    'message' => 'Please enter players address')
+            ),
+            'city' => array(
+                'mustNotEmpty' => array(
+                    'rule' => 'notEmpty',
+                    'message' => 'Please enter players city')
+            ),
+            'state' => array(
+                'mustNotEmpty' => array(
+                    'rule' => 'notEmpty',
+                    'message' => 'Please enter players state')
+            ),
+            'zip' => array(
+                'mustNotEmpty' => array(
+                    'rule' => 'notEmpty',
+                    'message' => 'Please enter players zip code')
             )
         );
 

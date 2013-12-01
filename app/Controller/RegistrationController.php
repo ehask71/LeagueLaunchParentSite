@@ -104,6 +104,12 @@ class RegistrationController extends AppController {
         $this->autoRender = false;
     }
     
+    public function addplayer(){
+        if($this->request->is('post')){
+            
+        }
+    }
+    
     public function register(){
         if($this->request->is('post')){
             if ($this->AccountSaaS->accountValidate()) {

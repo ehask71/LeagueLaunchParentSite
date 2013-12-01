@@ -1,3 +1,3 @@
 <pre>
-<?php print_r($this->Auth->user());?>
+<?php print_r($this->Session->read('Auth.User'));?>
 </pre>

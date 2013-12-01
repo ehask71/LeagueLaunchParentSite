@@ -24,4 +24,5 @@
     </div>
     <p class="text-center muted ">&copy; Copyright 2013-<?=date('y');?> - LeagueLaunch.com</p>
 </section>
+<?php echo '<pre>'.print_r($this->Session->read('Registration'),1).'</pre>';?>
 <?php echo '<pre>'.print_r($this->Session->read('Auth.User'),1).'</pre>';?>

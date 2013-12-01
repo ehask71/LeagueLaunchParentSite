@@ -82,14 +82,14 @@ class PlayersSaaS extends AppModel {
     }
 
     public function getPlayersByUser($id, $site_id = false) {
-        $conditions['Players.active'] = 1;
-        $conditions['Players.user_id'] = (int) $id;
+        $conditions['PlayersSaaS.active'] = 1;
+        $conditions['PlayersSaaS.user_id'] = (int) $id;
         if ($site_id) {
-            $conditions['Players.site_id'] = (int) $site_id;
+            $conditions['PlayersSaaS.site_id'] = (int) $site_id;
         }
 
         return $this->find('all', array(
-                    'order' => 'Players.player_id DESC',
+                    'order' => 'PlayersSaaS.player_id DESC',
                     'conditions' => $conditions
                 ));
     }

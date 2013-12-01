@@ -1,7 +1,7 @@
 <section>
     <div class="container login">
         <div class="row ">
-            <div class="center span4 well">
+            <div class="center span4 well" style="float: none;margin: 0 auto;">
                 <legend>Please Sign In</legend>
                 <?php
                 echo $this->Form->create('Payment', array(

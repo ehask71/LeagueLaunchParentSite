@@ -13,9 +13,9 @@ class RoleUserSaaS extends AppModel {
     public $defaultRoleId = 6;
     public $useDbConfig = 'SaaS';
 
-    public function addUserSite($userid, $roleid = 0) {
-        $data = array('RoleUser' => array(
-                'site_id' => Configure::read('Settings.site_id'),
+    public function addUserSite($userid,$site_id, $roleid = 0) {
+        $data = array('RoleUserSaaS' => array(
+                'site_id' => $site_id,
                 'user_id' => (int) $userid,
                 'role_id' => ($roleid != 0) ? $roleid : $this->defaultRoleId
         ));

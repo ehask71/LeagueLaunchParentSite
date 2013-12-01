@@ -10,6 +10,7 @@ class RegistrationController extends AppController {
 
     public $name = 'Registration';
     public $uses = array('Sites','RoleSaaS');
+    public $helpers = array('Session');
     public $components = array(
         'Session',
         'Auth' => array(

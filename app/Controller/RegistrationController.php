@@ -24,6 +24,7 @@ class RegistrationController extends AppController {
                     'recursive' => 1,
                 )),
             'loginRedirect' => array('controller' => 'registration', 'action' => 'step1'),
+            'logoutRedirect' => array('controller' => 'registration','action' => 'login'),
             'loginAction' => array('controller' => 'registration', 'action' => 'login'),
         ),
     );
@@ -98,7 +99,7 @@ class RegistrationController extends AppController {
     }
 
     public function notvalid() {
-        
+        $this->autoRender = false;
     }
 
     public function login() {

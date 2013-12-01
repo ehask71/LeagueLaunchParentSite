@@ -12,8 +12,8 @@ echo $this->Form->create('AccountSaaS', array(
     'class' => 'form-horizontal'
 ));
 echo $this->Form->input('site_id', array('type' => 'hidden', 'value' => $site_id));
-echo $this->Form->input('firstname', array('after'=>'Parent Lastname if under 18'));
-echo $this->Form->input('lastname', array('after'=>'Parent Lastname if under 18'));
+echo $this->Form->input('firstname', array('after'=>'<span class="help-block">Parent Firstname if under 18</span>'));
+echo $this->Form->input('lastname', array('after'=>'<span class="help-block">Parent Lastname if under 18</span>'));
 echo $this->Form->input('address');
 echo $this->Form->input('address2');
 echo $this->Form->input('city');

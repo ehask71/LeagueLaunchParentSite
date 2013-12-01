@@ -24,7 +24,7 @@ class RegistrationController extends AppController {
                     'recursive' => 1,
                 )),
             'loginRedirect' => array('controller' => 'registration', 'action' => 'step1'),
-            'logoutRedirect' => array('controller' => 'registration','action' => 'login'),
+            'logoutRedirect' => array('controller' => 'registration', 'action' => 'login'),
             'loginAction' => array('controller' => 'registration', 'action' => 'login'),
         ),
     );
@@ -110,15 +110,15 @@ class RegistrationController extends AppController {
             } else {
                 
             }
-        } else {
-           if ($this->Auth->login()) {
-                $this->redirect($this->Auth->redirect());
+        } elseif ($this->request->is('post')) {
+            if ($this->Auth->login()) {
+                $this->redirect(array('controller' => 'registration', 'action' => 'index'));
             } else {
                 $this->Session->setFlash(__('Invalid Login! Please Try Again!'), 'alert', array(
                     'plugin' => 'BoostCake',
                     'class' => 'alert-error'
-                ),'auth');
-            } 
+                        ), 'auth');
+            }
         }
     }
 

@@ -9,7 +9,7 @@ App::uses('AppController', 'Controller');
 class RegistrationController extends AppController {
 
     public $name = 'Registration';
-    public $uses = array('Sites','RoleSaaS');
+    public $uses = array('Sites','RoleSaaS','AccountSaaS');
     public $helpers = array('Session');
     public $components = array(
         'Session',
@@ -106,7 +106,30 @@ class RegistrationController extends AppController {
     
     public function register(){
         if($this->request->is('post')){
-            
+            if ($this->AccountSaaS->accountValidate()) {
+		if ($this->AccountSaaS->save($this->request->data)) {
+                    $userid = $this->Account->getLastInsertID();
+                    // Assign a Role
+		    $this->loadModel('RoleUserSaaS');
+		    $roleuser = $this->RoleUserSaaS->addUserSite($userid,$this->Session->read('Registration.site.Sites.site_id'));
+		    // Log the user in
+		    $role = array();
+		    $role[] = array(
+			'id' => 6,
+			'alias' => 'user',
+			'RolesUser' => array(
+			    'id' => $roleuser,
+			    'user_id' => $userid,
+			    'role_id' => 6
+			)
+		    );
+		    $this->request->data['AccountSaaS'] = array_merge($this->request->data['AccountSaaS'], array('id' => $userid, 'Role' => $role));
+		    $this->Auth->login($this->request->data['AccountSaaS']);
+
+		    $this->Session->setFlash(__('Account Created.'));
+                    $this->redirect('/registration/step1');
+                }
+            }
         }
         $this->set('site_id',$this->Session->read('Registration.site.Sites.site_id'));
     } 

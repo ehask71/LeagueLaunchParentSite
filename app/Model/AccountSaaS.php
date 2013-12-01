@@ -23,7 +23,7 @@ class AccountSaaS extends AppModel {
 	)
     );
     public $hasMany = array(
-	'RoleUserSaaS' => array(
+	'RoleUser' => array(
 	    'className' => 'RoleUserSaaS',
 	    'foreignKey' => 'user_id',
 	    'dependant' => true

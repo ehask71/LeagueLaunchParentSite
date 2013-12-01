@@ -32,7 +32,7 @@ class RegistrationController extends AppController {
     public function beforeFilter() {
         parent::beforeFilter();
         $this->Auth->allow('login','notvalid','index');
-        if ($this->params['action'] != 'index' || $this->params['action'] != 'notvalid') {
+        if ($this->params['action'] != 'index' || $this->params['action'] != 'notvalid' || $this->params['action'] != 'login') {
             if (!$this->Session->check('Registration.site')) {
                 $this->Session->setFlash(__('Your Session Expired!'), 'alert', array(
                     'plugin' => 'BoostCake',
@@ -112,7 +112,7 @@ class RegistrationController extends AppController {
             }
         } elseif ($this->request->is('post')) {
             if ($this->Auth->login()) {
-                $this->redirect(array('controller' => 'registration', 'action' => 'index'));
+                $this->redirect(array('controller' => 'registration', 'action' => 'step1'));
             } else {
                 $this->Session->setFlash(__('Invalid Login! Please Try Again!'), 'alert', array(
                     'plugin' => 'BoostCake',

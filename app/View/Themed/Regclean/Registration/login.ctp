@@ -14,8 +14,8 @@
                     ),
                     'class' => 'form-horizontal'
                 ));
-                echo $this->Form->input('email');
-                echo $this->Form->input('password');
+                echo $this->Form->input('email',array('placeholder'=>'Email','label'=>FALSE));
+                echo $this->Form->input('password',array('placeholder'=>'Password','label'=>FALSE));
                 echo $this->Form->submit('Sign in', array('class' => 'btn  btn-primary btn-block'));
                 echo $this->Form->end();
                 ?>

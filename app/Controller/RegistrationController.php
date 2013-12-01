@@ -9,7 +9,7 @@ App::uses('AppController', 'Controller');
 class RegistrationController extends AppController {
 
     public $name = 'Registration';
-    public $uses = array('Sites','RoleSaaS','AccountSaaS','PlayersSaaS');
+    public $uses = array('Sites', 'RoleSaaS', 'AccountSaaS', 'PlayersSaaS');
     public $helpers = array('Session');
     public $components = array(
         'Session',
@@ -24,7 +24,7 @@ class RegistrationController extends AppController {
                     ),
                     'recursive' => 1,
                 )),
-            'flash' => array('key' => 'auth', 'element' => 'alertauth','params' => array()),
+            'flash' => array('key' => 'auth', 'element' => 'alertauth', 'params' => array()),
             'loginRedirect' => array('controller' => 'registration', 'action' => 'step1'),
             'logoutRedirect' => array('controller' => 'registration', 'action' => 'login'),
             'loginAction' => array('controller' => 'registration', 'action' => 'login'),
@@ -33,15 +33,15 @@ class RegistrationController extends AppController {
 
     public function beforeFilter() {
         parent::beforeFilter();
-        $this->Auth->allow('login','logout','register','notvalid','index');
+        $this->Auth->allow('login', 'logout', 'register', 'notvalid', 'index');
         if ($this->params['action'] != 'index' || $this->params['action'] != 'notvalid' || $this->params['action'] != 'login') {
-           /* if (!$this->Session->check('Registration.site')) {
-                $this->Session->setFlash(__('Your Session Expired!'), 'alert', array(
-                    'plugin' => 'BoostCake',
-                    'class' => 'alert-error'
-                ));
-                $this->redirect('/registration/notvalid');
-            }*/
+            /* if (!$this->Session->check('Registration.site')) {
+              $this->Session->setFlash(__('Your Session Expired!'), 'alert', array(
+              'plugin' => 'BoostCake',
+              'class' => 'alert-error'
+              ));
+              $this->redirect('/registration/notvalid');
+              } */
         }
         $this->theme = (@$this->Session->read('Registration.theme') != '') ? $this->Session->read('Registration.theme') : 'regclean';
     }
@@ -60,7 +60,7 @@ class RegistrationController extends AppController {
             if (count($site) > 0) {
                 $this->Session->write('Registration.theme', $theme);
                 $this->Session->write('Registration.site', $site);
-                $this->Session->write('Registration.site_id',$site['Sites']['site_id']);
+                $this->Session->write('Registration.site_id', $site['Sites']['site_id']);
                 $this->redirect('/registration/step1');
             } else {
                 $this->redirect('/registration/notvalid');
@@ -73,7 +73,7 @@ class RegistrationController extends AppController {
     public function step1() {
         // Select Players
         $players = $this->PlayersSaaS->getPlayersByUser($id, $this->Session->read('Registration.site_id'));
-        
+
         $this->set(compact('players'));
     }
 
@@ -104,45 +104,56 @@ class RegistrationController extends AppController {
     public function notvalid() {
         $this->autoRender = false;
     }
-    
-    public function addplayer(){
-        if($this->request->is('post')){
-            
-        }
-        $this->set('site_id',$this->Session->read('Registration.site_id'));
-        $this->set('user_id',$this->Auth->user('id'));
-    }
-    
-    public function register(){
-        if($this->request->is('post')){
-            if ($this->AccountSaaS->accountValidate()) {
-		if ($this->AccountSaaS->save($this->request->data)) {
-                    $userid = $this->Account->getLastInsertID();
-                    // Assign a Role
-		    $this->loadModel('RoleUserSaaS');
-		    $roleuser = $this->RoleUserSaaS->addUserSite($userid,$this->Session->read('Registration.site.Sites.site_id'));
-		    // Log the user in
-		    $role = array();
-		    $role[] = array(
-			'id' => 6,
-			'alias' => 'user',
-			'RolesUser' => array(
-			    'id' => $roleuser,
-			    'user_id' => $userid,
-			    'role_id' => 6
-			)
-		    );
-		    $this->request->data['AccountSaaS'] = array_merge($this->request->data['AccountSaaS'], array('id' => $userid, 'Role' => $role));
-		    $this->Auth->login($this->request->data['AccountSaaS']);
 
-		    $this->Session->setFlash(__('Account Created.'));
+    public function addplayer() {
+        if ($this->request->is('post')) {
+            if ($this->PlayersSaaS->validatePlayer()) {
+                if ($this->PlayersSaaS->save($this->request->data)) {
+                    $this->Session->setFlash(__('Player Added!'), 'alert', array(
+                        'plugin' => 'BoostCake',
+                        'class' => 'alert-success'
+                    ));
                     $this->redirect('/registration/step1');
                 }
             }
         }
-        $this->set('site_id',$this->Session->read('Registration.site.Sites.site_id'));
-    } 
-    
+        $this->set('site_id', $this->Session->read('Registration.site_id'));
+        $this->set('user_id', $this->Auth->user('id'));
+    }
+
+    public function register() {
+        if ($this->request->is('post')) {
+            if ($this->AccountSaaS->accountValidate()) {
+                if ($this->AccountSaaS->save($this->request->data)) {
+                    $userid = $this->Account->getLastInsertID();
+                    // Assign a Role
+                    $this->loadModel('RoleUserSaaS');
+                    $roleuser = $this->RoleUserSaaS->addUserSite($userid, $this->Session->read('Registration.site.Sites.site_id'));
+                    // Log the user in
+                    $role = array();
+                    $role[] = array(
+                        'id' => 6,
+                        'alias' => 'user',
+                        'RolesUser' => array(
+                            'id' => $roleuser,
+                            'user_id' => $userid,
+                            'role_id' => 6
+                        )
+                    );
+                    $this->request->data['AccountSaaS'] = array_merge($this->request->data['AccountSaaS'], array('id' => $userid, 'Role' => $role));
+                    $this->Auth->login($this->request->data['AccountSaaS']);
+
+                    $this->Session->setFlash(__('Account Created.'), 'alert', array(
+                        'plugin' => 'BoostCake',
+                        'class' => 'alert-success'
+                    ));
+                    $this->redirect('/registration/step1');
+                }
+            }
+        }
+        $this->set('site_id', $this->Session->read('Registration.site.Sites.site_id'));
+    }
+
     public function login() {
         if ($this->request->is('ajax')) {
             $this->layout = 'ajax';
@@ -162,7 +173,7 @@ class RegistrationController extends AppController {
             }
         }
     }
-    
+
     public function logout() {
         $this->redirect($this->Auth->logout());
     }

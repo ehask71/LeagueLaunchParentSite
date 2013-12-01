@@ -39,7 +39,7 @@ class AccountSaaS extends AppModel {
     
     function __construct($id = false, $table = null, $ds = null) {
         App::import('Model', 'CakeSession');
-	$this->hasAndBelongsToMany['RoleSaaS']['conditions'] = array('RolesUser.site_id' => CakeSession::read('Registration.site_id'));
+	$this->hasAndBelongsToMany['RoleSaaS']['conditions'] = array('RolesUser.site_id' => CakeSession::read('Registration.site.Sites.site_id'));
 	//$this->hasMany['Players']['conditions'] = array('Players.site_id' => Configure::read('Settings.site_id'));
 	parent::__construct($id, $table, $ds);
     }

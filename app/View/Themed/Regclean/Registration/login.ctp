@@ -24,3 +24,4 @@
     </div>
     <p class="text-center muted ">&copy; Copyright 2013 - Application Name</p>
 </section>
+<?php echo '<pre>'.print_r($this->Session->read('Registration')).'</pre>';

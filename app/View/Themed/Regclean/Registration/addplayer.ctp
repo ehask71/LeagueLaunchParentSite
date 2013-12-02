@@ -1,5 +1,6 @@
+<?php $this->Html->addCrumb('Add Player', '/registration/addplayer'); ?>
 <div class="row-fluid">
-    <div class="span12 box">
+    <div class="span12 box black">
 	<div class="box-content">
 	    <p>Lets add a player to your account. Please fill out the form below</p>
 	    <?php

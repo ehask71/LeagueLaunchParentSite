@@ -7,6 +7,7 @@ App::uses('AppModel', 'Model');
 
 class SeasonSaaS extends AppModel {
     
+    public $useDbConfig = 'SaaS';
     public $name = 'Season';
     public $primaryKey = 'id';
     public $useTable = 'seasons';

@@ -3,7 +3,7 @@
     <div class="span12">
 	    <p>Lets add a player to your account. Please fill out the form below</p>
 	    <?php
-	    echo $this->Form->create('PlayerSaaS', array(
+	    echo $this->Form->create('PlayersSaaS', array(
 		'inputDefaults' => array(
 		    'div' => 'control-group',
 		    'label' => array(

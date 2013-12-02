@@ -39,6 +39,9 @@ class PlayersSaaS extends AppModel {
                     'message' => 'Please select players gender')
             ),
             'birthday' => array(
+		'mustNotEmpty' => array(
+                    'rule' => 'notEmpty',
+                    'message' => 'Please enter players Birthdate'),
                 'age' => array(
                     'rule' => 'checkOver3',
                     'message' => 'Player must be 3 years old or older'

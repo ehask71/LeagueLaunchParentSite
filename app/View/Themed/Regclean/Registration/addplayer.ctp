@@ -1,7 +1,6 @@
 <?php $this->Html->addCrumb('Add Player', '/registration/addplayer'); ?>
 <div class="row-fluid">
-    <div class="span12 box black">
-	<div class="box-content">
+    <div class="span12">
 	    <p>Lets add a player to your account. Please fill out the form below</p>
 	    <?php
 	    echo $this->Form->create('PlayerSaaS', array(
@@ -33,6 +32,5 @@
 	    echo $this->Form->submit('Register', array('class' => 'btn'));
 	    echo $this->Form->end();
 	    ?>
-	</div>
     </div>
 </div>

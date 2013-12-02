@@ -79,7 +79,8 @@ class RegistrationController extends AppController {
             $this->set(compact('seasons'));
             $this->set(compact('players'));
         } else {
-            $this->redirect('/registration/season');
+            $this->Session->setFlash(__('Currently there are no open seasons for Registration. Please Check Back'));
+            $this->redirect('/registration/login');
         }
     }
 

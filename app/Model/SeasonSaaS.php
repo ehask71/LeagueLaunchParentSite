@@ -20,7 +20,7 @@ class SeasonSaaS extends AppModel {
     );
     
     public function getOpenSeasons($site_id){
-        return $this->find('all',array(
+        $seasons = $this->find('all',array(
             'conditions'=>array(
                 'SeasonSaaS.site_id' => $site_id,
                 'SeasonSaaS.active' => 1,
@@ -28,6 +28,9 @@ class SeasonSaaS extends AppModel {
                     array('SeasonSaaS.registration_start <= ' => date('Y-m-d'),'SeasonSaaS.registration_end >= ' => date('Y-m-d'))
                 )
         )));
+	$this->lastQuery();
+	
+	return $seasons;
     }
     
     public function getActiveSeasons(){

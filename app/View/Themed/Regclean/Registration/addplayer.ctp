@@ -26,7 +26,7 @@
 	    echo $this->Form->input('zip');
 	    echo $this->Form->input('country', array('type' => 'select', 'options' => Configure::read('Countries')));
 	    echo $this->Form->input('phone', array('type' => 'text'));
-	    echo $this->Form->input('birthday', array('id' => 'birthDate', 'label' => array('text' => 'Your Birthdate', 'class' => 'control-label'), 'minYear' => '1950', 'maxYear' => date('Y')));
+	    echo $this->Form->input('birthday', array('label' => array('text' => 'Your Birthdate', 'class' => 'control-label'), 'minYear' => '1950', 'maxYear' => date('Y')));
 	    echo $this->Form->input('gender', array('type' => 'radio', 'options' => array('m', 'f')));
 	    echo $this->Form->input('email');
 	    echo $this->Form->input('medconditions', array('label' => array('text' => 'Medical Conditions', 'class' => 'control-label')));

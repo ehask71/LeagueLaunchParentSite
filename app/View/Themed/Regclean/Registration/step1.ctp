@@ -1,3 +1,6 @@
+<div class="span12"> 
 <pre>
-<?php print_r($this->Session->read('Auth.User'));?>
+<?php print_r($seasons);?>
+<?php print_r($players);?>
 </pre>
+</div>

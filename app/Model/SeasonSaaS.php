@@ -20,6 +20,7 @@ class SeasonSaaS extends AppModel {
     );
     
     public function getOpenSeasons($site_id){
+	Configure::write('Cake.logQuery',1);
         $seasons = $this->find('all',array(
             'conditions'=>array(
                 'SeasonSaaS.site_id' => $site_id,
@@ -28,7 +29,7 @@ class SeasonSaaS extends AppModel {
                     array('SeasonSaaS.registration_start <= ' => date('Y-m-d'),'SeasonSaaS.registration_end >= ' => date('Y-m-d'))
                 )
         )));
-	$this->lastQuery();
+	Configure::write('Cake.logQuery',0);
 	
 	return $seasons;
     }

@@ -71,10 +71,16 @@ class RegistrationController extends AppController {
     }
 
     public function step1() {
-        // Select Players
-        $players = $this->PlayersSaaS->getPlayersByUser($id, $this->Session->read('Registration.site_id'));
-
-        $this->set(compact('players'));
+        $seasons = $this->SeasonSaaS->getOpenSeasons($this->Session->read('Registration.site_id'));
+        // Get Players
+        if (count($seasons) > 0) {
+            $players = $this->PlayersSaaS->getPlayersByUser($id, $this->Session->read('Registration.site_id'));
+            
+            $this->set(compact('seasons'));
+            $this->set(compact('players'));
+        } else {
+            $this->redirect('/registration/season');
+        }
     }
 
     public function step2() {
@@ -102,6 +108,10 @@ class RegistrationController extends AppController {
     }
 
     public function notvalid() {
+        $this->autoRender = false;
+    }
+
+    public function season() {
         $this->autoRender = false;
     }
 

@@ -46,6 +46,7 @@ if (count($seasons) > 0) {
 	<pre>
 	    <?php print_r($seasons); ?>
 <?php print_r($players); ?>
+<?php			print_r($this->Session->read('Auth.User'));?>
 	</pre>
     </div>
 </div>

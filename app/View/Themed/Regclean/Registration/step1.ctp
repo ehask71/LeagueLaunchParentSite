@@ -1,5 +1,5 @@
 <?php $this->Html->addCrumb('Step 1', '/registration/step1');?>
-<div class="row">
+<div class="row-fluid">
     <div class="span6 box black">
         <div class="box-header">Players</div>
         <div class="box-content">

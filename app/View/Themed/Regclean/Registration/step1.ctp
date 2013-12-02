@@ -3,7 +3,7 @@
 if (count($seasons) > 0) {
     $seasonopts = array();
     foreach ($seasons AS $s) {
-	$seasonopts[$s['SeasoSaaS']['id']] = $s['SeasoSaaS']['name'];
+	$seasonopts[$s['SeasonSaaS']['id']] = $s['SeasonSaaS']['name'];
     }
 }
 ?>

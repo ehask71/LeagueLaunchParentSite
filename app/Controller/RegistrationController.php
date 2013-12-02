@@ -74,7 +74,7 @@ class RegistrationController extends AppController {
         $seasons = $this->SeasonSaaS->getOpenSeasons($this->Session->read('Registration.site_id'));
         // Get Players
         if (count($seasons) > 0) {
-            $players = $this->PlayersSaaS->getPlayersByUser($id, $this->Session->read('Registration.site_id'));
+            $players = $this->PlayersSaaS->getPlayersByUser($this->Auth->user('id'), $this->Session->read('Registration.site_id'));
 
             $this->set(compact('seasons'));
             $this->set(compact('players'));

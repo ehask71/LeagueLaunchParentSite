@@ -47,7 +47,8 @@
                 </div>
                 </noscript>
 		<div id="content" class="span12">
-		    <div class="row"> 
+		    <div class="row">
+			<div class="span12"> 
 			<?php
 			echo $this->Html->getCrumbList(array('class' => 'breadcrumb', 'separator' => '<i class="icon-angle-right"></i>'), array(
 			    'text' => '<i class="icon-home"></i>
@@ -56,6 +57,7 @@
 			    'escape' => false
 			));
 			?>
+			</div>
 		    </div>
 		    <?php echo $this->Session->flash(); ?>
 		    <?php echo $this->Session->flash('auth'); ?>

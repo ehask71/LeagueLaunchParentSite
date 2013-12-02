@@ -17,7 +17,7 @@
         <!-- start: CSS -->
 	<?php
 	echo $this->Html->css('bootstrap.min');
-	//echo $this->Html->css('bootstrap-responsive.min');
+	echo $this->Html->css('bootstrap-responsive.min');
 	echo $this->Html->css('style');
 	//echo $this->Html->css('style-responsive');
 	echo $this->Html->css('//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&subset=latin,cyrillic-ext,latin-ext');

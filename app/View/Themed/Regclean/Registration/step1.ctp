@@ -11,7 +11,15 @@ if (count($seasons) > 0) {
     <div class="span6 box black">
         <div class="box-header">Players</div>
         <div class="box-content">
-
+	    <?php if(count($players)>0){
+		
+	    } else {
+		?>
+	    <p>It appears you do not have any players in our system.</p>
+	    <p>Please <a href="/registration/addplayer">Click Here</a> to add a player to your account.</p>
+		<?php
+	    }
+	    ?>
 	</div>
     </div>
     <div class="span6 box blue">

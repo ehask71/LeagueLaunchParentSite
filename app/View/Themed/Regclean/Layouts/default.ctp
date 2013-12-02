@@ -40,9 +40,25 @@
     <body>
         <div class="container-fluid-full">
             <div class="row-fluid">
+		<noscript>
+                <div class="alert alert-block span12">
+                    <h4 class="alert-heading">Warning!</h4>
+                    <p>You need to have <a href="http://en.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript</a> enabled to use this site.</p>
+                </div>
+                </noscript>
+		<div id="content" class="span12">
+		<?php
+                    echo $this->Html->getCrumbList(array('class'=>'breadcrumb','separator'=>'<i class="icon-angle-right"></i>'), array(
+                        'text' => '<i class="icon-home"></i>
+                            <a href="/registration/step1">Home</a>',
+                        'url' => '/registration/step1',
+                        'escape' => false
+                    ));
+                    ?>
                 <?php echo $this->Session->flash(); ?>
                 <?php echo $this->Session->flash('auth'); ?>
                 <?php echo $this->fetch('content'); ?>
+		</div>
             </div>
         </div>
         <?php

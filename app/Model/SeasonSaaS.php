@@ -9,7 +9,7 @@ class SeasonSaaS extends AppModel {
     
     public $name = 'Season';
     public $primaryKey = 'id';
-    public $useTable = 'season';
+    public $useTable = 'seasons';
     
     public $hasMany = array(
         'PlayersToSeasonsSaaS' => array(

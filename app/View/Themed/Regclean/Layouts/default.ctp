@@ -38,8 +38,8 @@
         <!-- end: Favicon -->
     </head>
     <body>
-        <div class="container-fluid-full">
-            <div class="row-fluid">
+        <div class="container">
+            <div class="row">
 		<noscript>
                 <div class="alert alert-block span12">
                     <h4 class="alert-heading">Warning!</h4>

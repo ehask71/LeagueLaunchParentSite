@@ -11,6 +11,7 @@
 		    ),
 		    'wrapInput' => 'controls'
 		),
+		'novalidate' => true,
 		'class' => 'form-horizontal'
 	    ));
 	    echo $this->Form->input('site_id', array('type' => 'hidden', 'value' => $site_id));

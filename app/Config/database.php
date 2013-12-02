@@ -14,7 +14,7 @@ class DATABASE_CONFIG {
     );
     // demo.leagueLaunch.com
     public $SaaS = array(
-        'datasource' => 'Database/Mysql',
+        'datasource' => 'Database/MysqlEx',
         'persistent' => false,
         'host' => 'localhost',
         'port' => '',

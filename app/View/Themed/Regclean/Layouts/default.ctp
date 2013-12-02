@@ -46,7 +46,7 @@
                     <p>You need to have <a href="http://en.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript</a> enabled to use this site.</p>
                 </div>
                 </noscript>
-		<div id="content" class="span12">
+		<div class="span12">
 		<?php
                     echo $this->Html->getCrumbList(array('class'=>'breadcrumb','separator'=>'<i class="icon-angle-right"></i>'), array(
                         'text' => '<i class="icon-home"></i>

@@ -50,8 +50,8 @@
 		<?php
                     echo $this->Html->getCrumbList(array('class'=>'breadcrumb','separator'=>'<i class="icon-angle-right"></i>'), array(
                         'text' => '<i class="icon-home"></i>
-                            <a href="/registration/step1">Home</a>',
-                        'url' => '/registration/step1',
+                            <a href="/registration/">Home</a>',
+                        'url' => '/registration/',
                         'escape' => false
                     ));
                     ?>

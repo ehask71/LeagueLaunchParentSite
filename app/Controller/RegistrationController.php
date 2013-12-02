@@ -74,8 +74,9 @@ class RegistrationController extends AppController {
         $seasons = $this->SeasonSaaS->getOpenSeasons($this->Session->read('Registration.site_id'));
         // Get Players
         if (count($seasons) > 0) {
+	    Configure::write('Cake.logQuery',1);
             $players = $this->PlayersSaaS->getPlayersByUser($this->Auth->user('id'), $this->Session->read('Registration.site_id'));
-
+	    Configure::write('Cake.logQuery',0);
             $this->set(compact('seasons'));
             $this->set(compact('players'));
         } else {

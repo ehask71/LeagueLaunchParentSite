@@ -74,9 +74,8 @@ class RegistrationController extends AppController {
         $seasons = $this->SeasonSaaS->getOpenSeasons($this->Session->read('Registration.site_id'));
         // Get Players
         if (count($seasons) > 0) {
-	    Configure::write('Cake.logQuery',1);
             $players = $this->PlayersSaaS->getPlayersByUser($this->Auth->user('id'), $this->Session->read('Registration.site_id'));
-	    Configure::write('Cake.logQuery',0);
+	    
             $this->set(compact('seasons'));
             $this->set(compact('players'));
         } else {
@@ -122,6 +121,7 @@ class RegistrationController extends AppController {
 
     public function addplayer() {
         if ($this->request->is('post')) {
+	    
             if ($this->PlayersSaaS->validatePlayer()) {
                 if ($this->PlayersSaaS->save($this->request->data)) {
                     $this->Session->setFlash(__('Player Added!'), 'alert', array(

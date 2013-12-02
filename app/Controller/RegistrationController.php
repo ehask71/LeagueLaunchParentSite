@@ -9,7 +9,7 @@ App::uses('AppController', 'Controller');
 class RegistrationController extends AppController {
 
     public $name = 'Registration';
-    public $uses = array('Sites', 'RoleSaaS', 'AccountSaaS', 'PlayersSaaS','SeasonSaaS');
+    public $uses = array('Sites', 'RoleSaaS', 'AccountSaaS', 'PlayersSaaS', 'SeasonSaaS');
     public $helpers = array('Session');
     public $components = array(
         'Session',
@@ -75,11 +75,14 @@ class RegistrationController extends AppController {
         // Get Players
         if (count($seasons) > 0) {
             $players = $this->PlayersSaaS->getPlayersByUser($id, $this->Session->read('Registration.site_id'));
-            
+
             $this->set(compact('seasons'));
             $this->set(compact('players'));
         } else {
-            $this->Session->setFlash(__('Currently there are no open seasons for Registration. Please Check Back'));
+            $this->Session->setFlash(__('Currently there are no open seasons for Registration. Please Check Back'), 'alert', array(
+                'plugin' => 'BoostCake',
+                'class' => 'alert-info'
+            ));
             $this->redirect('/registration/login');
         }
     }

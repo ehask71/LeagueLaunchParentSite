@@ -10,7 +10,7 @@ App::uses('Mysql', 'Model/Datasource/Database');
  */
 class MysqlEx extends Mysql {
 
-    function logQuery($sql) {
+    function logQuery($sql,$params=array()) {
 	parent::logQuery($sql);
 	if (Configure::read('Cake.logQuery')) {
 	    debug('sql[' . $this->_queriesCnt . ']:' . $sql);

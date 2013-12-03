@@ -25,7 +25,7 @@ if (count($seasons) > 0) {
 		'novalidate' => true,
 		'class' => 'form-horizontal'));
                 foreach ($players AS $player){
-                    echo $this->Form->input('Players.'.$player['PlayersSaaS']['player_id'], array('label' => array('text'=> $value['PlayersSaaS']['firstname'] . ' ' . $value['PlayersSaaS']['lastname'],'class'=>'control-label'), 'type' => 'select', 'options' => $seasonopts));
+                    echo $this->Form->input('Players.'.$player['PlayersSaaS']['player_id'], array('label' => array('text'=> $player['PlayersSaaS']['firstname'] . ' ' . $player['PlayersSaaS']['lastname'],'class'=>'control-label'), 'type' => 'select', 'options' => $seasonopts));
                 }
                 echo $this->Form->submit('Proceed To Step 2',array('class'=>'btn btn-primary'));
                 echo $this->Form->end();

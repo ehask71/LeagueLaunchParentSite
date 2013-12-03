@@ -62,11 +62,11 @@ class RegistrationController extends AppController {
                 $this->Session->write('Registration.site', $site);
                 $this->Session->write('Registration.site_id', $site['Sites']['site_id']);
                 $this->redirect('/registration/step1');
-            } elseif ($this->Session->read('Registration.site') != '') {
-                $this->redirect('/registration/step1');
             } else {
                 $this->redirect('/registration/notvalid');
             }
+        } elseif ($this->Session->read('Registration.site') != '') {
+            $this->redirect('/registration/step1');
         } else {
             $this->redirect('/registration/notvalid');
         }
@@ -77,7 +77,7 @@ class RegistrationController extends AppController {
         // Get Players
         if (count($seasons) > 0) {
             $players = $this->PlayersSaaS->getPlayersByUser($this->Auth->user('id'), $this->Session->read('Registration.site_id'));
-	    
+
             $this->set(compact('seasons'));
             $this->set(compact('players'));
         } else {
@@ -123,7 +123,7 @@ class RegistrationController extends AppController {
 
     public function addplayer() {
         if ($this->request->is('post')) {
-	    
+
             if ($this->PlayersSaaS->validatePlayer()) {
                 if ($this->PlayersSaaS->save($this->request->data)) {
                     $this->Session->setFlash(__('Player Added!'), 'alert', array(

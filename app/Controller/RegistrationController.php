@@ -28,6 +28,7 @@ class RegistrationController extends AppController {
             'loginRedirect' => array('controller' => 'registration', 'action' => 'step1'),
             'logoutRedirect' => array('controller' => 'registration', 'action' => 'login'),
             'loginAction' => array('controller' => 'registration', 'action' => 'login'),
+	    'authError' => 'You must be logged in to register. <a href="/registration/register">Click Here</a> If you need an account',
         ),
     );
 

@@ -110,7 +110,7 @@ class AccountSaaS extends AppModel {
                     'message' => 'Please Select Your Gender'
                 )
             ),
-           /* 'email' => array(
+            'email' => array(
                 'mustNotEmpty' => array(
                     'rule' => 'notEmpty',
                     'message' => 'Please Enter Your Email'
@@ -123,7 +123,7 @@ class AccountSaaS extends AppModel {
                     'rule' => 'isUnique',
                     'message' => 'Email already registered'
                 )
-            ),*/
+            ),
             'password' => array(
                 'mustNotEmpty' => array(
                     'rule' => 'notEmpty',

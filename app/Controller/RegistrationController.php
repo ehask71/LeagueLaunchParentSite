@@ -143,7 +143,7 @@ class RegistrationController extends AppController {
                     $userid = $this->Account->getLastInsertID();
                     // Assign a Role
                     $this->loadModel('RoleUserSaaS');
-                    $roleuser = $this->RoleUserSaaS->addUserSite($userid, $this->Session->read('Registration.site.Sites.site_id'));
+                    $roleuser = $this->RoleUserSaaS->addUserSite($userid, $this->Session->read('Registration.site_id'));
                     // Log the user in
                     $role = array();
                     $role[] = array(
@@ -152,6 +152,7 @@ class RegistrationController extends AppController {
                         'RolesUser' => array(
                             'id' => $roleuser,
                             'user_id' => $userid,
+                            'site_id' => $this->Session->read('Registration.site_id'),
                             'role_id' => 6
                         )
                     );
@@ -166,7 +167,7 @@ class RegistrationController extends AppController {
                 }
             }
         }
-        $this->set('site_id', $this->Session->read('Registration.site.Sites.site_id'));
+        $this->set('site_id', $this->Session->read('Registration.site_id'));
     }
 
     public function login() {

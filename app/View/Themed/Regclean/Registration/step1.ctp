@@ -44,8 +44,9 @@ if (count($seasons) > 0) {
         </div>
     </div>
     <div class="span6 box blue">
-        <div class="box-header">Available Seasons</div>
+        <div class="box-header">Active Leagues</div>
         <div class="box-content">
+            <p>Here are our Leagues that are currently open for registration.</p>
             <table class="table table-bordered">
                 <?php
                 if (count($seasonopts) > 0) {

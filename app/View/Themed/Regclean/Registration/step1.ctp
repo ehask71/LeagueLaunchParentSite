@@ -13,6 +13,10 @@ if (count($seasons) > 0) {
         <div class="box-content">
             <?php
             if (count($players) > 0) {
+                ?>
+            <p>Use the Dropdown to select the correct season for each player. If a 
+            player is not playing this season leave the dropdown set to "Choose A Season" and they will not be added. <a href="/registration/addplayer">Click Here</a> to add more players</p>
+            <?
                 echo $this->Form->create(FALSE, array(
                     'type' => 'file',
                     'action' => 'step1',

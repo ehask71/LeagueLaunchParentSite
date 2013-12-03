@@ -62,6 +62,8 @@ class RegistrationController extends AppController {
                 $this->Session->write('Registration.site', $site);
                 $this->Session->write('Registration.site_id', $site['Sites']['site_id']);
                 $this->redirect('/registration/step1');
+            } elseif ($this->Session->read('Registration.site') != '') {
+                $this->redirect('/registration/step1');
             } else {
                 $this->redirect('/registration/notvalid');
             }

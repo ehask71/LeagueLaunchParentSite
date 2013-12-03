@@ -161,7 +161,7 @@ class AccountSaaS extends AppModel {
     }
 
     function checkpasswords() {
-        if (strcmp($this->data['Account']['password'], $this->data['Account']['confirm_password']) == 0) {
+        if (strcmp($this->data['AccountSaaS']['password'], $this->data['AccountSaaS']['confirm_password']) == 0) {
             return true;
         }
         return false;

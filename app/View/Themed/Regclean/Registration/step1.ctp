@@ -12,7 +12,23 @@ if (count($seasons) > 0) {
         <div class="box-header">Players</div>
         <div class="box-content">
 	    <?php if(count($players)>0){
-		
+		echo $this->Form->create(FALSE, array(
+                    'type' => 'file', 
+                    'action' => 'step1',
+                    'inputDefaults' => array(
+		    'div' => 'control-group',
+		    'label' => array(
+			'class' => 'control-label'
+		    ),
+		    'wrapInput' => 'controls'
+		),
+		'novalidate' => true,
+		'class' => 'form-horizontal'));
+                foreach ($players AS $player){
+                    echo $this->Form->input('Players.'.$player['PlayersSaaS']['player_id'], array('label' => array('text'=> $value['PlayersSaaS']['firstname'] . ' ' . $value['PlayersSaaS']['lastname'],'class'=>'control-label'), 'type' => 'select', 'options' => $seasonopts));
+                }
+                echo $this->Form->submit('Proceed To Step 2',array('class'=>'btn btn-primary'));
+                echo $this->Form->end();
 	    } else {
 		?>
 	    <p>It appears you do not have any players in our system.</p>

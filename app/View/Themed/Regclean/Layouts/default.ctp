@@ -50,7 +50,7 @@
 		    <div class="row">
 			<div class="span12"> 
 			<?php
-			echo $this->Html->getCrumbList(array('class' => 'breadcrumb', 'separator' => '<i class="icon-angle-right"></i>'), array(
+			echo $this->Html->getCrumbList(array('class' => 'breadcrumb', 'separator' => '<i class="icon-chevron-right"></i>'), array(
 			    'text' => '<i class="icon-home"></i>
                             <a href="/registration/">Home</a>',
 			    'url' => '/registration/',

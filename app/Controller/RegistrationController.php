@@ -74,6 +74,15 @@ class RegistrationController extends AppController {
     }
 
     public function step1() {
+        if ($this->request->is('post')) {
+            // Loop Thru Players
+            foreach ($this->request->data['Players'] AS $k => $v) {
+                if ($v == '') {
+                    // Not Registering
+                    continue;
+                }
+            }
+        }
         $seasons = $this->SeasonSaaS->getOpenSeasons($this->Session->read('Registration.site_id'));
         // Get Players
         if (count($seasons) > 0) {

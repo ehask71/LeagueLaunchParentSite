@@ -37,13 +37,12 @@ class RegistrationController extends AppController {
         $this->Auth->allow('login', 'logout', 'register', 'notvalid', 'index');
         $check = array('index','notvalid');
         if (!in_array($this->params['action'], $check)) {
-            echo $this->params['action'];
             if (!$this->Session->check('Registration.site')) {
                 $this->Session->setFlash(__('Your Session Expired!'), 'alert', array(
                     'plugin' => 'BoostCake',
                     'class' => 'alert-error'
                 ));
-                //$this->redirect('/registration/notvalid');
+                $this->redirect('/registration/notvalid');
                 
             }
         }

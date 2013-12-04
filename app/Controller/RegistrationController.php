@@ -204,6 +204,7 @@ class RegistrationController extends AppController {
     }
 
     public function logout() {
+        $this->Session->write('Auth.redirect','');
         $this->redirect($this->Auth->logout());
     }
 

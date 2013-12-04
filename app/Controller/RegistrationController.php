@@ -191,6 +191,7 @@ class RegistrationController extends AppController {
                 
             }
         } elseif ($this->request->is('post')) {
+            $this->Session->write('Auth.redirect',''); 
             if ($this->Auth->login()) {
                 $this->redirect(array('controller' => 'registration', 'action' => 'step1'));
             } else {

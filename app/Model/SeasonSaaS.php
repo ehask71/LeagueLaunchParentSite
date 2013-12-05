@@ -49,5 +49,18 @@ class SeasonSaaS extends AppModel {
     public function getAccountsBySeason($season) {
 	
     }
+    
+    public function getSeasonDetails($id,$field=FALSE){
+	if ($field) {
+	    $this->id = $id;
+	    return $this->field($field);
+	} else {
+	    return $this->find('first', array(
+			'conditions' => array(
+			    'SeasonSaaS.id' => (int) $id
+			)
+	    ));
+	}
+    }
 
 }

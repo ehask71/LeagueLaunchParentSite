@@ -124,6 +124,7 @@ class RegistrationController extends AppController {
 		'plugin' => 'BoostCake',
 		'class' => 'alert-error'
 	    ));
+	    $this->redirect(array('action'=>'step1'));
 	}
     }
 

@@ -3,129 +3,141 @@
 App::uses('AppModel', 'Model');
 
 class PlayersSaaS extends AppModel {
-    
+
     public $useDbConfig = 'SaaS';
     public $primaryKey = 'player_id';
     public $useTable = 'players';
     public $belongsTo = array(
-        'AccountSaaS' => array(
-            'className' => 'AccountSaaS',
-            'foreignKey' => 'user_id',
-            'conditions' => '',
-            'fields' => '',
-            'order' => '',
-            'counterCache' => true,
-            'counterScope' => array(),
-        )
+	'AccountSaaS' => array(
+	    'className' => 'AccountSaaS',
+	    'foreignKey' => 'user_id',
+	    'conditions' => '',
+	    'fields' => '',
+	    'order' => '',
+	    'counterCache' => true,
+	    'counterScope' => array(),
+	)
     );
-
 
     public function validatePlayer() {
 
-        $validate1 = array(
-            'firstname' => array(
-                'mustNotEmpty' => array(
-                    'rule' => 'notEmpty',
-                    'message' => 'Please enter players first name')
-            ),
-            'lastname' => array(
-                'mustNotEmpty' => array(
-                    'rule' => 'notEmpty',
-                    'message' => 'Please enter players last name')
-            ),
-            'gender' => array(
-                'mustNotEmpty' => array(
-                    'rule' => 'notEmpty',
-                    'message' => 'Please select players gender')
-            ),
-            'birthday' => array(
+	$validate1 = array(
+	    'firstname' => array(
 		'mustNotEmpty' => array(
-                    'rule' => 'notEmpty',
-                    'message' => 'Please enter players Birthdate'),
-                'age' => array(
-                    'rule' => 'checkOver3',
-                    'message' => 'Player must be 3 years old or older'
-                )
-            ),
-            'phone' => array(
-                'mustNotEmpty' => array(
-                    'rule' => 'notEmpty',
-                    'message' => 'Please enter players contact phone number')
-            ),
-            'address' => array(
-                'mustNotEmpty' => array(
-                    'rule' => 'notEmpty',
-                    'message' => 'Please enter players address')
-            ),
-            'city' => array(
-                'mustNotEmpty' => array(
-                    'rule' => 'notEmpty',
-                    'message' => 'Please enter players city')
-            ),
-            'state' => array(
-                'mustNotEmpty' => array(
-                    'rule' => 'notEmpty',
-                    'message' => 'Please enter players state')
-            ),
-            'zip' => array(
-                'mustNotEmpty' => array(
-                    'rule' => 'notEmpty',
-                    'message' => 'Please enter players zip code')
-            )
-        );
+		    'rule' => 'notEmpty',
+		    'message' => 'Please enter players first name')
+	    ),
+	    'lastname' => array(
+		'mustNotEmpty' => array(
+		    'rule' => 'notEmpty',
+		    'message' => 'Please enter players last name')
+	    ),
+	    'gender' => array(
+		'mustNotEmpty' => array(
+		    'rule' => 'notEmpty',
+		    'message' => 'Please select players gender')
+	    ),
+	    'birthday' => array(
+		'mustNotEmpty' => array(
+		    'rule' => 'notEmpty',
+		    'message' => 'Please enter players Birthdate'),
+		'age' => array(
+		    'rule' => 'checkOver3',
+		    'message' => 'Player must be 3 years old or older'
+		)
+	    ),
+	    'phone' => array(
+		'mustNotEmpty' => array(
+		    'rule' => 'notEmpty',
+		    'message' => 'Please enter players contact phone number')
+	    ),
+	    'address' => array(
+		'mustNotEmpty' => array(
+		    'rule' => 'notEmpty',
+		    'message' => 'Please enter players address')
+	    ),
+	    'city' => array(
+		'mustNotEmpty' => array(
+		    'rule' => 'notEmpty',
+		    'message' => 'Please enter players city')
+	    ),
+	    'state' => array(
+		'mustNotEmpty' => array(
+		    'rule' => 'notEmpty',
+		    'message' => 'Please enter players state')
+	    ),
+	    'zip' => array(
+		'mustNotEmpty' => array(
+		    'rule' => 'notEmpty',
+		    'message' => 'Please enter players zip code')
+	    )
+	);
 
-        $this->validate = $validate1;
-        return $this->validates();
+	$this->validate = $validate1;
+	return $this->validates();
     }
 
     public function checkOver3($check) {
-        $bday = strtotime($check['birthday']);
-        if (time() < strtotime('+3 years', $bday))
-            return false;
-        return true;
+	$bday = strtotime($check['birthday']);
+	if (time() < strtotime('+3 years', $bday))
+	    return false;
+	return true;
     }
 
     public function getPlayersByUser($id, $site_id = false) {
-        $conditions['PlayersSaaS.active'] = 1;
-        $conditions['PlayersSaaS.user_id'] = (int) $id;
-        if ($site_id) {
-            $conditions['PlayersSaaS.site_id'] = (int) $site_id;
-        }
+	$conditions['PlayersSaaS.active'] = 1;
+	$conditions['PlayersSaaS.user_id'] = (int) $id;
+	if ($site_id) {
+	    $conditions['PlayersSaaS.site_id'] = (int) $site_id;
+	}
 
-        return $this->find('all', array(
-                    'order' => 'PlayersSaaS.player_id DESC',
-                    'conditions' => $conditions
-                ));
+	return $this->find('all', array(
+		    'order' => 'PlayersSaaS.player_id DESC',
+		    'conditions' => $conditions
+	));
     }
 
     public function getPlayerById($id, $site_id = FALSE) {
-        return $this->find('first', array(
-                    'conditions' => array(
-                        'Players.player_id' => (int) $id
-                    )
-                ));
+	return $this->find('first', array(
+		    'conditions' => array(
+			'Players.player_id' => (int) $id
+		    )
+	));
     }
 
     public function getPlayersToSeason($id, $active = FALSE) {
-        $play = $this->find('all', array(
-            'recursive' => 1,
-            'conditions' => array(
-                'PlayersToSeasons.season_id' => $id,
-                'PlayersToSeasons.site_id' => Configure::read('Settings.site_id')
-            ),
-            'joins' => array(
-                array(
-                    'table' => 'players_to_seasons',
-                    'alias' => 'PlayersToSeasons',
-                    'type' => 'INNER',
-                    'conditions' => array(
-                        'PlayersToSeasons.player_id = Players.player_id'
-                    )
-                )
-            )
-                ));
+	$play = $this->find('all', array(
+	    'recursive' => 1,
+	    'conditions' => array(
+		'PlayersToSeasons.season_id' => $id,
+		'PlayersToSeasons.site_id' => Configure::read('Settings.site_id')
+	    ),
+	    'joins' => array(
+		array(
+		    'table' => 'players_to_seasons',
+		    'alias' => 'PlayersToSeasons',
+		    'type' => 'INNER',
+		    'conditions' => array(
+			'PlayersToSeasons.player_id = Players.player_id'
+		    )
+		)
+	    )
+	));
 
-        return $play;
+	return $play;
+    }
+
+    public function getPlayerDetails($id, $field = false) {
+	if ($field) {
+	    $this->id = $id;
+	    return $this->field($field);
+	} else {
+	    return $this->find('first', array(
+			'conditions' => array(
+			    'PlayersSaaS.player_id' => (int) $id
+			)
+	    ));
+	}
     }
 
 }

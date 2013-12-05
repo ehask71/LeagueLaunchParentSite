@@ -79,7 +79,7 @@ class RegistrationController extends AppController {
 	if ($this->request->is('post')) {
 	    // Loop Thru Players
 	    foreach ($this->request->data['Players'] AS $k => $v) {
-		if ($v == '') {
+		if ($v == 0) {
 		    // Not Registering
 		    $this->Session->delete('Registration.Players.' . $k);
 		    continue;

@@ -12,7 +12,8 @@ if (count($seasons) > 0) {
         <div class="box-header">Players</div>
         <div class="box-content">
 	    <?php
-	    if (isset($this->Session->read('Registration.already_registered'))) {
+	    $isAlready = $this->Session->read('Registration.already_registered');
+	    if (isset($isAlready)) {
 		?>
     	    <p>These Players are already registered to an active League</p>
     	    <ol>

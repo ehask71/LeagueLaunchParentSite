@@ -27,5 +27,19 @@ class PlayersToSeasonsSaaS extends AppModel {
         }
         return false;
     }
+    
+    public function checkAlreadyRegistered($player, $id, $site_id) {
+        $isreg = $this->find('first', array(
+            'conditions' => array(
+                'PlayersToSeasonsSaaS.site_id' => $site_id,
+                'PlayersToSeasonsSaaS.player_id' => $player,
+                'PlayersToSeasonsSaaS.season_id' => $id
+            )
+                ));
+        if (count($isreg) > 0) {
+            return true;
+        }
+        return false;
+    }
 }
 

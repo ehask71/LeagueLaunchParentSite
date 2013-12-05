@@ -9,7 +9,7 @@ App::uses('AppController', 'Controller');
 class RegistrationController extends AppController {
 
     public $name = 'Registration';
-    public $uses = array('Sites', 'RoleSaaS', 'AccountSaaS', 'PlayersSaaS', 'SeasonSaaS','PlayersToSeasonsSaaS');
+    public $uses = array('Sites', 'RoleSaaS', 'AccountSaaS', 'PlayersSaaS', 'SeasonSaaS', 'PlayersToSeasonsSaaS');
     public $helpers = array('Session');
     public $components = array(
 	'Session',
@@ -84,6 +84,7 @@ class RegistrationController extends AppController {
 		    continue;
 		}
 		$this->Session->write('Registration.Players.' . $k . '.season_id', $v);
+		$this->Session->write('Registration.Players.' . $k . '.birthday', $this->PlayersSaaS->getPlayerDetails($k,'birthday'));
 	    }
 	    if (is_array($this->Session->read('Registration.Players'))) {
 		$this->Session->setFlash(__('Players Updated'), 'alert', array(
@@ -104,7 +105,7 @@ class RegistrationController extends AppController {
 	// Get Players
 	if (count($seasons) > 0) {
 	    $players = $this->PlayersSaaS->getPlayersByUser($this->Auth->user('id'), $site_id);
-	    $players = $this->PlayersToSeasonsSaaS->getUnregisteredPlayers($players,$seasons,$site_id);
+	    $players = $this->PlayersToSeasonsSaaS->getUnregisteredPlayers($players, $seasons, $site_id);
 	    $this->set(compact('seasons'));
 	    $this->set(compact('players'));
 	} else {
@@ -117,7 +118,12 @@ class RegistrationController extends AppController {
     }
 
     public function step2() {
-	
+	if (!is_array($this->Session->read('Registration.Players'))) {
+	    $this->Session->setFlash(__('You need to Select Players & League before you can proceed'), 'alert', array(
+		'plugin' => 'BoostCake',
+		'class' => 'alert-error'
+	    ));
+	}
     }
 
     public function step3() {

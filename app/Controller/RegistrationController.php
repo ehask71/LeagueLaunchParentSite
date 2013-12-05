@@ -119,7 +119,7 @@ class RegistrationController extends AppController {
     }
 
     public function step2() {
-	if (!is_array($this->Session->read('Registration.Players'))) {
+	if (!is_array($this->Session->read('Registration.Players')) && count($this->Session->read('Registration.Players')) > 0) {
 	    $this->Session->setFlash(__('You need to Select Players & League before you can proceed'), 'alert', array(
 		'plugin' => 'BoostCake',
 		'class' => 'alert-error'

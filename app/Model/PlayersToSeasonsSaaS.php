@@ -45,7 +45,7 @@ class PlayersToSeasonsSaaS extends AppModel {
 	return false;
     }
 
-    public function unregisteredPlayers($players, $seasons, $site_id = FALSE) {
+    public function getUnregisteredPlayers($players, $seasons, $site_id = FALSE) {
 	if (is_array($players) && $site_id && is_array($seasons)) {
 	    foreach ($seasons AS $k => $season) {
 		foreach ($players AS $k => $play) {

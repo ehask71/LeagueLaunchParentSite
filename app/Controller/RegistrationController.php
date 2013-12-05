@@ -81,6 +81,7 @@ class RegistrationController extends AppController {
 	    foreach ($this->request->data['Players'] AS $k => $v) {
 		if ($v == '') {
 		    // Not Registering
+		    $this->Session->delete('Registration.Players.' . $k);
 		    continue;
 		}
 		$this->Session->write('Registration.Players.' . $k . '.season_id', $v);

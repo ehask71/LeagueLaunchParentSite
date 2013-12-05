@@ -49,7 +49,7 @@ if (count($seasons) > 0) {
 		echo $this->Form->end();
 	    } else {
 		?>
-    	    <p>It appears you do not have any players in our system.</p>
+    	    <p>It appears you do not have any players in our system or they are already registered to a League.</p>
     	    <p>Please <a href="/registration/addplayer">Click Here</a> to add a player to your account.</p>
 		<?php
 	    }

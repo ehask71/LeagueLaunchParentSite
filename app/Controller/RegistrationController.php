@@ -86,6 +86,7 @@ class RegistrationController extends AppController {
 		}
 		$this->Session->write('Registration.Players.' . $k . '.season_id', $v);
 		$this->Session->write('Registration.Players.' . $k . '.LeagueAge', $this->SeasonSaaS->getSeasonDetails($v, 'leagueage'));
+                $this->Session->write('Registration.Players.' . $k . '.name', $this->PlayersSaaS->getPlayerDetails($k,'firstname').' '.$this->PlayersSaaS->getPlayerDetails($k,'lastname'));
 		$this->Session->write('Registration.Players.' . $k . '.birthday', $this->PlayersSaaS->getPlayerDetails($k,'birthday'));
 	    }
 	    if (is_array($this->Session->read('Registration.Players'))) {

@@ -35,6 +35,21 @@ class Sites extends AppModel {
         }
         return false;
     }
+    
+    function buildSiteSettings($setarray){
+	$settings = array();
+	if (count($setarray) > 0) {
+	    foreach ($setarray as $row) {
+		if ($row['type'] == 'object' || $row['type'] == 'array') {
+		    // Handle Arrays and Objects
+		    $settings[$row['name']] = unserialize($row['value']);
+		} else {
+		    // Default is string
+		    $settings[$row['name']] = (string) $row['value'];
+		}
+	    }
+	}
+    }
 
 }
 

@@ -41,13 +41,14 @@ class DivisionsSaaS extends AppModel {
         return $opts;
     }
     
-    public function getParentDivisionsWproduct($site_id){
+    public function getParentDivisionsWproduct($site_id,$season_id){
         
         $rtn = array();
         $opts = $this->find('all',array(
             'conditions' => array(
                 'DivisionsSaaS.active'=>1,
                 'DivisionsSaaS.site_id' => $site_id,
+		'ProductsToDivisions.season_id' => $season_id,
                 "not" => array ( "ProductsToDivisions.product_id" => null),
                 'Products.active'=>1
               ),

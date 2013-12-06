@@ -41,13 +41,13 @@ class DivisionsSaaS extends AppModel {
         return $opts;
     }
     
-    public function getParentDivisionsWproduct(){
+    public function getParentDivisionsWproduct($site_id){
         
         $rtn = array();
         $opts = $this->find('all',array(
             'conditions' => array(
-                'Divisions.active'=>1,
-                'Divisions.site_id' => Configure::read('Settings.site_id'),
+                'DivisionsSaaS.active'=>1,
+                'DivisionsSaaS.site_id' => $site_id,
                 "not" => array ( "ProductsToDivisions.product_id" => null),
                 'Products.active'=>1
               ),
@@ -69,7 +69,7 @@ class DivisionsSaaS extends AppModel {
                     )
                 )
             ),
-            'fields'=>array('Divisions.*','ProductsToDivisions.*','Products.*')
+            'fields'=>array('DivisionsSaaS.*','ProductsToDivisions.*','Products.*')
         ));
        /* $rtn[NULL] = "Please Select A Division"; 
         foreach($opts AS $row){

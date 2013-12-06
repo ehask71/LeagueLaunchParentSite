@@ -130,6 +130,16 @@ class RegistrationController extends AppController {
 	    ));
 	    $this->redirect(array('action'=>'step1'));
 	}
+	
+	if($this->request->is('post')){
+	    
+	}
+	
+	// Match Players with their League Assoc Products and provide a dropdown
+	foreach($players AS $play){
+	    $registration_options = $this->DivisionsSaaS->getParentDivisionsWproduct($this->Session->read('Registration.site_id'));
+	    $prepared_data = $this->LeagueAge->limitAgeBasedOptions($players, $registration_options);
+	}
     }
 
     public function step3() {

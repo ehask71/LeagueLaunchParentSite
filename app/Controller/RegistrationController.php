@@ -9,7 +9,7 @@ App::uses('AppController', 'Controller');
 class RegistrationController extends AppController {
 
     public $name = 'Registration';
-    public $uses = array('Sites', 'RoleSaaS', 'AccountSaaS', 'PlayersSaaS', 'SeasonSaaS', 'PlayersToSeasonsSaaS');
+    public $uses = array('Sites', 'RoleSaaS', 'AccountSaaS', 'PlayersSaaS', 'SeasonSaaS', 'PlayersToSeasonsSaaS','DivisionsSaaS');
     public $helpers = array('Session');
     public $components = array(
 	'Session',

@@ -59,7 +59,7 @@ class DivisionsSaaS extends AppModel {
                     'alias' => 'ProductsToDivisions',
                     'type' => 'INNER',
                     'conditions' => array(
-                        'Divisions.division_id = ProductsToDivisions.division_id'
+                        'DivisionsSaaS.division_id = ProductsToDivisions.division_id'
                     )
                 ),
                 array(

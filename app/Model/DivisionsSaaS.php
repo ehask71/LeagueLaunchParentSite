@@ -8,12 +8,12 @@ class DivisionsSaaS extends AppModel {
     public $useTable = 'divisions';
     public $primaryKey = 'division_id';
     public $actsAs = array('Containable');
-    public $hasMany = array(
+    /*public $hasMany = array(
         'Team' => array(
 	    'className' => 'Team',
 	    'foreignKey' => 'division_id',
 	)
-    );
+    );*/
 
     public function divisionValidate() {
         $validate1 = array(

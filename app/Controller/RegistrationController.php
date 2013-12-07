@@ -13,6 +13,7 @@ class RegistrationController extends AppController {
     public $helpers = array('Session');
     public $components = array(
 	'Session',
+        'LeagueAge',
 	'Auth' => array(
 	    'authorize' => array('Tiny' => array('aclModel' => 'RoleSaaS')),
 	    'authenticate' => array(

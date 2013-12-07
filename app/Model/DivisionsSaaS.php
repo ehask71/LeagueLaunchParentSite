@@ -5,6 +5,7 @@ App::uses('AppModel', 'Model');
 class DivisionsSaaS extends AppModel {
 
     public $useDbConfig = 'SaaS';
+    public $useTable = 'divisions';
     public $primaryKey = 'division_id';
     public $actsAs = array('Containable');
     public $hasMany = array(

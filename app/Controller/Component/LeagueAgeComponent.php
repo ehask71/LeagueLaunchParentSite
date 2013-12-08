@@ -58,7 +58,7 @@ class LeagueAgeComponent extends Component {
 
     public function limitAgeBasedOptions($player, $options) {
 	$play = array();
-        $row = array();
+        $row['registration_options'] = array();
 	$league_age = $this->calculateLeagueAge($player['birthday']);
 	$useLeagueAge = $this->controller->Session->read('Registration.Settings.leagueage.use_leagueage');
 	$dropdown = array('' => 'Please Select An Option');

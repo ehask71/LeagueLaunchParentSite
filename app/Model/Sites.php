@@ -50,7 +50,7 @@ class Sites extends AppModel {
             }
 
             foreach ($settings as $key => $value) {
-                Session::write("Registration.Settings." . str_replace('|', '.', $key), $value);
+                CakeSession::write("Registration.Settings." . str_replace('|', '.', $key), $value);
             }
         }
     }

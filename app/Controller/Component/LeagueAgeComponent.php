@@ -77,7 +77,7 @@ class LeagueAgeComponent extends Component {
 		    }
 		}
 	    } else {
-		$row['Players']['registration_options'][$opts['DivisionsSaaS']['division_id']] = $opts['DivisionsSaaS']['name'] . ' ($' . $opts['ProductsSaaS']['price'] . ')';
+		$row['registration_options'][$opts['DivisionsSaaS']['division_id']] = $opts['DivisionsSaaS']['name'] . ' ($' . $opts['ProductsSaaS']['price'] . ')';
 	    }
 	}
 	if (count($row['registration_options']) == 0) {

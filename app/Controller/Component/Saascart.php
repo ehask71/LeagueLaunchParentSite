@@ -81,33 +81,6 @@ class Saascart extends Component {
 
         $this->Session->write('Shop.Order.shop', 1);
 
-        /* $this->Cart = ClassRegistry::init('Cart');
-
-          $cartdata['Cart']['sessionid'] = $this->Session->id();
-          $cartdata['Cart']['quantity'] = $quantity;
-          $cartdata['Cart']['product_id'] = $product['Products']['id'];
-          $cartdata['Cart']['player_id'] = ($player) ? $player : 0;
-          $cartdata['Cart']['name'] = $product['Products']['name'];
-          $cartdata['Cart']['weight'] = $product['Products']['weight'];
-          $cartdata['Cart']['weight_total'] = sprintf('%01.2f', $product['Products']['weight'] * $quantity);
-          $cartdata['Cart']['price'] = $product['Products']['price'];
-
-          $cartdata['Cart']['subtotal'] = sprintf('%01.2f', $product['Products']['price'] * $quantity);
-
-          $existing = $this->Cart->find('first', array(
-          'recursive' => -1,
-          'conditions' => array(
-          'Cart.sessionid' => $this->Session->id(),
-          'Cart.product_id' => $product['Products']['id'],
-          )
-          ));
-          if ($existing) {
-          $cartdata['Cart']['id'] = $existing['Cart']['id'];
-          } else {
-          $this->Cart->create();
-          }
-          $this->Cart->save($cartdata, false);
-         */
         $this->cart();
 
         return $product;
@@ -119,13 +92,6 @@ class Saascart extends Component {
         if ($this->Session->check('Shop.OrderItem.' . $id)) {
             $product = $this->Session->read('Shop.OrderItem.' . $id);
             $this->Session->delete('Shop.OrderItem.' . $id);
-
-            /*ClassRegistry::init('Cart')->deleteAll(
-                    array(
-                'Cart.sessionid' => $this->Session->id(),
-                'Cart.product_id' => $id,
-                    ), false
-            );*/
 
             $this->cart();
             return $product;
@@ -171,7 +137,6 @@ class Saascart extends Component {
 //////////////////////////////////////////////////
 
     public function clear() {
-        //ClassRegistry::init('Cart')->deleteAll(array('Cart.sessionid' => $this->Session->id()), false);
         $this->Session->delete('Shop');
     }
 

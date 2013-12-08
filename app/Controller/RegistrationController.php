@@ -62,6 +62,7 @@ class RegistrationController extends AppController {
 		)
 	    ));
 	    if (count($site) > 0) {
+                $this->Sites->buildSiteSettings($site['SettingsSaaS']);
 		$this->Session->write('Registration.theme', $theme);
 		$this->Session->write('Registration.site', $site);
 		$this->Session->write('Registration.site_id', $site['Sites']['site_id']);
@@ -139,7 +140,7 @@ class RegistrationController extends AppController {
 	// Match Players with their League Assoc Products and provide a dropdown
 	foreach($players AS $play){
 	    $registration_options = $this->DivisionsSaaS->getParentDivisionsWproduct($this->Session->read('Registration.site_id'),$play['season_id']);
-	    $prepared_data = $this->LeagueAge->limitAgeBasedOptions($players, $registration_options);
+	    $prepared_data = $this->LeagueAge->limitAgeBasedOptions($play, $registration_options);
 	}
     }
 

@@ -58,7 +58,7 @@ class LeagueAgeComponent extends Component {
 
     public function limitAgeBasedOptions($player, $options) {
 	$play = array();
-        $row['registration_options'] = array();
+        $row = array();
 	$league_age = $this->calculateLeagueAge($player['birthday']);
 	$useLeagueAge = $this->controller->Session->read('Registration.Settings.leagueage.use_leagueage');
 	$dropdown = array('' => 'Please Select An Option');
@@ -68,24 +68,24 @@ class LeagueAgeComponent extends Component {
 		    $ages = explode(",", $opts['DivisionsSaaS']['age']);
 		    if (count($ages) > 0) {
 			if (in_array($league_age, $ages)) {
-			    $row['registration_options'][$opts['DivisionsSaaS']['division_id']] = $opts['DivisionsSaaS']['name'] . ' ($' . $opts['ProductsSaaS']['price'] . ')';
+			    $row[$opts['DivisionsSaaS']['division_id']] = $opts['DivisionsSaaS']['name'] . ' ($' . $opts['ProductsSaaS']['price'] . ')';
 			}
 		    } else {
-			$row['registration_options'][$opts['DivisionsSaaS']['division_id']] = $opts['DivisionsSaaS']['name'] . ' ($' . $opts['ProductsSaaS']['price'] . ')';
+			$row[$opts['DivisionsSaaS']['division_id']] = $opts['DivisionsSaaS']['name'] . ' ($' . $opts['ProductsSaaS']['price'] . ')';
 		    }
 		} else {
 		    if ($this->controller->Session->read('Registration.leagueage.allow_on_error') == 'true') {
-			$row['registration_options'][$opts['Divisions']['division_id']] = $opts['DivisionsSaaS']['name'] . ' ($' . $opts['ProductsSaaS']['price'] . ')';
+			$row[$opts['Divisions']['division_id']] = $opts['DivisionsSaaS']['name'] . ' ($' . $opts['ProductsSaaS']['price'] . ')';
 		    } else {
-			$row['registration_options'][NULL] = 'Unable To Calulate Age';
+			$row[NULL] = 'Unable To Calulate Age';
 		    }
 		}
 	    } else {
-		$row['registration_options'][$opts['DivisionsSaaS']['division_id']] = $opts['DivisionsSaaS']['name'] . ' ($' . $opts['ProductsSaaS']['price'] . ')';
+		$row[$opts['DivisionsSaaS']['division_id']] = $opts['DivisionsSaaS']['name'] . ' ($' . $opts['ProductsSaaS']['price'] . ')';
 	    }
 	}
-	if (count($row['registration_options']) == 0) {
-	    $row['registration_options'][NULL] = 'No Available Registrations';
+	if (count($row) == 0) {
+	    $row[NULL] = 'No Available Registrations';
 	}
 	$this->controller->Session->write('Registration.Players.'.$player['player_id'].'.registration_options', $row);
 

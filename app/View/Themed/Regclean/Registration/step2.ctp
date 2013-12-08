@@ -15,12 +15,11 @@
 		'novalidate' => true,
 		'class' => 'form-horizontal'
 	    ));
-            $i = 0;
             foreach ($players as $key => $value) {
                 echo $this->Form->input('Players.' . $value['player_id'], array('label' => array('text' => $value['name'],'class'=>'control-label'), 'type' => 'select', 'options' => $value['registration_options']));
-                $i++;
             }
-            echo $this->Form->end('Proceed To Next Step');
+            echo $this->Form->submit('Proceed To Next Step', array('class' => 'btn'));
+            echo $this->Form->end();
             ?>
             <pre>
                 <?php print_r($players); ?>

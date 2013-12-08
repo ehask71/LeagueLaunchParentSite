@@ -18,7 +18,7 @@
             foreach ($players as $key => $value) {
                 echo $this->Form->input('Players.' . $value['player_id'], array('label' => array('text' => $value['name'],'class'=>'control-label'), 'type' => 'select', 'options' => $value['registration_options']));
             }
-            echo $this->Form->submit('Proceed To Next Step', array('class' => 'btn'));
+            echo $this->Form->submit('Proceed To Next Step', array('class' => 'btn btn-primary'));
             echo $this->Form->end();
             ?>
             <pre>

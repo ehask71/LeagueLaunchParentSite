@@ -62,7 +62,7 @@ class RegistrationController extends AppController {
 		)
 	    ));
 	    if (count($site) > 0) {
-                $this->Sites->buildSiteSettings($site['SettingsSaaS']);
+                $this->Sites->buildSiteSettings($site['Settings']);
 		$this->Session->write('Registration.theme', $theme);
 		$this->Session->write('Registration.site', $site);
 		$this->Session->write('Registration.site_id', $site['Sites']['site_id']);

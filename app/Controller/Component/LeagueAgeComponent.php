@@ -54,35 +54,36 @@ class LeagueAgeComponent extends Component {
 
     public function limitAgeBasedOptions($player, $options) {
 	$play = array();
-	$league_age = $this->calculateLeagueAge($row['Players']['birthday']);
+        $row = array();
+	$league_age = $this->calculateLeagueAge($player['birthday']);
 	$useLeagueAge = $this->controller->Session->read('Registration.Settings.leagueage.use_leagueage');
 	$dropdown = array('' => 'Please Select An Option');
 	foreach ($options AS $opts) {
-	    if (Configure::read('Settings.leagueage.use_leagueage') == 'true') {
+	    if ($this->controller->Session->read('Registration.leagueage.use_leagueage') == 'true') {
 		if (!$error) {
-		    $ages = explode(",", $opts['Divisions']['age']);
+		    $ages = explode(",", $opts['DivisionsSaaS']['age']);
 		    if (count($ages) > 0) {
 			if (in_array($league_age, $ages)) {
-			    $row['Players']['registration_options'][$opts['Divisions']['division_id']] = $opts['Divisions']['name'] . ' ($' . $opts['Products']['price'] . ')';
+			    $row['registration_options'][$opts['DivisionsSaaS']['division_id']] = $opts['DivisionsSaaS']['name'] . ' ($' . $opts['ProductsSaaS']['price'] . ')';
 			}
 		    } else {
-			$row['Players']['registration_options'][$opts['Divisions']['division_id']] = $opts['Divisions']['name'] . ' ($' . $opts['Products']['price'] . ')';
+			$row['registration_options'][$opts['DivisionsSaaS']['division_id']] = $opts['DivisionsSaaS']['name'] . ' ($' . $opts['ProductsSaaS']['price'] . ')';
 		    }
 		} else {
-		    if (Configure::read('Settings.leagueage.allow_on_error') == 'true') {
-			$row['Players']['registration_options'][$opts['Divisions']['division_id']] = $opts['Divisions']['name'] . ' ($' . $opts['Products']['price'] . ')';
+		    if ($this->controller->Session->read('Registration.leagueage.allow_on_error') == 'true') {
+			$row['registration_options'][$opts['Divisions']['division_id']] = $opts['DivisionsSaaS']['name'] . ' ($' . $opts['ProductsSaaS']['price'] . ')';
 		    } else {
-			$row['Players']['registration_options'][NULL] = 'Unable To Calulate Age';
+			$row['registration_options'][NULL] = 'Unable To Calulate Age';
 		    }
 		}
 	    } else {
-		$row['Players']['registration_options'][$opts['Divisions']['division_id']] = $opts['Divisions']['name'] . ' ($' . $opts['Products']['price'] . ')';
+		$row['Players']['registration_options'][$opts['DivisionsSaaS']['division_id']] = $opts['DivisionsSaaS']['name'] . ' ($' . $opts['ProductsSaaS']['price'] . ')';
 	    }
 	}
-	if (count($row['Players']['registration_options']) == 0) {
-	    $row['Players']['registration_options'][NULL] = 'No Available Registrations';
+	if (count($row['registration_options']) == 0) {
+	    $row['registration_options'][NULL] = 'No Available Registrations';
 	}
-	$play[] = $row;
+	$this->controller->Session->write('Registration.Players.'.$player['player_id'].'.registration_options', $row);
 
 
 	return $play;

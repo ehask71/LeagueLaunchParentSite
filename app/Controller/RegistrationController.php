@@ -136,7 +136,7 @@ class RegistrationController extends AppController {
         if ($this->request->is('post')) {
             if (count($this->request->data['Players']) > 0) {
                 foreach ($this->request->data['Players'] AS $k => $v) {
-                    
+                    $this->Session->write($name)
                 }
             }
         }

@@ -20,7 +20,7 @@ class ProductsSaaS extends AppModel {
     }
 
     public function getProductsByDivision($div, $season = FALSE) {
-        return $this->query('SELECT ProductsSaaS . * 
+        return $this->query('SELECT Products . * 
                         FROM  `products` AS Products
                         INNER JOIN products_to_divisions AS ProductsToDivisions ON Products.id = ProductsToDivisions.product_id
                         WHERE ProductsToDivisions.season_id = '.$season.'

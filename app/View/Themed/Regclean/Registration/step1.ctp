@@ -79,7 +79,7 @@ if (count($seasons) > 0) {
     </div>
 </div>
 <?php
-if ($this->Session->read('Debug')) {
+//if ($this->Session->read('Debug')) {
     ?>
     <div class="row">
         <div class="span12">
@@ -91,4 +91,4 @@ if ($this->Session->read('Debug')) {
         </div>
     </div>
 <?
-}?>
+//}?>

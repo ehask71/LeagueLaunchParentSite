@@ -88,7 +88,7 @@ class LeagueAgeComponent extends Component {
 	    $row[NULL] = 'No Available Registrations';
 	}
 	$this->controller->Session->write('Registration.Players.'.$player['player_id'].'.registration_options', $row);
-
+        $this->controller->Session->write('Registration.Players.'.$player['player_id'].'.league_age',$league_age);
 	return $row;
     }
 

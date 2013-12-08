@@ -14,6 +14,7 @@ class RegistrationController extends AppController {
     public $components = array(
         'Session',
         'LeagueAge',
+        'Saascart',
         'Auth' => array(
             'authorize' => array('Tiny' => array('aclModel' => 'RoleSaaS')),
             'authenticate' => array(
@@ -136,11 +137,19 @@ class RegistrationController extends AppController {
         if ($this->request->is('post')) {
             if (count($this->request->data['Players']) > 0) {
                 foreach ($this->request->data['Players'] AS $k => $v) {
-                    $this->Session->write($name)
+                    $product = $this->Products->getProductsByDivision($v, $this->Session->read('Registration.Players.' . $k . '.season_id'));
+                    $this->Saascart->add($product[0]['Products']['id'],1,$k);
                 }
+                $this->redirect(array('action'=>'step3'));
+            } else {
+                $this->Session->setFlash(__('Oops! You have no Divisions selected or Eligable players'), 'alert', array(
+                    'plugin' => 'BoostCake',
+                    'class' => 'alert-info'
+                ));
+                //$this->redirect('/registration/step2');
             }
         }
-
+        $this->Saascart->clear();
         // Match Players with their League Assoc Products and provide a dropdown
         // Here we allow the User to pick the league the player(s) will be playing
         // in and how much they will pay 

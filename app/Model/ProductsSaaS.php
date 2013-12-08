@@ -5,7 +5,7 @@
  * @author Eric
  */
 App::uses('AppModel', 'Model');
-
+App::import('Model', 'CakeSession');
 class ProductsSaaS extends AppModel {
     
     public $useDbConfig = 'SaaS';
@@ -27,14 +27,15 @@ class ProductsSaaS extends AppModel {
                         AND ProductsToDivisions.division_id = '.$div);
     }
 
-    public function getUpsells() {
+    public function getUpsells($season_id) {
         $opts = array();
         $products = $this->find('all', array(
-            'order' => 'Products.id DESC',
+            'order' => 'ProductsSaaS.id DESC',
             'conditions' => array(
-                'Products.site_id' => Configure::read('Settings.site_id'),
-                'Products.active' => 1,
-                'Products.category_id' => 2
+                'ProductsSaaS.site_id' => CakeSession::read('Registration.site_id'),
+                'ProductsSaaS.active' => 1,
+                'ProductsSaaS.category_id' => 2,
+                'ProductsSaaS.season_id' => $season_id
                 )));
         if (count($products) > 0) {
             foreach ($products AS $prod) {

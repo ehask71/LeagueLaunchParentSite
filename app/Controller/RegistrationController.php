@@ -137,7 +137,10 @@ class RegistrationController extends AppController {
         if ($this->request->is('post')) {
             if (count($this->request->data['Players']) > 0) {
                 foreach ($this->request->data['Players'] AS $k => $v) {
+                    $opts = $this->Session->read('Registration.Players.'.$k.'.registration_options');
                     $this->Saascart->add($v, 1, $k, $this->Session->read('Registration.Players.'.$k.'.season_id'));
+                    $this->Session->write('Registration.Players.'.$k.'.division_id',$v);
+                    $this->Session->write('Registration.Players.'.$k.'.division_name',$opts[$v]);
                 }
                 $this->redirect(array('action'=>'step3'));
             } else {

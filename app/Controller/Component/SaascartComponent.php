@@ -61,8 +61,8 @@ class SaascartComponent extends Component {
                 )
             ));
 
-            $name = $product['DivisionSaaS']['name'];
-            $price = $product['DivisionSaaS']['price'];
+            $name = $product['DivisionsSaaS']['name'];
+            $price = $product['DivisionsSaaS']['price'];
         } else {
             $product = $this->controller->SeasonSaaS->find('first', array(
                 'recursive' => -1,

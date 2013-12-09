@@ -10,7 +10,7 @@
  * CakePHP Saascart
  * @author EricMain
  */
-class Saascart extends Component {
+class SaascartComponent extends Component {
 
     //////////////////////////////////////////////////
 

@@ -9,7 +9,7 @@ App::uses('AppController', 'Controller');
 class RegistrationController extends AppController {
 
     public $name = 'Registration';
-    public $uses = array('Sites', 'RoleSaaS', 'AccountSaaS', 'PlayersSaaS', 'SeasonSaaS', 'PlayersToSeasonsSaaS', 'DivisionsSaaS','ProductsSaaS');
+    public $uses = array('Sites', 'RoleSaaS', 'AccountSaaS', 'PlayersSaaS', 'SeasonSaaS', 'PlayersToSeasonsSaaS', 'DivisionsSaaS', 'ProductsSaaS');
     public $helpers = array('Session');
     public $components = array(
         'Session',
@@ -137,12 +137,12 @@ class RegistrationController extends AppController {
         if ($this->request->is('post')) {
             if (count($this->request->data['Players']) > 0) {
                 foreach ($this->request->data['Players'] AS $k => $v) {
-                    $opts = $this->Session->read('Registration.Players.'.$k.'.registration_options');
-                    $this->Saascart->add($v, 1, $k, $this->Session->read('Registration.Players.'.$k.'.season_id'));
-                    $this->Session->write('Registration.Players.'.$k.'.division_id',$v);
-                    $this->Session->write('Registration.Players.'.$k.'.division_name',$opts[$v]);
+                    $opts = $this->Session->read('Registration.Players.' . $k . '.registration_options');
+                    $this->Saascart->add($v, 1, $k, $this->Session->read('Registration.Players.' . $k . '.season_id'));
+                    $this->Session->write('Registration.Players.' . $k . '.division_id', $v);
+                    $this->Session->write('Registration.Players.' . $k . '.division_name', $opts[$v]);
                 }
-                $this->redirect(array('action'=>'step3'));
+                $this->redirect(array('action' => 'step3'));
             } else {
                 $this->Session->setFlash(__('Oops! You have no Divisions selected or Eligable players'), 'alert', array(
                     'plugin' => 'BoostCake',
@@ -158,7 +158,7 @@ class RegistrationController extends AppController {
         foreach ($players AS $play) {
             $registration_options = $this->DivisionsSaaS->getParentDivisionsProduct($this->Session->read('Registration.site_id'), $play['season_id']);
             $prepared_data = $this->LeagueAge->limitAgeBasedOptions($play, $registration_options);
-            $players[$play['player_id']] = array_merge($play,$prepared_data);
+            $players[$play['player_id']] = array_merge($play, $prepared_data);
         }
 
         $this->set(compact('players'));
@@ -168,19 +168,23 @@ class RegistrationController extends AppController {
         $players = $this->Session->read('Registration.Players');
         $products = array();
         // Upsells and additional products
-        if($this->request->is('post')){
-            
+        if ($this->request->is('post')) {
+            foreach ($this->request->data['Upsell'] AS $k => $v) {
+                if ($v == 'yes') {
+                    $this->Cart->add($k, 1);
+                }
+            }
         }
         $hasUpsell = false;
         foreach ($players AS $play) {
             $upsell = $this->SeasonSaaS->getAddons($play['season_id']);
-            if($upsell){
+            if ($upsell) {
                 $players[$play['player_id']]['addons'] = $upsell;
                 $hasUpsell = true;
             }
         }
-        if(!$hasUpsell){
-            $this->redirect(array('action'=>'step4'));
+        if (!$hasUpsell) {
+            $this->redirect(array('action' => 'step4'));
         }
         $this->set(compact('players'));
     }

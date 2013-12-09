@@ -156,6 +156,7 @@ class RegistrationController extends AppController {
         foreach ($players AS $play) {
             $registration_options = $this->DivisionsSaaS->getParentDivisionsProduct($this->Session->read('Registration.site_id'), $play['season_id']);
             $prepared_data = $this->LeagueAge->limitAgeBasedOptions($play, $registration_options);
+            $players[$play['player_id']] = array_merge($play,$prepared_data);
         }
 
         $this->set(compact('players'));

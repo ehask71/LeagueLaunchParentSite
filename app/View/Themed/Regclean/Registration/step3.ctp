@@ -43,7 +43,7 @@
             $shop = $this->Session->read('Shop');
             if(is_array($shop['OrderItem'])){
                 foreach ($shop['OrderItem'] AS $k => $v){
-                    echo '<li>'.$v['name'].'</li>';
+                    echo '<li>'.$v['name'].'-'.$players[$v['player_id']]['name'].'</li>';
                 }
             }
             ?>

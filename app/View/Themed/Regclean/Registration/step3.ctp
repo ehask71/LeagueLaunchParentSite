@@ -4,7 +4,7 @@
         <div class="box-content">
             <?php
             $seloption = array('no'=>'No','yes'=>'Yes');
-            echo '<p>' . __('Select the Registration Option for each player. If a Player is not being registered leave them with "Please Select An Option"') . '</p>';
+            echo '<p>' . __('Here are some Addons to your registration. If you are not interested in purchasing Addons please leave the dropdown set to "No"') . '</p>';
             echo $this->Form->create(FALSE, array(
 		'inputDefaults' => array(
 		    'div' => 'control-group',

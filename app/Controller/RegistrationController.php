@@ -172,7 +172,7 @@ class RegistrationController extends AppController {
         foreach ($players AS $play) {
             $upsell = $this->SeasonSaaS->getAddons($play['season_id']);
             if($upsell){
-                $players[$play['player_id']]['upsell'] = $upsell;
+                $players[$play['player_id']]['addons'] = $upsell;
                 $hasUpsell = true;
             }
         }

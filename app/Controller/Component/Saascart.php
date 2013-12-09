@@ -38,11 +38,9 @@ class Saascart extends Component {
 
 //////////////////////////////////////////////////
 
-    public function add($id, $quantity = 1, $player = FALSE, $season = FALSE) {
+    public function add($id, $type = 1, $player = FALSE, $season = FALSE) {
 
-        if (!is_numeric($quantity)) {
-            $quantity = 1;
-        }
+        $quantity = 1;
 
         $quantity = abs($quantity);
 
@@ -55,23 +53,42 @@ class Saascart extends Component {
             return;
         }
 
-        $product = $this->controller->DivisionsSaaS->find('first', array(
-            'recursive' => -1,
-            'conditions' => array(
-                'DivisionsSaaS.division_id' => $id
-            )
-        ));
+        if ($type == 1) {
+            $product = $this->controller->DivisionsSaaS->find('first', array(
+                'recursive' => -1,
+                'conditions' => array(
+                    'DivisionsSaaS.division_id' => $id
+                )
+            ));
+
+            $name = $product['DivisionSaaS']['name'];
+            $price = $product['DivisionSaaS']['price'];
+        } else {
+            $product = $this->controller->SeasonSaaS->find('first', array(
+                'recursive' => -1,
+                'conditions' => array(
+                    'SeasonSaaS.id' => $season
+                )
+            ));
+            $addons = unserialize($product['SeasonSaaS']['addons']);
+            if(!empty($addons[$id])){
+                $name = $addons[$id]['name'];
+                $price = $addons[$id]['price'];
+            } else {
+                return false;
+            }
+        }
 
         if (empty($product)) {
             return false;
         }
 
-        $data['product_id'] = $id;
-        $data['name'] = $product['DivisionSaaS']['name'];
+        $data['product_id'] = $type;
+        $data['name'] = $name;
         $data['weight'] = 0.00;
-        $data['price'] = $product['DivisionSaaS']['price'];
+        $data['price'] = $price;
         $data['quantity'] = $quantity;
-        $data['subtotal'] = sprintf('%01.2f', $product['DivisionSaaS']['price'] * $quantity);
+        $data['subtotal'] = sprintf('%01.2f', $price * $quantity);
         $data['totalweight'] = sprintf('%01.2f', 0.00 * $quantity);
         $data['player_id'] = ($player) ? $player : 0;
         $data['season_id'] = (int) ($season) ? $season : 0;

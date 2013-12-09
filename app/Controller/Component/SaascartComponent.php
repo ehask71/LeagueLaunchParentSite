@@ -94,7 +94,7 @@ class SaascartComponent extends Component {
         $data['season_id'] = (int) ($season) ? $season : 0;
         
         $orderitems = $this->Session->read('Shop.OrderItem');
-        $next = (count($orderitems)== 0)?0:(count($orderitems)+1);
+        $next = (count($orderitems)== 0)?1:(count($orderitems)+1);
       
         $this->Session->write('Shop.OrderItem.' . $next, $data);
 

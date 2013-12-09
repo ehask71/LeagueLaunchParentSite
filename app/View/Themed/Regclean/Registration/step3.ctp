@@ -50,8 +50,15 @@
             </ul>
         </div>
     </div>
-    <pre>
+</div>
+<div class="row-fluid">
+    <div class="span12 box black">
+        <div class="box-header">debug</div>
+        <div class="box-content">
+            <pre>
                 <?php print_r($players);?>
                 <?php print_r($this->Session->read('Shop'));?>
             </pre>
+        </div>
+    </div>
 </div>

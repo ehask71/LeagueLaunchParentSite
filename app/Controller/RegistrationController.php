@@ -137,8 +137,7 @@ class RegistrationController extends AppController {
         if ($this->request->is('post')) {
             if (count($this->request->data['Players']) > 0) {
                 foreach ($this->request->data['Players'] AS $k => $v) {
-                    $product = $this->Products->getProductsByDivision($v, $this->Session->read('Registration.Players.' . $k . '.season_id'));
-                    $this->Saascart->add($product[0]['Products']['id'],1,$k);
+                    $this->Saascart->add($v, 1, $k, $this->Session->read('Registration.Players.'.$k.'.season_id'));
                 }
                 $this->redirect(array('action'=>'step3'));
             } else {

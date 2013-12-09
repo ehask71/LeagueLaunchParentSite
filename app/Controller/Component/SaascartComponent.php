@@ -93,7 +93,7 @@ class SaascartComponent extends Component {
         $data['player_id'] = ($player) ? $player : 0;
         $data['season_id'] = (int) ($season) ? $season : 0;
 
-        $this->Session->write('Shop.OrderItem.' . $player, $data);
+        $this->Session->write('Shop.OrderItem.' . $player.'_'.$type, $data);
 
         $this->Session->write('Shop.Order.shop', 1);
 

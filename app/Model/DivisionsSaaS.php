@@ -79,6 +79,20 @@ class DivisionsSaaS extends AppModel {
         } */
         return $opts;
     }
-
+    
+    public function getParentDivisionsProduct($site_id,$season_id){
+        
+        $rtn = array();
+        $opts = $this->find('all',array(
+            'conditions' => array(
+                'DivisionsSaaS.active'=>1,
+                'DivisionsSaaS.site_id' => $site_id,
+                'DivisionsSaaS.season_id' => $season_id
+              ),
+            'fields'=>array('DivisionsSaaS.*')
+        ));
+        
+        return $opts;
+    }
 }
 

@@ -169,9 +169,10 @@ class RegistrationController extends AppController {
         $products = array();
         // Upsells and additional products
         if ($this->request->is('post')) {
-            foreach ($this->request->data['Upsell'] AS $k => $v) {
+            foreach ($this->request->data['Addon'] AS $k => $v) {
+                $vars = explode("_", $k);
                 if ($v == 'yes') {
-                    $this->Cart->add($k, 1);
+                    $this->Cart->add($vars[1], 2,$vars[0],$this->Session->read('Registration.Players.' . $vars[0] . '.season_id'));
                 }
             }
         }

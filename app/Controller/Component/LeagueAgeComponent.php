@@ -68,20 +68,20 @@ class LeagueAgeComponent extends Component {
 		    $ages = explode(",", $opts['DivisionsSaaS']['age']);
 		    if (count($ages) > 0) {
 			if (in_array($league_age, $ages)) {
-			    $row[$opts['DivisionsSaaS']['division_id']] = $opts['DivisionsSaaS']['name'] . ' ($' . $opts['ProductsSaaS']['price'] . ')';
+			    $row[$opts['DivisionsSaaS']['division_id']] = $opts['DivisionsSaaS']['name'] . ' ($' . $opts['DivisionsSaaS']['price'] . ')';
 			}
 		    } else {
-			$row[$opts['DivisionsSaaS']['division_id']] = $opts['DivisionsSaaS']['name'] . ' ($' . $opts['ProductsSaaS']['price'] . ')';
+			$row[$opts['DivisionsSaaS']['division_id']] = $opts['DivisionsSaaS']['name'] . ' ($' . $opts['DivisionsSaaS']['price'] . ')';
 		    }
 		} else {
 		    if ($this->controller->Session->read('Registration.leagueage.allow_on_error') == 'true') {
-			$row[$opts['Divisions']['division_id']] = $opts['DivisionsSaaS']['name'] . ' ($' . $opts['ProductsSaaS']['price'] . ')';
+			$row[$opts['Divisions']['division_id']] = $opts['DivisionsSaaS']['name'] . ' ($' . $opts['DivisionsSaaS']['price'] . ')';
 		    } else {
 			$row[NULL] = 'Unable To Calulate Age';
 		    }
 		}
 	    } else {
-		$row[$opts['DivisionsSaaS']['division_id']] = $opts['DivisionsSaaS']['name'] . ' ($' . $opts['ProductsSaaS']['price'] . ')';
+		$row[$opts['DivisionsSaaS']['division_id']] = $opts['DivisionsSaaS']['name'] . ' ($' . $opts['DivisionsSaaS']['price'] . ')';
 	    }
 	}
 	if (count($row) == 0) {

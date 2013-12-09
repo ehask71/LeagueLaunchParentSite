@@ -9,7 +9,7 @@ App::uses('AppController', 'Controller');
 class RegistrationController extends AppController {
 
     public $name = 'Registration';
-    public $uses = array('Sites', 'RoleSaaS', 'AccountSaaS', 'PlayersSaaS', 'SeasonSaaS', 'PlayersToSeasonsSaaS', 'DivisionsSaaS');
+    public $uses = array('Sites', 'RoleSaaS', 'AccountSaaS', 'PlayersSaaS', 'SeasonSaaS', 'PlayersToSeasonsSaaS', 'DivisionsSaaS','ProductsSaaS');
     public $helpers = array('Session');
     public $components = array(
         'Session',
@@ -154,7 +154,7 @@ class RegistrationController extends AppController {
         // Here we allow the User to pick the league the player(s) will be playing
         // in and how much they will pay 
         foreach ($players AS $play) {
-            $registration_options = $this->DivisionsSaaS->getParentDivisionsWproduct($this->Session->read('Registration.site_id'), $play['season_id']);
+            $registration_options = $this->DivisionsSaaS->getParentDivisionsProduct($this->Session->read('Registration.site_id'), $play['season_id']);
             $prepared_data = $this->LeagueAge->limitAgeBasedOptions($play, $registration_options);
         }
 
@@ -162,11 +162,28 @@ class RegistrationController extends AppController {
     }
 
     public function step3() {
-        
+        $players = $this->Session->read('Registration.Players');
+        $products = array();
+        // Upsells and additional products
+        if($this->request->is('post')){
+            
+        }
+        $hasUpsell = false;
+        foreach ($players AS $play) {
+            $upsell = $this->SeasonSaaS->getAddons($play['season_id']);
+            if($upsell){
+                $players[$play['player_id']]['upsell'] = $upsell;
+                $hasUpsell = true;
+            }
+        }
+        if(!$hasUpsell){
+            $this->redirect(array('action'=>'step4'));
+        }
+        $this->set(compact('players'));
     }
 
     public function step4() {
-        
+        // User Details
     }
 
     public function step5() {

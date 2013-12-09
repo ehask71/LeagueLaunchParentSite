@@ -17,12 +17,15 @@
 		'class' => 'form-horizontal'
 	    ));
             foreach ($players as $key => $value) {
+                echo '<fieldset>';
+                echo '<legend>'.$value['name'].'</legend>';
                 foreach($value['addons'] AS $k=>$v){
                     echo $this->Form->input('Addon.' . $value['player_id'].'_'.$k, array(
                         'label' => array('text' => $v['name'].' $'.sprintf('%01.2f', $v['price']),'class'=>'control-label'), 
                         'type' => 'select', 'options' => $seloption,
                         'after' => '<span class="help-block">'.$v['description'].'</span>'));
                 }
+                echo '</fieldset>';
             }
             echo $this->Form->submit('Proceed To Next Step', array('class' => 'btn btn-primary'));
             echo $this->Form->end();

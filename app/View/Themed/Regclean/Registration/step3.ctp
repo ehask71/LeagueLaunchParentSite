@@ -51,7 +51,7 @@
         </div>
     </div>
 </div>
-<div class="row-fluid">
+<div class="row">
     <div class="span12 box black">
         <div class="box-header">debug</div>
         <div class="box-content">

@@ -86,7 +86,7 @@ class SaascartComponent extends Component {
         $data['product_id'] = $type;
         $data['name'] = $name;
         $data['weight'] = 0.00;
-        $data['price'] = $price;
+        $data['price'] = sprintf('%01.2f',$price);
         $data['quantity'] = $quantity;
         $data['subtotal'] = sprintf('%01.2f', $price * $quantity);
         $data['totalweight'] = sprintf('%01.2f', 0.00 * $quantity);

@@ -18,7 +18,7 @@
 	    ));
             foreach ($players as $key => $value) {
                 foreach($value['addons'] AS $k=>$v){
-                    echo $this->Form->input('Addon.' . $v['player_id'].'_'.$k, array(
+                    echo $this->Form->input('Addon.' . $value['player_id'].'_'.$k, array(
                         'label' => array('text' => $v['name'].' $'.sprintf('%01.2f', $v['price']),'class'=>'control-label'), 
                         'type' => 'select', 'options' => $seloption,
                         'after' => '<span class="help-block">'.$v['description'].'</span>'));

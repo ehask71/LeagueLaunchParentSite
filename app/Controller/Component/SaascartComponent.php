@@ -92,8 +92,11 @@ class SaascartComponent extends Component {
         $data['totalweight'] = sprintf('%01.2f', 0.00 * $quantity);
         $data['player_id'] = ($player) ? $player : 0;
         $data['season_id'] = (int) ($season) ? $season : 0;
-
-        $this->Session->write('Shop.OrderItem.' . $player.'_'.$type, $data);
+        
+        $orderitems = $this->Session->read('Shop.OrderItem');
+        $next = (count($orderitems)== 0)?0:(count($orderitems)+1);
+      
+        $this->Session->write('Shop.OrderItem.' . $next, $data);
 
         $this->Session->write('Shop.Order.shop', 1);
 

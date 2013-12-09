@@ -55,10 +55,10 @@ class Saascart extends Component {
             return;
         }
 
-        $product = $this->controller->Products->find('first', array(
+        $product = $this->controller->DivisionsSaaS->find('first', array(
             'recursive' => -1,
             'conditions' => array(
-                'Products.id' => $id
+                'DivisionsSaaS.division_id' => $id
             )
         ));
 
@@ -66,14 +66,13 @@ class Saascart extends Component {
             return false;
         }
 
-        $data['product_id'] = $product['Products']['id'];
-        $data['name'] = $product['Products']['name'];
-        $data['weight'] = $product['Products']['weight'];
-        $data['price'] = $product['Products']['price'];
+        $data['product_id'] = $id;
+        $data['name'] = $product['DivisionSaaS']['name'];
+        $data['weight'] = 0.00;
+        $data['price'] = $product['DivisionSaaS']['price'];
         $data['quantity'] = $quantity;
-        $data['subtotal'] = sprintf('%01.2f', $product['Products']['price'] * $quantity);
-        $data['totalweight'] = sprintf('%01.2f', $product['Products']['weight'] * $quantity);
-        $data['Product'] = $product['Products'];
+        $data['subtotal'] = sprintf('%01.2f', $product['DivisionSaaS']['price'] * $quantity);
+        $data['totalweight'] = sprintf('%01.2f', 0.00 * $quantity);
         $data['player_id'] = ($player) ? $player : 0;
         $data['season_id'] = (int) ($season) ? $season : 0;
 

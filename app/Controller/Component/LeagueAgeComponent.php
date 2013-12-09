@@ -89,7 +89,7 @@ class LeagueAgeComponent extends Component {
 	}
 	$this->controller->Session->write('Registration.Players.'.$player['player_id'].'.registration_options', $row);
         $this->controller->Session->write('Registration.Players.'.$player['player_id'].'.league_age',$league_age);
-	return $row;
+	return array('registration_options'=>$row,'league_age'=>$league_age);
     }
 
     public function date_diff($date1, $date2) {

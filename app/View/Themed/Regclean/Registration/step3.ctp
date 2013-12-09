@@ -1,6 +1,6 @@
 <?php $this->Html->addCrumb('Step 3', '/registration/step3'); ?>
 <div class="row-fluid">
-    <div class="span12 box black">
+    <div class="span6 box black">
         <div class="box-content">
             <?php
             $seloption = array('no'=>'No','yes'=>'Yes');
@@ -30,10 +30,28 @@
             echo $this->Form->submit('Proceed To Next Step', array('class' => 'btn btn-primary'));
             echo $this->Form->end();
             ?>
-            <pre>
+        </div>
+    </div>
+    <?php $shop = $this->Session->read('Shop');?>
+    <div class="span6 box black">
+        <div class="box-header">Cart</div>
+        <div class="box-content">
+            Total: <?php echo sprintf('%01.2f', $shop['Order']['total']);?><br/>
+            <hr>
+            <ul>
+            <?php
+            $shop = $this->Session->read('Shop');
+            if(is_array($shop['OrderItem'])){
+                foreach ($shop['OrderItem'] AS $k => $v){
+                    echo '<li>'.$v['name'].'</li>';
+                }
+            }
+            ?>
+            </ul>
+        </div>
+    </div>
+    <pre>
                 <?php print_r($players);?>
                 <?php print_r($this->Session->read('Shop'));?>
             </pre>
-        </div>
-    </div>
 </div>

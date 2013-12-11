@@ -30,6 +30,9 @@ class EventController extends AppController {
 	$this->Session->write('LLEvent', $evt);
 	$this->set('slug', $slug);
 	$this->theme = $evt['Hostedevent']['theme'];
+	if ($evt['Hostedevent']['products'] != '') {
+	    $this->set('products', unserialize($evt['Hostedevent']['products']));
+	}
     }
 
     public function confirm() {

@@ -33,9 +33,15 @@
 	    <?php
 	    foreach ($products AS $k=>$v){
 		echo '<div class="control-group"><p><strong>'.$v['name'].'</strong></p></div>';
+		$opts = array();
 		foreach($v['prices'] AS $kk => $vv){
-		    echo $this->Form->input('product.'.$k.'.price.'.$kk,array('type'=>'checkbox','label'=>array('text'=>$vv['value'].' '.$vv['name'],)));
+		   $opts[$kk] = $vv['value'].' '.$vv['name'];
 		}
+		echo $this->Form->radio('product.'.$k.'.price.'.$kk,array(
+		'type' => 'radio',
+		'before' => '<label class="control-label">Price</label>',
+		'legend' => false,
+		'options' => $opts));
 	    }
 	    ?>
 	</fieldset>

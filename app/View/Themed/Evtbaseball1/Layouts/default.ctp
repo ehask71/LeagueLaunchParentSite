@@ -50,7 +50,7 @@ the game, and get each individual to another level.
 					</p>
 				</div>
 			</div>	
-			<?php echo $this->element('payment_form');?>
+			<?php echo $this->element('payment_form',array('products'=>@$products));?>
 		</div>
 		<div class="span6" >
 			<div id="sidebar">

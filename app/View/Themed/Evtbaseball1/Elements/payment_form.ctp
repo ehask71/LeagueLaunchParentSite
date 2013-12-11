@@ -39,8 +39,8 @@
 			$opts[$vv['value']] = $vv['value'] . ' ' . $vv['name'];
 		    }
 		    echo $this->Form->input('product.' . $k . '.price', array('type' => 'select', 'label' => array('text' => 'Price', 'class' => 'control-label'), 'options' => $opts));
-		    if (count($vv['addons']) > 0) {
-			foreach ($vv['addons'] AS $key => $var) {
+		    if (count($v['addons']) > 0) {
+			foreach ($v['addons'] AS $key => $var) {
 			    $this->Form->input('product.' . $k . '.addon.'.$key, array(
 				'label' => array('class' => null,'text'=>$var['value'].' '.$var['name']),
 				//'afterInput' => '<span class="help-block">Checkbox Bootstrap Style</span>'

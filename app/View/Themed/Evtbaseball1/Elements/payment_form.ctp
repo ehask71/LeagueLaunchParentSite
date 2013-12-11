@@ -27,6 +27,19 @@
 	echo $this->Form->input('email', array('label' => array('text' => 'Email', 'class' => 'control-label')));
 	?>
 	</fieldset>
+	<?php if(count($products)>0):?>
+	<fieldset>
+	    <legend>Options</legend>
+	    <?php
+	    foreach ($products AS $k=>$v){
+		echo '<div class="control-group"><p><strong>'.$v.'</strong></p></div>';
+		foreach($v['prices'] AS $kk => $vv){
+		    echo $this->Form->checkbox('product.'.$k.'.price_'.$kk,array('label'=>array('text'=>$vv)));
+		}
+	    }
+	    ?>
+	</fieldset>
+	<?php	    endif;?>
 	<fieldset> 
 	    <legend>Payment Details</legend>
 	<?php

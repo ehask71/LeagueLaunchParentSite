@@ -34,13 +34,11 @@
 	    foreach ($products AS $k=>$v){
 		echo '<div class="control-group"><p><strong>'.$v['name'].'</strong></p></div>';
 		$opts = array();
+		$opts[] = 'Select Price';
 		foreach($v['prices'] AS $kk => $vv){
-		   $opts[$kk] = $vv['value'].' '.$vv['name'];
+		   $opts[$vv['value']] = $vv['value'].' '.$vv['name'];
 		}
-		echo $this->Form->input('product.'.$k.'.price.'.$kk,array('type' => 'radio',
-		'before' => '<label class="control-label">Price</label>',
-		'legend' => false,
-		'options' => $opts));
+		echo $this->Form->input('product.'.$k.'.price',array('type' => 'select','label'=>array('text'=>'Price','class'=>'control-label'),'options' => $opts));
 	    }
 	    ?>
 	</fieldset>

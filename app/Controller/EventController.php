@@ -31,11 +31,14 @@ class EventController extends AppController {
             foreach ($this->request->data['product'] AS $k => $v){
                 if($v > 0){
                     $this->Cart->add($k, $v, 'hosted', $this->Session->read('LLEvent.Hostedevent.id'));
+                } else {
+                    $this->Cart->remove($k);
                 }
             }
             $this->autoRender = false;
             
             echo '<pre>';
+            print_r($this->Cart->cart());
             print_r($this->request->data);
         }
         

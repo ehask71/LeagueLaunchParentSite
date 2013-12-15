@@ -11,7 +11,7 @@
  */
 App::uses('Model', 'Model');
 
-class ProductCategoryModel extends Model {
+class ProductCategory extends Model {
     
     public $name = 'ProductCategory';
     public $primaryKey = 'id';

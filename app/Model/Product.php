@@ -6,7 +6,7 @@
  */
 App::uses('Model', 'Model');
 
-class ProductModel extends Model {
+class Product extends Model {
     
     public $name = 'Product';
     public $primaryKey = 'id';

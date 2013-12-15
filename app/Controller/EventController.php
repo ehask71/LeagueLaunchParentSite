@@ -48,7 +48,7 @@ class EventController extends AppController {
                 print_r($this->Session->read('Shop'));
                 print_r($this->request->data);
                 exit();*/
-                $this->redirect(array('/event/'.$slug.'/confirm'));
+                $this->redirect(array('/event/confirm/'.$slug));
             }
         }
         $this->Cart->clear();

@@ -9,7 +9,7 @@ App::uses('AppController', 'Controller');
 class EventController extends AppController {
 
     public $name = 'Event';
-    public $uses = array('Hostedevent');
+    public $uses = array('Hostedevent','Product','ProductCategory');
     public $components = array('Security');
 
     public function beforeFilter() {
@@ -30,6 +30,13 @@ class EventController extends AppController {
 	$this->Session->write('LLEvent', $evt);
 	$this->set('slug', $slug);
 	$this->theme = $evt['Hostedevent']['theme'];
+        
+        $prod = $this->ProductCategory->find('all',array(
+            'conditions'=> array(
+                'ProductCategory.type_id' => $evt['Hostedevent']['id']
+            )
+        ));
+        $this->set('sample',$prod);
 	if ($evt['Hostedevent']['products'] != '') {
 	    $this->set('products', unserialize($evt['Hostedevent']['products']));
 	}

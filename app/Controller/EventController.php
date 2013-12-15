@@ -28,19 +28,14 @@ class EventController extends AppController {
             $this->redirect('/');
         }
         if ($this->request->is('post')) {
-            $i = 0;
             foreach ($this->request->data['product'] AS $k => $v) {
                 if ($v > 0) {
                     $this->Cart->add($k, $v, 'hosted', $this->Session->read('LLEvent.Hostedevent.id'));
-                    $i++;
                 } else {
                     $this->Cart->remove($k);
-                    if ($i != 0) {
-                        $i = $i - 1;
-                    }
                 }
             }
-            if ($i == 0) {
+            if ($this->Session->read('Shop.Order.order_item_count') == 0) {
                 $this->Session->setFlash(__('Please Select A Product Qty!'), 'alert', array(
                     'plugin' => 'BoostCake',
                     'class' => 'alert-error'

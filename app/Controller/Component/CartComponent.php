@@ -87,7 +87,8 @@ class CartComponent extends Component {
 		$cartdata['Cart']['sessionid'] = $this->Session->id();
 		$cartdata['Cart']['quantity'] = $quantity;
 		$cartdata['Cart']['product_id'] = $product['Product']['id'];
-                $cartdata['Cart']['player_id'] = ($player)?$player:0;
+                $cartdata['Cart']['type_id'] = ($type_id)?$type_id:0;
+                $cartdata['Cart']['type'] = $type;
 		$cartdata['Cart']['name'] = $product['Product']['name'];
 		$cartdata['Cart']['weight'] = $product['Product']['weight'];
 		$cartdata['Cart']['weight_total'] = sprintf('%01.2f', $product['Product']['weight'] * $quantity);

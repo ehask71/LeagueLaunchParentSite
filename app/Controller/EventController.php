@@ -35,7 +35,7 @@ class EventController extends AppController {
             } else {*/
                 $this->Session->write('HostedEvent',$this->request->data['Hostedevent']);
                 $this->Session->write('HostedEvent.participants',$this->request->data['participant']);
-                $this->redirect(array('/event/confirm'));
+                $this->redirect('/event/confirm');
             //}
         }
         $evt = $this->Hostedevent->getHostedEventBySlug($slug);

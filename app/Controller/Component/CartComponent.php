@@ -45,10 +45,10 @@ class CartComponent extends Component {
 			return;
 		}
 
-		$product = $this->controller->Products->find('first', array(
+		$product = $this->controller->Product->find('first', array(
 			'recursive' => -1,
 			'conditions' => array(
-				'Products.id' => $id
+				'Product.id' => $id
 			)
 		));
                 

@@ -31,14 +31,15 @@ class EventController extends AppController {
 	$this->set('slug', $slug);
 	$this->theme = $evt['Hostedevent']['theme'];
         
-        $prod = $this->ProductCategory->find('all',array(
+        $products = $this->ProductCategory->find('all',array(
             'conditions'=> array(
                 'ProductCategory.type_id' => $evt['Hostedevent']['id']
             )
         ));
-        $this->set('sample',$prod);
+        //$this->set('sample',$prod);
 	if ($evt['Hostedevent']['products'] != '') {
-	    $this->set('products', unserialize($evt['Hostedevent']['products']));
+	    //$this->set('products', unserialize($evt['Hostedevent']['products']));
+            $this->set('products',  compact('products'));
 	}
     }
 

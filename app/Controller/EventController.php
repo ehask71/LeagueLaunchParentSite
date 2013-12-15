@@ -19,14 +19,6 @@ class EventController extends AppController {
     }
 
     public function index($slug = null) {
-        $evt = $this->Hostedevent->getHostedEventBySlug($slug);
-        if ($slug == null || count($evt) < 1) {
-            $this->Session->setFlash(__('We Were Unable To Locate That Event'), 'alert', array(
-                'plugin' => 'BoostCake',
-                'class' => 'alert-error'
-            ));
-            $this->redirect('/');
-        }
         if ($this->request->is('post')) {
             foreach ($this->request->data['product'] AS $k => $v) {
                 if ($v > 0) {
@@ -35,23 +27,32 @@ class EventController extends AppController {
                     $this->Cart->remove($k);
                 }
             }
-            /*if ($this->Session->read('Shop.Order.order_item_count') == 0) {
-                $this->Session->setFlash(__('Please Select A Product Qty!'), 'alert', array(
+            /* if ($this->Session->read('Shop.Order.order_item_count') == 0) {
+              $this->Session->setFlash(__('Please Select A Product Qty!'), 'alert', array(
+              'plugin' => 'BoostCake',
+              'class' => 'alert-error'
+              ));
+              } else { */
+            $this->Session->write('HostedEvent', $this->request->data['Hostedevent']);
+            $this->Session->write('HostedEvent.participants', $this->request->data['participant']);
+            $this->redirect('/event/confirm');
+            //}
+        } else {
+            $evt = $this->Hostedevent->getHostedEventBySlug($slug);
+            if ($slug == null || count($evt) < 1) {
+                $this->Session->setFlash(__('We Were Unable To Locate That Event'), 'alert', array(
                     'plugin' => 'BoostCake',
                     'class' => 'alert-error'
                 ));
-            } else {*/
-                $this->Session->write('HostedEvent',$this->request->data['Hostedevent']);
-                $this->Session->write('HostedEvent.participants',$this->request->data['participant']);
-                $this->redirect('/event/confirm');
-            //}
+                $this->redirect('/');
+            }
         }
-        
+
         $this->Cart->clear();
         $this->Session->write('LLEvent', $evt);
         $this->set('slug', $slug);
         $this->theme = $evt['Hostedevent']['theme'];
-        if($this->Session->check('HostedEvent')){
+        if ($this->Session->check('HostedEvent')) {
             $this->request->data = $this->Session->read('HostedEvent');
         }
 
@@ -79,13 +80,13 @@ class EventController extends AppController {
         echo '<pre>';
         print_r($this->Session->read());
         echo '<pre>';
-        if($this->request->is('post')){
+        if ($this->request->is('post')) {
             
         }
         $this->theme = $this->Session->read('LLEvent.theme');
-        
-        $this->set('event',$this->Session->read('Hostedevent'));
-        $this->set('cart',$this->Session->read('Shop'));
+
+        $this->set('event', $this->Session->read('Hostedevent'));
+        $this->set('cart', $this->Session->read('Shop'));
     }
 
 }

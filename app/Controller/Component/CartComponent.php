@@ -66,15 +66,15 @@ class CartComponent extends Component {
 			return false;
 		}
 
-		$data['product_id'] = $product['Products']['id'];
-		$data['name'] = $product['Products']['name'];
-		$data['weight'] = $product['Products']['weight'];
-		$data['price'] = $product['Products']['price'];
+		$data['product_id'] = $product['Product']['id'];
+		$data['name'] = $product['Product']['name'];
+		$data['weight'] = $product['Product']['weight'];
+		$data['price'] = $product['Product']['price'];
 		$data['quantity'] = $quantity;
-		$data['subtotal'] = sprintf('%01.2f', $product['Products']['price'] * $quantity);
-		$data['totalweight'] = sprintf('%01.2f', $product['Products']['weight'] * $quantity);
-		$data['Product'] = $product['Products'];
-                $data['type_id'] = ($player)?$type_id:0;
+		$data['subtotal'] = sprintf('%01.2f', $product['Product']['price'] * $quantity);
+		$data['totalweight'] = sprintf('%01.2f', $product['Product']['weight'] * $quantity);
+		$data['Product'] = $product['Product'];
+                $data['type_id'] = ($type_id)?$type_id:0;
                 $data['type'] = $type;
 
 
@@ -86,20 +86,20 @@ class CartComponent extends Component {
 
 		$cartdata['Cart']['sessionid'] = $this->Session->id();
 		$cartdata['Cart']['quantity'] = $quantity;
-		$cartdata['Cart']['product_id'] = $product['Products']['id'];
+		$cartdata['Cart']['product_id'] = $product['Product']['id'];
                 $cartdata['Cart']['player_id'] = ($player)?$player:0;
-		$cartdata['Cart']['name'] = $product['Products']['name'];
-		$cartdata['Cart']['weight'] = $product['Products']['weight'];
-		$cartdata['Cart']['weight_total'] = sprintf('%01.2f', $product['Products']['weight'] * $quantity);
-		$cartdata['Cart']['price'] = $product['Products']['price'];
+		$cartdata['Cart']['name'] = $product['Product']['name'];
+		$cartdata['Cart']['weight'] = $product['Product']['weight'];
+		$cartdata['Cart']['weight_total'] = sprintf('%01.2f', $product['Product']['weight'] * $quantity);
+		$cartdata['Cart']['price'] = $product['Product']['price'];
                 
-		$cartdata['Cart']['subtotal'] = sprintf('%01.2f', $product['Products']['price'] * $quantity);
+		$cartdata['Cart']['subtotal'] = sprintf('%01.2f', $product['Product']['price'] * $quantity);
 
 		$existing = $this->Cart->find('first', array(
 			'recursive' => -1,
 			'conditions' => array(
 				'Cart.sessionid' => $this->Session->id(),
-				'Cart.product_id' => $product['Products']['id'],
+				'Cart.product_id' => $product['Product']['id'],
 			)
 		));
 		if($existing) {

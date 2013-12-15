@@ -27,14 +27,19 @@
 	    echo $this->Form->input('email', array('label' => array('text' => 'Email', 'class' => 'control-label')));
 	    ?>
 	</fieldset>
-	<?php if (count($products) > 0): ?>
+	<?php if (count($products) > 0): 
+            $qty = array();
+            for($i=0;$i<11;$i++){
+                $qty[$i] = $i;
+            }
+            ?>
     	<fieldset>
     	    <legend>Options</legend>
 		<?php
 		foreach ($products['products'] AS $cat) {
 		    echo '<div class="control-group"><p><strong>' . $cat['ProductCategory']['name'] . '</strong></p></div>';
 		    foreach ($cat['Product'] AS $product) {
-			echo $this->Form->input('product.'.$product['id'],array('length'=>2,'value'=>0,'label'=>array('text'=>$product['name'].' $'.$product['price'], 'class' => 'control-label')));
+			echo $this->Form->input('product.'.$product['id'],array('options'=>$i,'label'=>array('text'=>$product['name'].' $'.$product['price'], 'class' => 'control-label')));
 		    }
 		}
 		?>

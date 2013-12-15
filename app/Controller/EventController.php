@@ -38,7 +38,7 @@ class EventController extends AppController {
             $this->autoRender = false;
             
             echo '<pre>';
-            print_r($this->Cart->cart());
+            print_r($this->Session->read('Shop'));
             print_r($this->request->data);
             exit();
         }

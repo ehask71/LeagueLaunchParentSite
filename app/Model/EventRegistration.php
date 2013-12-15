@@ -11,15 +11,10 @@ class EventRegistrationModel extends Model {
     public $name = 'EventRegistration';
     public $primaryKey = 'id';
     public $validate = array(
-            'firstname' => array(
+            'name' => array(
                 'mustNotEmpty' => array(
                     'rule' => 'notEmpty',
-                    'message' => 'Please enter your First Name')
-            ),
-            'lastname' => array(
-                'mustNotEmpty' => array(
-                    'rule' => 'notEmpty',
-                    'message' => 'Please enter your Last Name')
+                    'message' => 'Please enter your Name')
             ),
             'address' => array(
                 'mustNotEmpty' => array(

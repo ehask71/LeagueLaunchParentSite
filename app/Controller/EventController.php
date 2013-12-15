@@ -40,8 +40,9 @@ class EventController extends AppController {
             echo '<pre>';
             print_r($this->Cart->cart());
             print_r($this->request->data);
+            exit();
         }
-        
+        $this->Cart->clear();
 	$this->Session->write('LLEvent', $evt);
 	$this->set('slug', $slug);
 	$this->theme = $evt['Hostedevent']['theme'];

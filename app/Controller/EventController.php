@@ -48,6 +48,7 @@ class EventController extends AppController {
             } else {
                 $this->autoRender = false;
                 $this->Session->write('HostedEvent',$this->request->data['Hostedevent']);
+                $this->Session->write('HostedEvent.participants',$this->request->data['participant']);
                 /*echo '<pre>';
                 print_r($this->Session->read('Shop'));
                 print_r($this->request->data);
@@ -84,7 +85,7 @@ class EventController extends AppController {
             
         }
         
-        $this->set('purchaser',$this->Session->read('Hostedevent'));
+        $this->set('event',$this->Session->read('Hostedevent'));
         $this->set('cart',$this->Session->read('Shop'));
     }
 

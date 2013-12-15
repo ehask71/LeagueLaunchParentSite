@@ -31,7 +31,7 @@
     	<fieldset>
     	    <legend>Options</legend>
 		<?php
-		foreach ($products AS $cat) {
+		foreach ($products['products'] AS $cat) {
                     echo '<pre>';
                     print_r($cat);
                     echo '</pre>';

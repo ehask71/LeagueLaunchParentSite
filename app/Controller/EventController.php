@@ -33,7 +33,6 @@ class EventController extends AppController {
                     'class' => 'alert-error'
                 ));
             } else {
-                $this->autoRender = false;
                 $this->Session->write('HostedEvent',$this->request->data['Hostedevent']);
                 $this->Session->write('HostedEvent.participants',$this->request->data['participant']);
                 $this->redirect(array('/event/confirm'));

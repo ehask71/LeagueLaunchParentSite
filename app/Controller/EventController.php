@@ -44,10 +44,6 @@ class EventController extends AppController {
                 $this->autoRender = false;
                 $this->Session->write('HostedEvent',$this->request->data['Hostedevent']);
                 $this->Session->write('HostedEvent.participants',$this->request->data['participant']);
-                /*echo '<pre>';
-                print_r($this->Session->read('Shop'));
-                print_r($this->request->data);
-                exit();*/
                 $this->redirect(array('/event/confirm/'.$slug));
             }
         }

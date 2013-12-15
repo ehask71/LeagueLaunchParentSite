@@ -88,5 +88,8 @@ help the next generation get where they are now.
     echo $this->Html->script('//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js');
     echo $this->Html->script('bootstrap');
 ?>
+    <pre>
+        <?php print_r($sample);?>
+    </pre>
 </body>
 </html>

@@ -19,14 +19,6 @@ class EventController extends AppController {
     }
 
     public function index($slug = null) {
-        $evt = $this->Hostedevent->getHostedEventBySlug($slug);
-        if ($slug == null || count($evt) < 1) {
-            $this->Session->setFlash(__('We Were Unable To Locate That Event'), 'alert', array(
-                'plugin' => 'BoostCake',
-                'class' => 'alert-error'
-            ));
-            $this->redirect('/');
-        }
         if ($this->request->is('post')) {
             foreach ($this->request->data['product'] AS $k => $v) {
                 if ($v > 0) {
@@ -46,6 +38,14 @@ class EventController extends AppController {
                 $this->Session->write('HostedEvent.participants',$this->request->data['participant']);
                 $this->redirect(array('/event/confirm/'.$slug));
             }
+        }
+        $evt = $this->Hostedevent->getHostedEventBySlug($slug);
+        if ($slug == null || count($evt) < 1) {
+            $this->Session->setFlash(__('We Were Unable To Locate That Event'), 'alert', array(
+                'plugin' => 'BoostCake',
+                'class' => 'alert-error'
+            ));
+            $this->redirect('/');
         }
         $this->Cart->clear();
         $this->Session->write('LLEvent', $evt);

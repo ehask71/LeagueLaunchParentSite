@@ -14,6 +14,7 @@
 	?>
 	<fieldset>
 	    <legend>Register</legend>
+            <p>Please enter the Purchaser's info and Credit Card Billing Address</p>
 	    <?php
 	    echo $this->Form->input('firstname', array('label' => array('text' => 'Firstname', 'class' => 'control-label')));
 	    echo $this->Form->input('lastname', array('label' => array('text' => 'Lastname', 'class' => 'control-label')));
@@ -45,6 +46,12 @@
 		?>
     	</fieldset>
 	<?php endif; ?>
+        <fieldset>
+            <legend>Participant(s) Names</legend>
+            <?php for($i=1;$i<6;$i++){
+               echo $this->Form->input('participant.'.$i, array('label' => array('text' => 'Participant '.$i, 'class' => 'control-label')));  
+            }?>
+        </fieldset>
 	<fieldset> 
 	    <legend>Payment Details</legend>
 	    <?php

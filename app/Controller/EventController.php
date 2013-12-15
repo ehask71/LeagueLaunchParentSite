@@ -73,13 +73,19 @@ class EventController extends AppController {
     }
 
     public function confirm() {
-        if (!$this->Session->check('LLEvent')) {
+        if (!$this->Session->check('LLEvent') && !$this->Session->check('Shop') && !$this->Session->check('Hostedevent')) {
             $this->Session->setFlash(__('We Were Unable To Locate That Event'), 'alert', array(
                 'plugin' => 'BoostCake',
                 'class' => 'alert-error'
             ));
             $this->redirect('/');
         }
+        if($this->request->is('post')){
+            
+        }
+        
+        $this->set('purchaser',$this->Session->read('Hostedevent'));
+        $this->set('cart',$this->Session->read('Shop'));
     }
 
 }

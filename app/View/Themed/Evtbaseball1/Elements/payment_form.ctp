@@ -32,11 +32,8 @@
     	    <legend>Options</legend>
 		<?php
 		foreach ($products['products'] AS $cat) {
-                    echo '<pre>';
-                    print_r($cat);
-                    echo '</pre>';
 		    echo '<div class="control-group"><p><strong>' . $cat['ProductCategory']['name'] . '</strong></p></div>';
-		    foreach ($cat['Products'] AS $product) {
+		    foreach ($cat['Product'] AS $product) {
 			$this->Form->input('product.'.$product['Product']['id'],array('type'=>'input','length'=>2,'value'=>0,'label'=>array('text'=>$product['Product']['name'].' $'.$product['Product']['price'], 'class' => 'control-label')));
 		    }
 		}

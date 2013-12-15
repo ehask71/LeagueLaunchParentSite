@@ -76,15 +76,15 @@ class EventController extends AppController {
             ));
             $this->redirect('/');
         }
-        echo '<pre>';
+        /*echo '<pre>';
         print_r($this->Session->read());
-        echo '<pre>';
+        echo '<pre>';*/
         if ($this->request->is('post')) {
             
         }
         $this->theme = $this->Session->read('LLEvent.Hostedevent.theme');
         $this->set('slug', $slug);
-        $this->set('event', $this->Session->read('Hostedevent'));
+        $this->set('event', $this->Session->read('HostedEvent'));
         $this->set('cart', $this->Session->read('Shop'));
     }
 

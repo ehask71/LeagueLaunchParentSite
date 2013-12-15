@@ -10,7 +10,7 @@ class EventController extends AppController {
 
     public $name = 'Event';
     public $uses = array('Hostedevent','Product','ProductCategory');
-    public $components = array('Security');
+    public $components = array('Security','Cart');
 
     public function beforeFilter() {
 	parent::beforeFilter();
@@ -28,6 +28,11 @@ class EventController extends AppController {
 	    $this->redirect('/');
 	}
         if($this->request->is('post')){
+            foreach ($this->request->data['product'] AS $k => $v){
+                if($v > 0){
+                    $this->Cart->add($k, $v, 'hosted', $this->Session->read('LLEvent.Hostedevent.id'));
+                }
+            }
             $this->autoRender = false;
             
             echo '<pre>';

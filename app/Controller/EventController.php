@@ -36,7 +36,7 @@ class EventController extends AppController {
                 $this->autoRender = false;
                 $this->Session->write('HostedEvent',$this->request->data['Hostedevent']);
                 $this->Session->write('HostedEvent.participants',$this->request->data['participant']);
-                $this->redirect(array('/event/confirm/'.$slug));
+                $this->redirect(array('/event/confirm'));
             }
         }
         $evt = $this->Hostedevent->getHostedEventBySlug($slug);

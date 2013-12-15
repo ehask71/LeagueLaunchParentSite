@@ -15,6 +15,10 @@ class ProductCategory extends Model {
     
     public $name = 'ProductCategory';
     public $primaryKey = 'id';
-    public $hasMany = array('Product');
+    public $hasMany = array(
+        'Product' => array(
+            'className' => 'Product',
+            'foreignKey' => 'category_id'
+        ));
 
 }

@@ -74,9 +74,8 @@ class EventController extends AppController {
                 'plugin' => 'BoostCake',
                 'class' => 'alert-error'
             ));
-            //$this->redirect('/');
+            $this->redirect('/');
         }
-        $this->autoRender = false;
         echo '<pre>';
         print_r($this->Session->read());
         echo '<pre>';

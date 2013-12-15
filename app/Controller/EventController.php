@@ -81,7 +81,7 @@ class EventController extends AppController {
         }
         $this->autoRender = false;
         echo '<pre>';
-        print_r($this->Session->read('LLEvent'));
+        print_r($this->Session->read());
         echo '<pre>';
         if($this->request->is('post')){
             

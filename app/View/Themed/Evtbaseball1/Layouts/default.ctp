@@ -89,7 +89,7 @@ help the next generation get where they are now.
     echo $this->Html->script('bootstrap');
 ?>
     <pre>
-        <?php print_r($sample);?>
+        <?php print_r($products);?>
     </pre>
 </body>
 </html>

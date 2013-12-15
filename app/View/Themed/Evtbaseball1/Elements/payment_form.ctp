@@ -31,21 +31,10 @@
     	<fieldset>
     	    <legend>Options</legend>
 		<?php
-		foreach ($products AS $k => $v) {
-		    echo '<div class="control-group"><p><strong>' . $v['name'] . '</strong></p></div>';
-		    $opts = array();
-		    $opts[] = 'Select Price';
-		    foreach ($v['prices'] AS $kk => $vv) {
-			$opts[$vv['value']] = '$'.$vv['value'] . ' ' . $vv['name'];
-		    }
-		    echo $this->Form->input('product.' . $k . '.price', array('type' => 'select', 'label' => array('text' => 'Price', 'class' => 'control-label'), 'options' => $opts));
-		    if (count($v['addons']) > 0) {
-			foreach ($v['addons'] AS $key => $var) {
-			    echo $this->Form->input('product.' . $k . '.addon.'.$key, array('type'=>'checkbox',
-				'label' => array('class' => null,'text'=>'$'.$var['value'].' '.$var['name']),
-				//'afterInput' => '<span class="help-block">Checkbox Bootstrap Style</span>'
-			    ));
-			}
+		foreach ($products AS $cat) {
+		    echo '<div class="control-group"><p><strong>' . $cat['ProductCategory']['name'] . '</strong></p></div>';
+		    foreach ($cat['Products'] AS $product) {
+			$this->Form->input('product.'.$product['Product']['id'],array('type'=>'input','length'=>2,'value'=>0,'label'=>array('text'=>$product['Product']['name'].' $'.$product['Product']['price'], 'class' => 'control-label')));
 		    }
 		}
 		?>

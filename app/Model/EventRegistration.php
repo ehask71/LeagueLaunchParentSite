@@ -62,7 +62,7 @@ class EventRegistrationModel extends Model {
                     'rule' => 'email',
                     'message' => 'Invalid email address'
                 )
-            ),
+            )
     );
     
 }

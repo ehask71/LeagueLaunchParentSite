@@ -39,7 +39,7 @@
 		foreach ($products['products'] AS $cat) {
 		    echo '<div class="control-group"><p><strong>' . $cat['ProductCategory']['name'] . '</strong></p></div>';
 		    foreach ($cat['Product'] AS $product) {
-			echo $this->Form->input('product.'.$product['id'],array('options'=>$i,'label'=>array('text'=>$product['name'].' $'.$product['price'], 'class' => 'control-label')));
+			echo $this->Form->input('product.'.$product['id'],array('options'=>$qty,'label'=>array('text'=>$product['name'].' $'.$product['price'], 'class' => 'control-label')));
 		    }
 		}
 		?>

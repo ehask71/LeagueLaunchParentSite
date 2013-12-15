@@ -27,16 +27,16 @@ class EventController extends AppController {
                     $this->Cart->remove($k);
                 }
             }
-            if ($this->Session->read('Shop.Order.order_item_count') == 0) {
+            /*if ($this->Session->read('Shop.Order.order_item_count') == 0) {
                 $this->Session->setFlash(__('Please Select A Product Qty!'), 'alert', array(
                     'plugin' => 'BoostCake',
                     'class' => 'alert-error'
                 ));
-            } else {
+            } else {*/
                 $this->Session->write('HostedEvent',$this->request->data['Hostedevent']);
                 $this->Session->write('HostedEvent.participants',$this->request->data['participant']);
                 $this->redirect(array('/event/confirm'));
-            }
+            //}
         }
         $evt = $this->Hostedevent->getHostedEventBySlug($slug);
         if ($slug == null || count($evt) < 1) {

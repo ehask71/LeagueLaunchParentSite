@@ -82,7 +82,7 @@ class EventController extends AppController {
         if ($this->request->is('post')) {
             
         }
-        $this->theme = $this->Session->read('LLEvent.theme');
+        $this->theme = $this->Session->read('LLEvent.Hostedevent.theme');
 
         $this->set('event', $this->Session->read('Hostedevent'));
         $this->set('cart', $this->Session->read('Shop'));

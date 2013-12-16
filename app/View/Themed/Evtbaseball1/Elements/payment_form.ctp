@@ -28,6 +28,12 @@
 	    echo $this->Form->input('email', array('label' => array('text' => 'Email', 'class' => 'control-label')));
 	    ?>
 	</fieldset>
+        <fieldset>
+            <legend>Participant(s) Names</legend>
+            <?php for($i=1;$i<6;$i++){
+               echo $this->Form->input('participant.'.$i, array('label' => array('text' => 'Participant '.$i, 'class' => 'control-label')));  
+            }?>
+        </fieldset>
 	<?php if (count($products) > 0): 
             $qty = array();
             for($i=0;$i<11;$i++){
@@ -46,12 +52,6 @@
 		?>
     	</fieldset>
 	<?php endif; ?>
-        <fieldset>
-            <legend>Participant(s) Names</legend>
-            <?php for($i=1;$i<6;$i++){
-               echo $this->Form->input('participant.'.$i, array('label' => array('text' => 'Participant '.$i, 'class' => 'control-label')));  
-            }?>
-        </fieldset>
 	<fieldset> 
 	    <legend>Payment Details</legend>
 	    <?php

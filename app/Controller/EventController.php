@@ -80,8 +80,8 @@ class EventController extends AppController {
         if ($this->request->is('post')) {
             $data = $this->Session->read('Hostedevent');
             $data = $this->Hostedevent->transformDataOnePage($data);
-            $data['authorize_net_login'] = '';
-            $data['authorize_net_txnkey'] = '';
+            $data['authorize_net_login'] = '4p4FX3VWuv4';
+            $data['authorize_net_txnkey'] = '87726JA6DNKrnXc2';
             $authorizeNet = $this->AuthorizeNet->chargeFromCart($data, $this->Session->check('Shop'));
             if (is_string($authorizeNet)) {
                 $this->Session->setFlash(__('We Were Unable To Process Your Order. Please Try Again'), 'alert', array(

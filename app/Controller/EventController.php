@@ -78,7 +78,7 @@ class EventController extends AppController {
             $this->redirect('/');
         }
         if ($this->request->is('post')) {
-            $data = $this->Session->read('Hostedevent');
+            $data = $this->Session->read('HostedEvent');
             mail('ehask71@gmail.com', 'Test Auth.Net', 'Params' . ' - ' .print_r($data,1));
             $data = $this->Hostedevent->transformDataOnePage($data);
             mail('ehask71@gmail.com', 'Test Transform', 'Params' . ' - ' .print_r($data,1));

@@ -43,4 +43,5 @@ class Hostedevent extends Model {
         
         return $return;
     }
+    
 }

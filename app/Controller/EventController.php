@@ -10,7 +10,7 @@ class EventController extends AppController {
 
     public $name = 'Event';
     public $uses = array('Hostedevent', 'Product', 'ProductCategory', 'EventRegistration');
-    public $components = array('Security', 'Cart','AuthorizeNet');
+    public $components = array('Security', 'Cart', 'AuthorizeNet');
 
     public function beforeFilter() {
         parent::beforeFilter();
@@ -35,6 +35,8 @@ class EventController extends AppController {
             } else {
                 $this->Session->write('HostedEvent', $this->request->data['Hostedevent']);
                 $this->Session->write('HostedEvent.participants', $this->request->data['participant']);
+                $this->Session->write('Shop.Order.type_id',$this->Session->read('LLEvent.Hostedevent.id'));
+                $this->Session->write('Shop.Order.type','hosted');
                 $this->redirect('/event/confirm/' . $slug);
             }
         } else {
@@ -48,7 +50,7 @@ class EventController extends AppController {
             }
         }
         if ($this->Session->check('HostedEvent')) {
-            $this->request->data = array('HostedEvent'=>$this->Session->read('HostedEvent'));
+            $this->request->data = array('HostedEvent' => $this->Session->read('HostedEvent'));
         }
         $this->Cart->clear();
         $this->Session->write('LLEvent', $evt);
@@ -75,14 +77,26 @@ class EventController extends AppController {
             ));
             $this->redirect('/');
         }
-        /*echo '<pre>';
-        print_r($this->Session->read());
-        echo '<pre>';*/
         if ($this->request->is('post')) {
-            $data = $this->Session->check('Hostedevent');
+            $data = $this->Session->read('Hostedevent');
+            $data = $this->Hostedevent->transformDataOnePage($data);
             $data['authorize_net_login'] = '';
             $data['authorize_net_txnkey'] = '';
-            $this->AuthorizeNet->chargeFromCart($data, $this->Session->check('Shop'));
+            $authorizeNet = $this->AuthorizeNet->chargeFromCart($data, $this->Session->check('Shop'));
+            if (is_string($authorizeNet)) {
+                $this->Session->setFlash(__('We Were Unable To Process Your Order. Please Try Again'), 'alert', array(
+                    'plugin' => 'BoostCake',
+                    'class' => 'alert-error'
+                ));
+                $this->redirect('/event/' . $slug);
+            } else {
+                $db['Order'] = $data;
+                $db['Order']['order_type'] = 'authnet';
+                $db['Order']['authorization'] = $authorizeNet[4];
+                $db['Order']['transaction'] = $authorizeNet[6];
+                $db['Order']['status'] = 2;
+                
+            }
         }
         $this->theme = $this->Session->read('LLEvent.Hostedevent.theme');
         $this->set('slug', $slug);

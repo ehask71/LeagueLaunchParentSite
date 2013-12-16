@@ -84,7 +84,7 @@ class EventController extends AppController {
             mail('ehask71@gmail.com', 'Test Transform', 'Params' . ' - ' .print_r($data,1));
             $data['authorize_net_login'] = '4p4FX3VWuv4';
             $data['authorize_net_txnkey'] = '87726JA6DNKrnXc2';
-            $authorizeNet = $this->AuthorizeNet->chargeFromCart($data, $this->Session->check('Shop'));
+            $authorizeNet = $this->AuthorizeNet->chargeFromCart($data, $this->Session->read('Shop'));
             if (is_string($authorizeNet)) {
                 $this->Session->setFlash(__('We Were Unable To Process Your Order. Please Try Again'), 'alert', array(
                     'plugin' => 'BoostCake',

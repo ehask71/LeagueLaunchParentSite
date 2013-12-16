@@ -73,6 +73,7 @@ class EventRegistrationModel extends Model {
                 $new['country'] = $data['Order']['country'];
                 $new['paid'] = 1;
                 $new['event_id'] = $data['Order']['type_id'];
+                $new['order_id'] = $data['Order']['order_id'];
                 
                 $this->create();
                 $this->save($new);

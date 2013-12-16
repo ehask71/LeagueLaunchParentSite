@@ -6,7 +6,7 @@
  */
 App::uses('Model', 'Model');
 
-class EventRegistrationModel extends Model {
+class EventRegistration extends Model {
     
     public $name = 'EventRegistration';
     public $primaryKey = 'id';

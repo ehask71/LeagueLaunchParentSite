@@ -40,6 +40,10 @@ class Hostedevent extends Model {
         $return['Order']['shipping_country'] = @$data['country'];
         $return['Order']['agreeterms'] = @$data['agreeterms'];
         $return['Order']['participants'] = @$data['participants'];
+        $return['Order']['ccnum'] = @$data['ccnum'];
+        $return['Order']['ccmonth'] = @$data['ccmonth'];
+        $return['Order']['ccyear'] = @$data['ccyear'];
+        $return['Order']['cc_code'] = @$data['cc_code'];
         
         return $return;
     }

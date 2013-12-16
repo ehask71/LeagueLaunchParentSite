@@ -100,4 +100,10 @@
             </table>
         </div>
     </div>
+    <div class="row">
+        <div class="span10"></div>
+        <div class="span2">
+            <?php echo $this->Form->postButton('Complete & Pay', '/event/confirm/'.$slug, array('class'=>'btn'));?>
+        </div>
+    </div>
 </div>

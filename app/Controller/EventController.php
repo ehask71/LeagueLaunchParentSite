@@ -9,7 +9,7 @@ App::uses('AppController', 'Controller');
 class EventController extends AppController {
 
     public $name = 'Event';
-    public $uses = array('Hostedevent', 'Product', 'ProductCategory', 'EventRegistration');
+    public $uses = array('Hostedevent', 'Product', 'ProductCategory', 'EventRegistration','Order','OrderItem');
     public $components = array('Security', 'Cart', 'AuthorizeNet');
 
     public function beforeFilter() {
@@ -90,12 +90,14 @@ class EventController extends AppController {
                 ));
                 $this->redirect('/event/' . $slug);
             } else {
-                $db['Order'] = $data;
-                $db['Order']['order_type'] = 'authnet';
-                $db['Order']['authorization'] = $authorizeNet[4];
-                $db['Order']['transaction'] = $authorizeNet[6];
-                $db['Order']['status'] = 2;
+                $shop = $this->Session->read('Shop');
+                $shop['Order'] = $shop['Order'] + $data['Order'];
+                $shop['Order']['order_type'] = 'authnet';
+                $shop['Order']['authorization'] = $authorizeNet[4];
+                $shop['Order']['transaction'] = $authorizeNet[6];
+                $shop['Order']['status'] = 2;
                 
+                if($this->Order->saveAll())
             }
         }
         $this->theme = $this->Session->read('LLEvent.Hostedevent.theme');

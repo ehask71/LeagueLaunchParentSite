@@ -60,4 +60,25 @@ class EventRegistrationModel extends Model {
             )
     );
     
+    public function storeOnePage($data){
+        if(is_array($data['Order']['participants'])){
+            foreach ($data['Order']['participants'] AS $p){
+                $new['name'] = $p;
+                $new['email'] = $data['Order']['email'];
+                $new['phone'] = $data['Order']['phone'];
+                $new['address'] = $data['Order']['shipping_address'];
+                $new['city'] = $data['Order']['shipping_address'];
+                $new['state'] = $data['Order']['state'];
+                $new['zip'] = $data['Order']['zip'];
+                $new['country'] = $data['Order']['country'];
+                $new['paid'] = 1;
+                $new['event_id'] = $data['Order']['type_id'];
+                
+                $this->create();
+                $this->save($new);
+            }
+            
+            return true;
+        }
+    }
 }

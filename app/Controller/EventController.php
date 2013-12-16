@@ -47,14 +47,13 @@ class EventController extends AppController {
                 $this->redirect('/');
             }
         }
-
+        if ($this->Session->check('HostedEvent')) {
+            $this->request->data = array('HostedEvent'=>$this->Session->read('HostedEvent'));
+        }
         $this->Cart->clear();
         $this->Session->write('LLEvent', $evt);
         $this->set('slug', $slug);
         $this->theme = $evt['Hostedevent']['theme'];
-        if ($this->Session->check('HostedEvent')) {
-            $this->request->data = $this->Session->read('HostedEvent');
-        }
 
         $products = $this->ProductCategory->find('all', array(
             'conditions' => array(

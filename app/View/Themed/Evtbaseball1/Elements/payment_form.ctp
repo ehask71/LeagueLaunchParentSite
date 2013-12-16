@@ -60,7 +60,7 @@
 	    echo $this->Form->input('ccyear', array('label' => array('text' => 'Exp Year', 'class' => 'control-label'), 'value' => '2013', 'onfocus' => 'this.value=\'\''));
 	    echo $this->Form->input('cc_code', array('label' => array('text' => 'CVV', 'class' => 'control-label'), 'value' => '111', 'onfocus' => 'this.value=\'\''));
 	    echo $this->Form->input('agreeterms', array('type' => 'checkbox', 'value' => 1, 'label' => array('text' => 'I agree to the <a href="/terms" target="_blank">Terms & Conditions</a>', 'class' => 'control-label')));
-	    echo $this->Form->submit('Proceed', array('div' => false, 'class' => 'btn btn-primary'));
+	    echo $this->Form->submit('Confirm', array('div' => false, 'class' => 'btn btn-primary'));
 	    ?>
 	</fieldset>
 	<?php

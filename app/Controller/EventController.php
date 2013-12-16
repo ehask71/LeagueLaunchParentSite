@@ -98,9 +98,12 @@ class EventController extends AppController {
                 $shop['Order']['status'] = 2;
 
                 if ($this->Order->saveAll($shop)) {
-                    if(count($data['Order']['participants']) > 0){
-                        $this->EventRegistration->storeOnePage($shop);
-                    }
+                    $orderid = $this->Order->getLastInsertID();
+                    $this->Session->write('Shop.Order.id',$orderid);
+                    $this->EventRegistration->storeOnePage($shop);
+                    // Now We notify the user via Email
+                    
+                    $this->redirect('/event/complete');
                 } else {
                     $this->Session->setFlash(__('We Were Unable To Process Your Order. Please Try Again'), 'alert', array(
                         'plugin' => 'BoostCake',

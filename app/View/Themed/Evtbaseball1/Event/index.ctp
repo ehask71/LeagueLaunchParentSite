@@ -38,7 +38,7 @@
 
                     strive to have a 15-1 camper to coach ratio to help maximize each individual's potential 
 
-                    growth. Each instructor has been in your little palyer's shoes, and has made it 
+                    growth. Each instructor has been in your little player's shoes, and has made it 
 
                     up to the ranks to professional baseball, even to the major league level. They 
 

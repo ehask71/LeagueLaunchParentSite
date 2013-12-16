@@ -9,7 +9,7 @@ App::uses('AppController', 'Controller');
 class EventController extends AppController {
 
     public $name = 'Event';
-    public $uses = array('Hostedevent', 'Product', 'ProductCategory', 'EventRegistration','Order','OrderItem');
+    public $uses = array('Hostedevent', 'Product', 'ProductCategory', 'EventRegistration', 'Order', 'OrderItem');
     public $components = array('Security', 'Cart', 'AuthorizeNet');
 
     public function beforeFilter() {
@@ -35,8 +35,8 @@ class EventController extends AppController {
             } else {
                 $this->Session->write('HostedEvent', $this->request->data['Hostedevent']);
                 $this->Session->write('HostedEvent.participants', $this->request->data['participant']);
-                $this->Session->write('Shop.Order.type_id',$this->Session->read('LLEvent.Hostedevent.id'));
-                $this->Session->write('Shop.Order.type','hosted');
+                $this->Session->write('Shop.Order.type_id', $this->Session->read('LLEvent.Hostedevent.id'));
+                $this->Session->write('Shop.Order.type', 'hosted');
                 $this->redirect('/event/confirm/' . $slug);
             }
         } else {
@@ -96,8 +96,18 @@ class EventController extends AppController {
                 $shop['Order']['authorization'] = $authorizeNet[4];
                 $shop['Order']['transaction'] = $authorizeNet[6];
                 $shop['Order']['status'] = 2;
-                
-                if($this->Order->saveAll())
+
+                if ($this->Order->saveAll($shop)) {
+                    if(count($data['Order']['participants']) > 0){
+                        $this->EventRegistration->storeOnePage($shop);
+                    }
+                } else {
+                    $this->Session->setFlash(__('We Were Unable To Process Your Order. Please Try Again'), 'alert', array(
+                        'plugin' => 'BoostCake',
+                        'class' => 'alert-error'
+                    ));
+                    $this->redirect('/event/' . $slug);
+                }
             }
         }
         $this->theme = $this->Session->read('LLEvent.Hostedevent.theme');

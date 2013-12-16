@@ -39,6 +39,7 @@ class Hostedevent extends Model {
         $return['Order']['shipping_zip'] = @$data['zip'];
         $return['Order']['shipping_country'] = @$data['country'];
         $return['Order']['agreeterms'] = @$data['agreeterms'];
+        $return['Order']['participants'] = @$data['participants'];
         
         return $return;
     }

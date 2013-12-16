@@ -118,5 +118,17 @@ class EventController extends AppController {
         $this->set('event', $this->Session->read('HostedEvent'));
         $this->set('cart', $this->Session->read('Shop'));
     }
+    
+    public function complete($slug = null){
+        if (!$this->Session->check('LLEvent') && !$this->Session->check('Shop') && !$this->Session->check('Hostedevent')) {
+            $this->Session->setFlash(__('We Were Unable To Locate That Event or your Session Expired!'), 'alert', array(
+                'plugin' => 'BoostCake',
+                'class' => 'alert-error'
+            ));
+            $this->redirect('/');
+        }
+        
+        $this->autoRender = false;
+    }
 
 }

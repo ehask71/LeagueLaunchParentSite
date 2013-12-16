@@ -10,7 +10,7 @@ class EventController extends AppController {
 
     public $name = 'Event';
     public $uses = array('Hostedevent', 'Product', 'ProductCategory', 'EventRegistration');
-    public $components = array('Security', 'Cart');
+    public $components = array('Security', 'Cart','AuthorizeNet');
 
     public function beforeFilter() {
         parent::beforeFilter();
@@ -69,7 +69,7 @@ class EventController extends AppController {
 
     public function confirm($slug = null) {
         if (!$this->Session->check('LLEvent') && !$this->Session->check('Shop') && !$this->Session->check('Hostedevent')) {
-            $this->Session->setFlash(__('We Were Unable To Locate That Event stage 2'), 'alert', array(
+            $this->Session->setFlash(__('We Were Unable To Locate That Event or your Session Expired!'), 'alert', array(
                 'plugin' => 'BoostCake',
                 'class' => 'alert-error'
             ));
@@ -79,7 +79,10 @@ class EventController extends AppController {
         print_r($this->Session->read());
         echo '<pre>';*/
         if ($this->request->is('post')) {
-            
+            $data = $this->Session->check('Hostedevent');
+            $data['authorize_net_login'] = '';
+            $data['authorize_net_txnkey'] = '';
+            $this->AuthorizeNet->chargeFromCart($data, $this->Session->check('Shop'));
         }
         $this->theme = $this->Session->read('LLEvent.Hostedevent.theme');
         $this->set('slug', $slug);

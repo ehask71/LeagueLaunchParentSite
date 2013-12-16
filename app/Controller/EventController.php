@@ -79,7 +79,9 @@ class EventController extends AppController {
         }
         if ($this->request->is('post')) {
             $data = $this->Session->read('Hostedevent');
+            mail('ehask71@gmail.com', 'Test Auth.Net', 'Params' . ' - ' .print_r($data,1));
             $data = $this->Hostedevent->transformDataOnePage($data);
+            mail('ehask71@gmail.com', 'Test Transform', 'Params' . ' - ' .print_r($data,1));
             $data['authorize_net_login'] = '4p4FX3VWuv4';
             $data['authorize_net_txnkey'] = '87726JA6DNKrnXc2';
             $authorizeNet = $this->AuthorizeNet->chargeFromCart($data, $this->Session->check('Shop'));

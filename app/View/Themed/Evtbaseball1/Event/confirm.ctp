@@ -101,9 +101,9 @@
         </div>
     </div>
     <div class="row">
-        <div class="span10"></div>
-        <div class="span2">
-            <button class="btn btn-primary" onclick="window.location='/event/'.<?=$slug;?>">Start Over</button>&nbsp;&nbsp;<?php echo $this->Form->postButton('Complete & Pay', '/event/confirm/'.$slug, array('class'=>'btn btn-primary'));?>
+        <div class="span9"></div>
+        <div class="span3">
+            <button class="btn btn-primary" onclick="window.location='/event/<?=$slug;?>';">Start Over</button>&nbsp;&nbsp;<?php echo $this->Form->postButton('Complete & Pay', '/event/confirm/'.$slug, array('class'=>'btn btn-primary'));?>
         </div>
     </div>
 </div>

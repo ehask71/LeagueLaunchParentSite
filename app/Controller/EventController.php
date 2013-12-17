@@ -104,7 +104,7 @@ class EventController extends AppController {
                     $this->EventRegistration->storeOnePage($shop);
                     // Now We notify the user via Email
                     
-                    $this->redirect('/event/complete');
+                    $this->redirect('/event/complete/'.$slug);
                 } else {
                     $this->Session->setFlash(__('We Were Unable To Process Your Order. Please Try Again'), 'alert', array(
                         'plugin' => 'BoostCake',

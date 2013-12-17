@@ -68,9 +68,9 @@ class EventRegistration extends Model {
                 $new['phone'] = $data['Order']['phone'];
                 $new['address'] = $data['Order']['shipping_address'];
                 $new['city'] = $data['Order']['shipping_address'];
-                $new['state'] = $data['Order']['state'];
-                $new['zip'] = $data['Order']['zip'];
-                $new['country'] = $data['Order']['country'];
+                $new['state'] = $data['Order']['shipping_state'];
+                $new['zip'] = $data['Order']['shipping_zip'];
+                $new['country'] = $data['Order']['shipping_country'];
                 $new['paid'] = 1;
                 $new['event_id'] = $data['Order']['type_id'];
                 $new['order_id'] = $data['Order']['order_id'];

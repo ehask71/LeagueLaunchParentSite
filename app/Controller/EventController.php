@@ -121,7 +121,7 @@ class EventController extends AppController {
     }
     
     public function complete($slug = null){
-        if (!$this->Session->check('LLEvent') && !$this->Session->check('Shop') && !$this->Session->check('Hostedevent')) {
+        if (!$this->Session->check('LLEvent') && !$this->Session->check('Shop') && !$this->Session->check('HostedEvent')) {
             $this->Session->setFlash(__('We Were Unable To Locate That Event or your Session Expired!'), 'alert', array(
                 'plugin' => 'BoostCake',
                 'class' => 'alert-error'

@@ -79,9 +79,7 @@ class EventController extends AppController {
         }
         if ($this->request->is('post')) {
             $data = $this->Session->read('HostedEvent');
-            mail('ehask71@gmail.com', 'Test Auth.Net', 'Params' . ' - ' .print_r($data,1));
             $data = $this->Hostedevent->transformDataOnePage($data);
-            mail('ehask71@gmail.com', 'Test Transform', 'Params' . ' - ' .print_r($data,1));
             $data['authorize_net_login'] = '4p4FX3VWuv4';
             $data['authorize_net_txnkey'] = '87726JA6DNKrnXc2';
             $authorizeNet = $this->AuthorizeNet->chargeFromCart($data, $this->Session->read('Shop'));
@@ -98,7 +96,7 @@ class EventController extends AppController {
                 $shop['Order']['authorization'] = $authorizeNet[4];
                 $shop['Order']['transaction'] = $authorizeNet[6];
                 $shop['Order']['status'] = 2;
-
+                mail('ehask71@gmail.com', 'Shop', 'Params' . ' - ' .print_r($shop,1));
                 if ($this->Order->saveAll($shop)) {
                     $orderid = $this->Order->getLastInsertID();
                     $this->Session->write('Shop.Order.order_id',$orderid);

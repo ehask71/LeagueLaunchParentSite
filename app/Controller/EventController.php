@@ -100,6 +100,7 @@ class EventController extends AppController {
                 if ($this->Order->saveAll($shop)) {
                     $orderid = $this->Order->getLastInsertID();
                     $this->Session->write('Shop.Order.order_id',$orderid);
+                    $shop['Order']['order_id'] = $orderid;
                     $this->EventRegistration->storeOnePage($shop);
                     // Now We notify the user via Email
                     

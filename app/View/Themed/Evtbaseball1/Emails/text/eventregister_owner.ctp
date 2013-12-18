@@ -2,12 +2,12 @@
 
 
 Date: <?php echo date('m-d-Y')."\r\n"; ?>
-Order Id: <?php echo $shop['Order']['order_id']."\r\n"; ?>
-Total: $<?php echo $shop['Order']['total']."\r\n";?>
+Order Id: <?php echo $data['Order']['order_id']."\r\n"; ?>
+Total: $<?php echo $data['Order']['total']."\r\n";?>
 
 Order Items:
 <?php
-if (count($participants) > 0) {
+if (count($data['Order']['participants']) > 0) {
     $i=1;
     foreach ($data['Order']['participants'] AS $item) {
         echo "#".$i.'     '.$item['name'] . "\r\n";
@@ -15,12 +15,12 @@ if (count($participants) > 0) {
     }
 }
 
-if (count($shop['OrderItem']) > 0) {
+if (count($data['OrderItem']) > 0) {
     $i=1;
-    foreach ($shop['OrderItem'] AS $item) {
+    foreach ($data['OrderItem'] AS $item) {
         echo "#".$i.'     '.$item['name'] . '      Qty:'. $item['quantity'] . ' @  $'. $item['price']."\r\n";
         $i++;
     }
-    echo 'Total: $'.$shop['Order']['total']."\r\n";
+    echo 'Total: $'.$data['Order']['total']."\r\n";
 }
 ?>

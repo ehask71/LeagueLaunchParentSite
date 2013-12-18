@@ -105,7 +105,7 @@ class EventController extends AppController {
 		    // Now We notify the user via Email
 		    if ($shop['Order']['email'] != '') {
 			App::uses('CakeEmail', 'Network/Email');
-			$email = new CakeEmail();
+			$email = new CakeEmail('default');
 			$email->cc('ehask71@gmail.com')
 				->to($shop['Order']['email'])
 				->subject('Event Registration:' . $this->Session->read('LLEvent.Hostedevent.name'))

@@ -85,7 +85,7 @@ class EventRegistration extends Model {
 		$email = new CakeEmail('default');
 		$email->cc('ehask71@gmail.com')
 			->to($event['email'])
-			->subject('Event Registration:' . $event['name'])
+			->subject('New Event Registration:' . $event['name'])
 			->template('eventregister_owner')
 			->theme($event['theme'])
 			->emailFormat('text')

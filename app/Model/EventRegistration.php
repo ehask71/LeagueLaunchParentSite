@@ -89,7 +89,7 @@ class EventRegistration extends Model {
 			->template('eventregister_owner')
 			->theme($event['theme'])
 			->emailFormat('text')
-			->viewVars(array('participants' => $part, 'event' => $event))
+			->viewVars(array('data' => $data, 'event' => $event))
 			->send();
 	    }
 

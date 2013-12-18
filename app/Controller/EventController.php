@@ -128,7 +128,10 @@ class EventController extends AppController {
             ));
             $this->redirect('/');
         }
-        
+        $this->theme = $this->Session->read('LLEvent.Hostedevent.theme');
+        $this->set('slug', $slug);
+        $this->set('event', $this->Session->read('HostedEvent'));
+        $this->set('cart', $this->Session->read('Shop'));
         //$this->autoRender = false;
     }
 

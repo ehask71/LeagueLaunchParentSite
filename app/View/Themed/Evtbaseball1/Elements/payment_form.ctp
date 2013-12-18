@@ -56,9 +56,9 @@
 	    <legend>Payment Details</legend>
 	    <?php
 	    echo $this->Form->input('ccnum', array('label' => array('text' => 'Card Number', 'class' => 'control-label')));
-	    echo $this->Form->input('ccmonth', array('label' => array('text' => 'Exp Month', 'class' => 'control-label'), 'placeholder' => '01'));
-	    echo $this->Form->input('ccyear', array('label' => array('text' => 'Exp Year', 'class' => 'control-label'), 'placeholder' => '2014'));
-	    echo $this->Form->input('cc_code', array('label' => array('text' => 'CVV', 'class' => 'control-label'), 'placeholder' => '111'));
+	    echo $this->Form->input('ccmonth', array('label' => array('text' => 'Exp Month', 'class' => 'control-label'), 'placeholder' => 'MM'));
+	    echo $this->Form->input('ccyear', array('label' => array('text' => 'Exp Year', 'class' => 'control-label'), 'placeholder' => 'YYYY'));
+	    echo $this->Form->input('cc_code', array('label' => array('text' => 'CVV', 'class' => 'control-label'), 'placeholder' => ''));
 	    echo $this->Form->input('agreeterms', array('type' => 'checkbox', 'value' => 1, 'label' => array('text' => 'I agree to the <a href="/terms" target="_blank">Terms & Conditions</a>', 'class' => 'control-label')));
 	    echo $this->Form->submit('Confirm', array('div' => false, 'class' => 'btn btn-primary'));
 	    ?>

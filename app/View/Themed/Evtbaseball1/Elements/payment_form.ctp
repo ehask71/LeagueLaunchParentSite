@@ -55,7 +55,7 @@
 	<fieldset> 
 	    <legend>Payment Details</legend>
 	    <?php
-	    echo $this->Form->input('ccnum', array('label' => array('text' => 'Card Number', 'class' => 'control-label')));
+	    echo $this->Form->input('ccnum', array('label' => array('text' => 'Card Number', 'class' => 'control-label'),'after'=>'<span class="help-block">Visa/Mastercard Only</span>'));
 	    echo $this->Form->input('ccmonth', array('label' => array('text' => 'Exp Month', 'class' => 'control-label'), 'placeholder' => 'MM'));
 	    echo $this->Form->input('ccyear', array('label' => array('text' => 'Exp Year', 'class' => 'control-label'), 'placeholder' => 'YYYY'));
 	    echo $this->Form->input('cc_code', array('label' => array('text' => 'CVV', 'class' => 'control-label'), 'placeholder' => ''));

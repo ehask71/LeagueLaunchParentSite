@@ -112,7 +112,7 @@ class EventController extends AppController {
 				->template('eventregister')
 				->theme($this->Session->read('LLEvent.Hostedevent.theme'))
 				->emailFormat('text')
-				->viewVars(array('shop' => $shop))
+				->viewVars(array('shop' => $shop,'event'=>$this->Session->read('LLEvent.Hostedevent')))
 				->send();
 		    }
 		    $this->redirect('/event/complete/' . $slug);

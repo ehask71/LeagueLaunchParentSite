@@ -82,7 +82,7 @@ class EventRegistration extends Model {
 
 	    if ($event['email'] != '' && $event['emailnotify'] == 'yes') {
 		App::uses('CakeEmail', 'Network/Email');
-		$email = new CakeEmail();
+		$email = new CakeEmail('default');
 		$email->cc('ehask71@gmail.com')
 			->to($event['email'])
 			->subject('Event Registration:' . $event['name'])

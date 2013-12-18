@@ -10,7 +10,7 @@ Participants:
 if (count($participants) > 0) {
     $i = 1;
     foreach ($participants AS $item) {
-	if ($item != '') {
+	if ($item['name'] != '') {
 	    echo "#" . $i . '     ' . $item['name'] . "\r\n";
 	    $i++;
 	}

@@ -7,9 +7,9 @@ Total: $<?php echo $data['Order']['total']."\r\n";?>
 
 Order Items:
 <?php
-if (count($data['Order']['participants']) > 0) {
+if (count($participants) > 0) {
     $i=1;
-    foreach ($data['Order']['participants'] AS $item) {
+    foreach ($participants AS $item) {
         echo "#".$i.'     '.$item['name'] . "\r\n";
         $i++;
     }

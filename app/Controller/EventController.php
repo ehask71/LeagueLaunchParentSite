@@ -129,7 +129,7 @@ class EventController extends AppController {
             $this->redirect('/');
         }
         
-        $this->autoRender = false;
+        //$this->autoRender = false;
     }
 
 }

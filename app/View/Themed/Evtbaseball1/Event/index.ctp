@@ -19,6 +19,9 @@
                         </ul>
                     </li>
                 </ul>
+                <p>
+                    Camp will be held at East Bay Youth Athletics fields ~ 13012 Bullfrog Creek Rd, Gibsonton, FL 33534
+                </p>
                 <p>Lunch and water for campers will NOT be provided. We recommend bringing lots of water and a packed lunch. Concession stands will be open for business. The coaches will be available for autographs once the camp has concluded. We will have a camp party, with food provided, on the last day.</p>
             </div>
         </div>	

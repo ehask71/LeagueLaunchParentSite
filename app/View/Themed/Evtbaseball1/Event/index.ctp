@@ -2,28 +2,23 @@
     <div class="span6" >
 
         <div class="row">
-            <div class="span6" id="goals">
-                <h4>Our Goal</h4>
-                <p>
-                    To bring professional 
-
-                    training to a little league level. 
-
-                    With our elite team of instructors we provide each individual 
-                    with a better understanding and knowledge of the game. Campers 
-
-                    will be put through drills that 
-
-                    they not only take home but take their game to the next level. From 
-
-                    hitting drills that support getting more connected and powerful,
-
-                    to infield instruction that will
-
-                    create smoothness and fluidity, to pitching mechanics that will create consistency. Let us share our knowledge for 
-
-                    the game, and get each individual to another level.
-                </p>
+            <div class="span6" id="dates">
+                <h4>Dates</h4>
+                <ul>
+                    <li>Dec 27 - 28 
+                        <ul>
+                            <li>9-1 (1/2 Day)</li>
+                            <li>9-4 (Full Day)</li>
+                        </ul>
+                    </li>
+                    <li>Dec 30 - Jan 1 
+                        <ul>
+                            <li>9-1 (1/2 Day)</li>
+                            <li>9-4 (Full Day)</li>
+                            <li>Last Day 1/2 Day & Party</li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
         </div>	
         <?php echo $this->element('payment_form', array('products' => @$products)); ?>
@@ -45,6 +40,29 @@
                     know the ins and outs to the game, and each loves to share their knowledge to 
 
                     help the next generation get where they are now.
+                </p>
+            </div>
+            <div id="goals">
+                <h4>Our Goal</h4>
+                <p>
+                    To bring professional 
+
+                    training to a little league level. 
+
+                    With our elite team of instructors we provide each individual 
+                    with a better understanding and knowledge of the game. Campers 
+
+                    will be put through drills that 
+
+                    they not only take home but take their game to the next level. From 
+
+                    hitting drills that support getting more connected and powerful,
+
+                    to infield instruction that will
+
+                    create smoothness and fluidity, to pitching mechanics that will create consistency. Let us share our knowledge for 
+
+                    the game, and get each individual to another level.
                 </p>
             </div>
 

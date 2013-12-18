@@ -19,7 +19,7 @@
                         </ul>
                     </li>
                 </ul>
-                <p>Lunch and water for campers will NOT be provided. We recommend bringing lots of water and a packed lunch. Concession stands will be open for business. The coaches will be available for autographs once the camp has concluded.We will have a camp party, with food provided, on the last day.</p>
+                <p>Lunch and water for campers will NOT be provided. We recommend bringing lots of water and a packed lunch. Concession stands will be open for business. The coaches will be available for autographs once the camp has concluded. We will have a camp party, with food provided, on the last day.</p>
             </div>
         </div>	
         <?php echo $this->element('payment_form', array('products' => @$products)); ?>

@@ -14,29 +14,20 @@
                 'class' => 'form-horizontal'
             ));
             ?>
-            <?php echo $this->Form->input('first_name',array('value'=>$user['firstname'])); ?>
-            <br />
-            <?php echo $this->Form->input('last_name',array('value'=>$user['lastname'])); ?>
-            <br />
+            <?php echo $this->Form->input('first_name', array('value' => $user['firstname'])); ?>
+            <?php echo $this->Form->input('last_name', array('value' => $user['lastname'])); ?>
             <?php echo $this->Form->input('email'); ?>
-            <br />
             <?php echo $this->Form->input('phone'); ?>
-
             <?php echo $this->Form->input('billing_address'); ?>
-            <br />
             <?php echo $this->Form->input('billing_address2'); ?>
-            <br />
             <?php echo $this->Form->input('billing_city'); ?>
-            <br />
             <?php echo $this->Form->input('billing_state'); ?>
-            <br />
             <?php echo $this->Form->input('billing_zip'); ?>
-            <br />
-<?php echo $this->Form->input('billing_country'); ?>
-    <?php echo $this->Form->end(); ?>
+            <?php echo $this->Form->input('billing_country'); ?>
+            <?php echo $this->Form->end(); ?>
         </div>
     </div>
-<?php $shop = $this->Session->read('Shop'); ?>
+    <?php $shop = $this->Session->read('Shop'); ?>
     <div class="span6 box black">
         <div class="box-header">Cart</div>
         <div class="box-content">

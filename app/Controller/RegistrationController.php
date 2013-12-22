@@ -200,6 +200,7 @@ class RegistrationController extends AppController {
                 
             } else {
                 $this->validateErrors($this->RegistrationSaaS);
+                $this->render();
             }
         }
         

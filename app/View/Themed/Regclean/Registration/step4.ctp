@@ -4,6 +4,7 @@
         <div class="box-content">
             <?php
             echo $this->Form->create(NULL, array(
+                'novalidate' => true,
                 'inputDefaults' => array(
                     'div' => 'control-group',
                     'label' => array(

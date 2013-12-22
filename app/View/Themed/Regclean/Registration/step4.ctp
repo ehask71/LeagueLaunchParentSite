@@ -14,8 +14,8 @@
                 'class' => 'form-horizontal'
             ));
             ?>
-            <?php echo $this->Form->input('first_name', array('value' => $user['firstname'])); ?>
-            <?php echo $this->Form->input('last_name', array('value' => $user['lastname'])); ?>
+            <?php echo $this->Form->input('first_name', array('value' => $userinfo['firstname'])); ?>
+            <?php echo $this->Form->input('last_name', array('value' => $userinfo['lastname'])); ?>
             <?php echo $this->Form->input('email'); ?>
             <?php echo $this->Form->input('phone'); ?>
             <?php echo $this->Form->input('billing_address'); ?>

@@ -193,6 +193,7 @@ class RegistrationController extends AppController {
 
     public function step4() {
         $players = $this->Session->read('Registration.Players');
+        $this->set(compact('players'));
         // User Details
         if($this->request->is('post')){
             $this->RegistrationSaaS->set($this->request->data);
@@ -203,8 +204,7 @@ class RegistrationController extends AppController {
                 $this->render();
             }
         }
-        
-        $this->set(compact('players'));
+
     }
 
     public function step5() {

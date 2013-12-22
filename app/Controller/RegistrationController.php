@@ -192,7 +192,10 @@ class RegistrationController extends AppController {
     }
 
     public function step4() {
+        $players = $this->Session->read('Registration.Players');
         // User Details
+        
+        $this->set(compact('players'));
     }
 
     public function step5() {

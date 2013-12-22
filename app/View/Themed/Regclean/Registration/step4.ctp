@@ -23,7 +23,7 @@
             <?php echo $this->Form->input('billing_city', array('value' => $userinfo['city'])); ?>
             <?php echo $this->Form->input('billing_state', array('value' => $userinfo['state'],'type' => 'select', 'options' => Configure::read('States'))); ?>
             <?php echo $this->Form->input('billing_zip', array('value' => $userinfo['zip'])); ?>
-            <?php echo $this->Form->input('billing_country', array('value' => $userinfo['lastname'],'type' => 'select', 'options' => Configure::read('Countries'))); ?>
+            <?php echo $this->Form->input('billing_country', array('value' => $userinfo['country'],'type' => 'select', 'options' => Configure::read('Countries'))); ?>
             <?php echo $this->Form->end(); ?>
         </div>
     </div>

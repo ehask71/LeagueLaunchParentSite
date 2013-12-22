@@ -1,4 +1,4 @@
-<?php $this->Html->addCrumb('Step 3', '/registration/step3'); ?>
+<?php $this->Html->addCrumb('Step 4', '/registration/step4'); ?>
 <div class="row-fluid">
     <div class="span6 box black">
         <div class="box-content">

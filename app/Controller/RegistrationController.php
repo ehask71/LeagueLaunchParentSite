@@ -9,7 +9,7 @@ App::uses('AppController', 'Controller');
 class RegistrationController extends AppController {
 
     public $name = 'Registration';
-    public $uses = array('Sites', 'RoleSaaS', 'AccountSaaS', 'PlayersSaaS', 'SeasonSaaS', 'PlayersToSeasonsSaaS', 'DivisionsSaaS', 'ProductsSaaS');
+    public $uses = array('RegistrationSaaS','Sites', 'RoleSaaS', 'AccountSaaS', 'PlayersSaaS', 'SeasonSaaS', 'PlayersToSeasonsSaaS', 'DivisionsSaaS', 'ProductsSaaS');
     public $helpers = array('Session');
     public $components = array(
         'Session',
@@ -194,6 +194,14 @@ class RegistrationController extends AppController {
     public function step4() {
         $players = $this->Session->read('Registration.Players');
         // User Details
+        if($this->request->is('post')){
+            $this->RegistrationSaaS->set($this->request->data);
+            if($this->RegistrationSaaS->validates()){
+                
+            } else {
+                $this->validateErrors($this->RegistrationSaaS);
+            }
+        }
         
         $this->set(compact('players'));
     }

@@ -21,6 +21,7 @@ class AppController extends Controller {
 	    $this->theme = 'admin';
 	}
 	$this->Session->id(session_id());
+        $this->set('userinfo', $this->Auth->user());
     }
 
     function forceSSL() {

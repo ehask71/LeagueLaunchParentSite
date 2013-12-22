@@ -198,10 +198,11 @@ class RegistrationController extends AppController {
         if($this->request->is('post')){
             $this->RegistrationSaaS->set($this->request->data);
             if($this->RegistrationSaaS->validates()){
+                // Rock on we validated
                 
             } else {
                 $this->validateErrors($this->RegistrationSaaS);
-                $this->render();
+                //$this->render();
             }
         }
 

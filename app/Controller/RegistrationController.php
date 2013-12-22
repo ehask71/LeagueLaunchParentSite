@@ -175,7 +175,7 @@ class RegistrationController extends AppController {
                     $this->Saascart->add($vars[1], 2,$vars[0],$this->Session->read('Registration.Players.' . $vars[0] . '.season_id'));
                 }
             }
-            $this->redirect(array('action'=>'step3'));
+            $this->redirect(array('action'=>'step4'));
         }
         $hasUpsell = false;
         foreach ($players AS $play) {

@@ -16,14 +16,14 @@
             ?>
             <?php echo $this->Form->input('first_name', array('value' => $userinfo['firstname'])); ?>
             <?php echo $this->Form->input('last_name', array('value' => $userinfo['lastname'])); ?>
-            <?php echo $this->Form->input('email'); ?>
-            <?php echo $this->Form->input('phone'); ?>
-            <?php echo $this->Form->input('billing_address'); ?>
-            <?php echo $this->Form->input('billing_address2'); ?>
-            <?php echo $this->Form->input('billing_city'); ?>
-            <?php echo $this->Form->input('billing_state'); ?>
-            <?php echo $this->Form->input('billing_zip'); ?>
-            <?php echo $this->Form->input('billing_country'); ?>
+            <?php echo $this->Form->input('email', array('value' => $userinfo['email'])); ?>
+            <?php echo $this->Form->input('phone', array('value' => $userinfo['phone'])); ?>
+            <?php echo $this->Form->input('billing_address', array('value' => $userinfo['address'])); ?>
+            <?php echo $this->Form->input('billing_address2', array('value' => $userinfo['address2'])); ?>
+            <?php echo $this->Form->input('billing_city', array('value' => $userinfo['city'])); ?>
+            <?php echo $this->Form->input('billing_state', array('value' => $userinfo['state'],'type' => 'select', 'options' => Configure::read('States'))); ?>
+            <?php echo $this->Form->input('billing_zip', array('value' => $userinfo['zip'])); ?>
+            <?php echo $this->Form->input('billing_country', array('value' => $userinfo['lastname'],'type' => 'select', 'options' => Configure::read('Countries'))); ?>
             <?php echo $this->Form->end(); ?>
         </div>
     </div>

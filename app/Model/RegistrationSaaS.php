@@ -63,7 +63,7 @@ class RegistrationSaaS extends AppModel {
         $add['RegistrationSaaS']['shipping_zip'] = $data['RegistrationSaaS']['billing_zip'];
         $add['RegistrationSaaS']['shipping_country'] = $data['RegistrationSaaS']['billing_country'];
         
-        return $data + $add;
+        return array_merge($data,$add);
     }
 }
 

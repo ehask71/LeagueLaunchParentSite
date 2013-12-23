@@ -216,7 +216,8 @@ class RegistrationController extends AppController {
     }
 
     public function confirm() {
-        
+        $this->set('shop',$this->Session->read('Shop'));
+        $this->set('registration',$this->Session->read('Registration'));
     }
 
     public function pay() {

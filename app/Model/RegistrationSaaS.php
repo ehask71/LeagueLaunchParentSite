@@ -61,7 +61,7 @@ class RegistrationSaaS extends AppModel {
         $data['RegistrationSaaS']['shipping_state'] = $data['RegistrationSaaS']['billing_state'];
         $data['RegistrationSaaS']['shipping_zip'] = $data['RegistrationSaaS']['billing_zip'];
         $data['RegistrationSaaS']['shipping_country'] = $data['RegistrationSaaS']['billing_country'];
-        //mail('ehask71@gmail.com','Confirm',  print_r($add,1).print_r($data,1). print_r($data + $add,1));
+        
         return $data;
     }
 }

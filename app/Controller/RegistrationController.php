@@ -198,8 +198,11 @@ class RegistrationController extends AppController {
         if($this->request->is('post')){
             $this->RegistrationSaaS->set($this->request->data);
             if($this->RegistrationSaaS->validates()){
+                $shop = $this->Session->read('Shop');
                 // Rock on we validated
-                
+                $data = $this->RegistrationSaaS->prepareAddress($this->request->data);
+                $this->Session->write('Shop.Order', $data['Registration'] + $shop['Order']);
+                $this->redirect(array('action'=>'confirm'));
             } else {
                 $this->validateErrors($this->RegistrationSaaS);
                 //$this->render();

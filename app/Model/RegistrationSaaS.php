@@ -55,15 +55,14 @@ class RegistrationSaaS extends AppModel {
     );
     
     public function prepareAddress($data){
-        $add = array();
-        $add['RegistrationSaaS']['shipping_address'] = $data['RegistrationSaaS']['billing_address'];
-        $add['RegistrationSaaS']['shipping_address2'] = $data['RegistrationSaaS']['billing_address2'];
-        $add['RegistrationSaaS']['shipping_city'] = $data['RegistrationSaaS']['billing_city'];
-        $add['RegistrationSaaS']['shipping_state'] = $data['RegistrationSaaS']['billing_state'];
-        $add['RegistrationSaaS']['shipping_zip'] = $data['RegistrationSaaS']['billing_zip'];
-        $add['RegistrationSaaS']['shipping_country'] = $data['RegistrationSaaS']['billing_country'];
-        mail('ehask71@gmail.com','Confirm',  print_r($add,1).print_r($data,1). print_r($data + $add,1));
-        return array_merge($data,$add);
+        $data['RegistrationSaaS']['shipping_address'] = $data['RegistrationSaaS']['billing_address'];
+        $data['RegistrationSaaS']['shipping_address2'] = $data['RegistrationSaaS']['billing_address2'];
+        $data['RegistrationSaaS']['shipping_city'] = $data['RegistrationSaaS']['billing_city'];
+        $data['RegistrationSaaS']['shipping_state'] = $data['RegistrationSaaS']['billing_state'];
+        $data['RegistrationSaaS']['shipping_zip'] = $data['RegistrationSaaS']['billing_zip'];
+        $data['RegistrationSaaS']['shipping_country'] = $data['RegistrationSaaS']['billing_country'];
+        //mail('ehask71@gmail.com','Confirm',  print_r($add,1).print_r($data,1). print_r($data + $add,1));
+        return $data;
     }
 }
 

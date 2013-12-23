@@ -47,7 +47,7 @@ class RegistrationController extends AppController {
                 $this->redirect('/registration/notvalid');
             }
         }
-
+        $this->set('userinfo', $this->Auth->user());
         $this->theme = (@$this->Session->read('Registration.theme') != '') ? $this->Session->read('Registration.theme') : 'regclean';
     }
 

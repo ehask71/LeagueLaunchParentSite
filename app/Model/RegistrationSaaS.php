@@ -55,6 +55,7 @@ class RegistrationSaaS extends AppModel {
     );
     
     public function prepareAddress($data){
+        mail('ehask71@gmail.com','Confirm',print_r($data,1));
         $add = array();
         $add['Registration']['shipping_address'] = $data['Registration']['billing_address'];
         $add['Registration']['shipping_address2'] = $data['Registration']['billing_address2'];

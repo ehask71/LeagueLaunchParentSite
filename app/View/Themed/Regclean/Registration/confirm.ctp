@@ -64,11 +64,11 @@
                                 </tr>
                             <?php } ?>
                             <tr>
-                                <td colspan="3">SubTotal:</td>
+                                <td colspan="3" style="text-align: right;">SubTotal:</td>
                                 <td><?= $shop['Order']['subtotal']; ?></td>
                             </tr>
                             <tr>
-                                <td colspan="3">Total:</td>
+                                <td colspan="3" style="text-align: right;">Total:</td>
                                 <td><?= $shop['Order']['total']; ?></td>
                             </tr>
                         </table>

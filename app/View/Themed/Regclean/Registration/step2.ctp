@@ -27,15 +27,3 @@
         </div>
     </div>
 </div>
-<?php
-if ($this->Session->read('Debug')) {
-    ?>
-    <div class="row">
-        <div class="span12">
-            <pre>
-                <?php print_r($this->Session->read('Registration')); ?>
-            </pre>
-        </div>
-    </div>
-    <?
-}?>

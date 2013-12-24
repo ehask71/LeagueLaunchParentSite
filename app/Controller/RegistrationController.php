@@ -207,7 +207,6 @@ class RegistrationController extends AppController {
                 $this->redirect(array('action'=>'confirm'));
             } else {
                 $this->validateErrors($this->RegistrationSaaS);
-                //$this->render();
             }
         }
 

@@ -21,9 +21,6 @@
             echo $this->Form->submit('Proceed To Next Step', array('class' => 'btn btn-primary'));
             echo $this->Form->end();
             ?>
-            <pre>
-                <?php print_r($players); ?>
-            </pre>
         </div>
     </div>
 </div>

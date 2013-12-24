@@ -4,7 +4,7 @@
         <div class="box-content">
             <table class="table-bordered table-condensed" width="98%">
                 <tr>
-                    <td>
+                    <td width="49%">
                         <h3>Customer Info</h3>
                         <table class="table-striped">
                             <tr>

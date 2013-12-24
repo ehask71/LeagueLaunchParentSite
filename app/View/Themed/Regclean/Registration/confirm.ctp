@@ -46,7 +46,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>
+                    <td colspan="2">
                         <h3>Registration Items</h3>
                         <table class="table-striped">
                             <tr>

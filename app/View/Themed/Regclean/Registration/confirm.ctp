@@ -48,7 +48,7 @@
                 <tr>
                     <td colspan="2">
                         <h3>Registration Items</h3>
-                        <table class="table-striped" width="80%">
+                        <table class="table-striped" width="98%">
                             <tr>
                                 <th>Name</th>
                                 <th>Player</th>

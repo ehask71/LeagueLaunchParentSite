@@ -202,7 +202,6 @@ class RegistrationController extends AppController {
                 // Rock on we validated
                 $data = $this->RegistrationSaaS->prepareAddress($this->request->data);
                 $newshop = $shop['Order'] + $data['RegistrationSaaS'];
-                mail('ehask71@gmail.com','Confirm',   print_r($shop,1).print_r($data,1).  print_r($newshop,1));
                 $this->Session->write('Shop.Order', $shop['Order'] + $data['RegistrationSaaS']);
                 $this->redirect(array('action'=>'confirm'));
             } else {

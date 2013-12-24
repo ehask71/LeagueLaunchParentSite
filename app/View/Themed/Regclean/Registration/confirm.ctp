@@ -2,7 +2,7 @@
 <div class="row-fluid">
     <div class="span12 box black">
         <div class="box-content">
-            <table class="table-bordered table-condensed" width="98%">
+            <table class="table-bordered table-condensed" width="98%" align="center">
                 <tr>
                     <td width="49%">
                         <h3>Customer Info</h3>

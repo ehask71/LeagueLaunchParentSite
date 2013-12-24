@@ -26,7 +26,7 @@
                     </td>
                     <td>
                         <h3>Billing Info</h3>
-                        <table class="table-striped">
+                        <table class="table-striped" width="80%">
                             <tr>
                                 <td><?php echo $shop['Order']['first_name'] . ' ' . $shop['Order']['last_name']; ?></td>
                             </tr>

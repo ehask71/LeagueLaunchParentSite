@@ -57,7 +57,7 @@
                             </tr>
                             <?php foreach ($shop['OrderItem'] AS $item) { ?>
                                 <tr>
-                                    <td><?= (isset($registration['Players'][$item['player_id']]['season_name'])) ? $registration['Players'][$item['player_id']]['season_name'] : ''; ?><?= $item['name']; ?></td>
+                                    <td><?= (isset($registration['Players'][$item['player_id']]['season_name'])) ? $registration['Players'][$item['player_id']]['season_name'].' ' : ''; ?><?= $item['name']; ?></td>
                                     <td><?= ($item['player_id'] != 0) ? $registration['Players'][$item['player_id']]['name'] : ''; ?></td>
                                     <td><?= $item['price']; ?></td>
                                     <td><?= $item['subtotal']; ?></td>
@@ -75,10 +75,6 @@
                     </td>
                 </tr>
             </table>
-            <pre>
-                <?php print_r($shop); ?>
-                <?php print_r($registration); ?>
-            </pre>
         </div>
     </div>
 </div>

@@ -28,6 +28,7 @@
             <?php echo $this->Form->input('promo_code',array('after' => '<span class="help-block">If you have a promo code enter here</span>')); ?>
             <?php echo $this->Form->submit('Proceed To Next Step', array('class' => 'btn btn-primary'));?>
             <?php echo $this->Form->end(); ?>
+            
         </div>
     </div>
     <?php $shop = $this->Session->read('Shop'); ?>

@@ -5,9 +5,9 @@
  */
 App::uses('Model', 'Model');
 
-class PromoCodeSaaS extends Model {
+class PromocodeSaaS extends Model {
     
-    public $name = 'PromoCode';
+    public $name = 'Promocode';
     public $primaryKey = 'id';
     public $useDbConfig = 'SaaS';
    

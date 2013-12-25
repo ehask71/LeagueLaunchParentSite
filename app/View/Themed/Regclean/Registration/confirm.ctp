@@ -81,6 +81,6 @@
 <form action="/registration/addpromo" method="post">
 <div class="row-fluid">
     <div class="span8" style="text-align: right;">Promo Code:</div>
-    <div class="span4"><input type="text" name="promocode"><input type="submit" name="promo" value="Add" class="btn btn-primary"></div>
+    <div class="span4"><input type="text" name="promocode"><input type="submit" name="promo" value="Add" class="btn btn-primary" style="vertical-align: middle;"></div>
 </div>
 </form>

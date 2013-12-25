@@ -68,6 +68,10 @@
                                 <td><?= $shop['Order']['subtotal']; ?></td>
                             </tr>
                             <tr>
+                                <td colspan="3" style="text-align: right;"><?=(isset($promocode))?$promocode:'';?> Promo:</td>
+                                <td><?=(isset($promodiscount))?$promodiscount:'0.00'?></td>
+                            </tr>
+                            <tr>
                                 <td colspan="3" style="text-align: right;">Total:</td>
                                 <td><?= $shop['Order']['total']; ?></td>
                             </tr>

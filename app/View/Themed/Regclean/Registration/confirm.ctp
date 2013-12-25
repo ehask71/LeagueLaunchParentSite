@@ -80,7 +80,7 @@
 </div>
 <form action="/registration/addpromo" method="post">
 <div class="row-fluid">
-    <div class="span9" style="text-align: right;">Promo Code:</div>
-    <div class="span3"><input type="text" name="promocode"><input type="submit" name="promo" value="Add" class="btn btn-primary"></div>
+    <div class="span8" style="text-align: right;">Promo Code:</div>
+    <div class="span4"><input type="text" name="promocode"><input type="submit" name="promo" value="Add" class="btn btn-primary"></div>
 </div>
 </form>

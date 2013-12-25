@@ -204,6 +204,9 @@ class RegistrationController extends AppController {
                 $data = $this->RegistrationSaaS->prepareAddress($this->request->data);
                 $newshop = $shop['Order'] + $data['RegistrationSaaS'];
                 $this->Session->write('Shop.Order', $shop['Order'] + $data['RegistrationSaaS']);
+                
+                // Promo Code Logic
+                
                 $this->redirect(array('action'=>'confirm'));
             } else {
                 $this->validateErrors($this->RegistrationSaaS);

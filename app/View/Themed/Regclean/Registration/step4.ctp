@@ -25,7 +25,7 @@
             <?php echo $this->Form->input('billing_state', array('value' => $userinfo['state'],'type' => 'select', 'options' => Configure::read('States'))); ?>
             <?php echo $this->Form->input('billing_zip', array('value' => $userinfo['zip'])); ?>
             <?php echo $this->Form->input('billing_country', array('value' => $userinfo['country'],'type' => 'select', 'options' => Configure::read('Countries'))); ?>
-            <?php echo $this->Form->input('promo_code'); ?>
+            <?php echo $this->Form->input('promo_code',array('after' => '<span class="help-block">If you have a promo code enter here</span>')); ?>
             <?php echo $this->Form->submit('Proceed To Next Step', array('class' => 'btn btn-primary'));?>
             <?php echo $this->Form->end(); ?>
         </div>

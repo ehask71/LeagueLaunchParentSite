@@ -84,6 +84,7 @@
 </div>
 <div class="row-fluid">
     <div class="span12 box black">
+        <div class="box-header">Payment</div>
         <div class="box-content">
             <?php
             echo $this->Form->create(NULL, array(

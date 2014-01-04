@@ -82,3 +82,27 @@
         </div>
     </div>
 </div>
+<div class="row-fluid">
+    <div class="span12 box black">
+        <div class="box-content">
+            <?php
+            echo $this->Form->create(NULL, array(
+                'novalidate' => true,
+                'inputDefaults' => array(
+                    'div' => 'control-group',
+                    'label' => array(
+                        'class' => 'control-label'
+                    ),
+                    'wrapInput' => 'controls'
+                ),
+                'class' => 'form-horizontal'
+            ));
+            ?>
+            <?php echo $this->Form->input('ccnum',array('label' => array('text'=>'Card Number','class'=>'control-label')));?>
+            <?php echo $this->Form->input('ccexp',array('label' => array('text'=>'Card Expiration','class'=>'control-label')));?>
+            <?php echo $this->Form->input('ccexp',array('label' => array('text'=>'Card CVV','class'=>'control-label')));?>
+            <?php echo $this->Form->submit('Pay', array('class' => 'btn btn-primary'));?>
+            <?php echo $this->Form->end();?>
+        </div>  
+    </div>
+</div>

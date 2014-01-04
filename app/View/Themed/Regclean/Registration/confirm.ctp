@@ -86,6 +86,7 @@
     <div class="span12 box black">
         <div class="box-header">Payment</div>
         <div class="box-content">
+            <p>Currently we only accept Visa/Mastercard. Please enter your card information below</p>
             <?php
             echo $this->Form->create(NULL, array(
                 'novalidate' => true,
@@ -100,8 +101,8 @@
             ));
             ?>
             <?php echo $this->Form->input('ccnum',array('label' => array('text'=>'Card Number','class'=>'control-label')));?>
-            <?php echo $this->Form->input('ccexp',array('label' => array('text'=>'Card Expiration','class'=>'control-label')));?>
-            <?php echo $this->Form->input('ccexp',array('label' => array('text'=>'Card CVV','class'=>'control-label')));?>
+            <?php echo $this->Form->input('ccexp',array('label' => array('text'=>'Card Expiration','class'=>'control-label'),'after'=>'<span class="help-block">MM/YYYY</span>'));?>
+            <?php echo $this->Form->input('ccexp',array('label' => array('text'=>'Card CVV','class'=>'control-label'),'after'=>'<span class="help-block">3 or 4 Digit code on the back of card</span>'));?>
             <?php echo $this->Form->submit('Pay', array('class' => 'btn btn-primary'));?>
             <?php echo $this->Form->end();?>
         </div>  

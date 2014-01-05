@@ -57,7 +57,7 @@
                             </tr>
                             <?php foreach ($shop['OrderItem'] AS $item) { ?>
                                 <tr>
-                                    <td><?= (isset($registration['Players'][$item['player_id']]['season_name'])) ? $registration['Players'][$item['player_id']]['season_name'].' ' : ''; ?><?= $item['name']; ?></td>
+                                    <td><?= (isset($registration['Players'][$item['player_id']]['season_name'])) ? $registration['Players'][$item['player_id']]['season_name'] . ' ' : ''; ?><?= $item['name']; ?></td>
                                     <td><?= ($item['player_id'] != 0) ? $registration['Players'][$item['player_id']]['name'] : ''; ?></td>
                                     <td><?= $item['price']; ?></td>
                                     <td><?= $item['subtotal']; ?></td>
@@ -68,8 +68,8 @@
                                 <td><?= $shop['Order']['subtotal']; ?></td>
                             </tr>
                             <tr>
-                                <td colspan="3" style="text-align: right;"><?=(isset($promocode))?$promocode:'';?> Promo:</td>
-                                <td><?=(isset($promodiscount))?$promodiscount:'0.00'?></td>
+                                <td colspan="3" style="text-align: right;"><?= (isset($promocode)) ? $promocode : ''; ?> Promo:</td>
+                                <td><?= (isset($promodiscount)) ? $promodiscount : '0.00' ?></td>
                             </tr>
                             <tr>
                                 <td colspan="3" style="text-align: right;">Total:</td>
@@ -100,11 +100,14 @@
                 'class' => 'form-horizontal'
             ));
             ?>
-            <?php echo $this->Form->input('ccnum',array('label' => array('text'=>'Card Number','class'=>'control-label')));?>
-            <?php echo $this->Form->input('ccexp',array('label' => array('text'=>'Card Expiration','class'=>'control-label'),'after'=>'<span class="help-block">MM/YYYY</span>'));?>
-            <?php echo $this->Form->input('ccexp',array('label' => array('text'=>'Card CVV','class'=>'control-label'),'after'=>'<span class="help-block">3 or 4 Digit code on the back of card</span>'));?>
-            <?php echo $this->Form->submit('Pay', array('class' => 'btn btn-primary'));?>
-            <?php echo $this->Form->end();?>
+            <?php echo $this->Form->input('ccnum', array('label' => array('text' => 'Card Number', 'class' => 'control-label'))); ?>
+            <?php echo $this->Form->input('ccexp', array('label' => array('text' => 'Card Expiration', 'class' => 'control-label'), 'after' => '<span class="help-block">MM/YYYY</span>')); ?>
+            <?php echo $this->Form->input('ccexp', array('label' => array('text' => 'Card CVV', 'class' => 'control-label'), 'after' => '<span class="help-block">3 or 4 Digit code on the back of card</span>')); ?>
+            <?php echo $this->Form->submit('Pay', array('class' => 'btn btn-primary')); ?>
+            <?php echo $this->Form->end(); ?>
         </div>  
+        <pre>
+            <?php print_r($_SESSION); ?>
+        </pre>
     </div>
 </div>

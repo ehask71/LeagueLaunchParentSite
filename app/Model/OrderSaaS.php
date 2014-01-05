@@ -18,6 +18,32 @@ class OrderSaaS extends AppModel {
             'dependent' => true,
         )
     );
-
+    
+    public function validateCC(){
+        $validate1 = array(
+            'creditcard_number' => array(
+                'mustNotEmpty' => array(
+                    'rule' => 'notEmpty',
+                    'message' => 'Please enter your Card Number')
+            ),
+            'creditcard_month' => array(
+                'mustNotEmpty' => array(
+                    'rule' => 'notEmpty',
+                    'message' => 'Please enter the Expiration Month')
+            ),
+            'creditcard_year' => array(
+                'mustNotEmpty' => array(
+                    'rule' => 'notEmpty',
+                    'message' => 'Please enter the Expiration Year')
+            ),
+            'creditcard_code' => array(
+                'mustNotEmpty' => array(
+                    'rule' => 'notEmpty',
+                    'message' => 'Please enter the CVV Code')
+            ),
+        );
+        $this->validate = $validate1;
+        return $this->validates();
+    }
 }
 

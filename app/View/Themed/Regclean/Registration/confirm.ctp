@@ -101,8 +101,8 @@
             ));
             ?>
             <?php echo $this->Form->input('creditcard_number', array('label' => array('text' => 'Card Number', 'class' => 'control-label'))); ?>
-            <?php echo $this->Form->input('creditcard_month', array('label' => array('text' => 'Expiration Month', 'class' => 'control-label'),'options'=>  array('01','02','03','04','05','06','07','08','09','10','11','12'))); ?>
-            <?php echo $this->Form->input('creditcard_year', array('label' => array('text' => 'Expiration Year', 'class' => 'control-label'),'options'=>array('2014','2015','2016','2017','2018'))); ?>
+            <?php echo $this->Form->input('creditcard_month', array('label' => array('text' => 'Expiration Month', 'class' => 'control-label'),'options'=>  array('01'=>'01','02'=>'02','03'=>'03','04'=>'04','05'=>'05','06'=>'06','07'=>'07','08'=>'08','09'=>'09','10'=>'10','11'=>'11','12'=>'12'))); ?>
+            <?php echo $this->Form->input('creditcard_year', array('label' => array('text' => 'Expiration Year', 'class' => 'control-label'),'options'=>array('2014'=>'2014','2015'=>'2015','2016'=>'2016','2017'=>'2017','2018'=>'2018'))); ?>
             <?php echo $this->Form->input('creditcard_code', array('label' => array('text' => 'Card CVV', 'class' => 'control-label'), 'after' => '<span class="help-block">3 or 4 Digit code on the back of card</span>')); ?>
             <?php echo $this->Form->submit('Pay', array('class' => 'btn btn-primary')); ?>
             <?php echo $this->Form->end(); ?>

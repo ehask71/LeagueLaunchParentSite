@@ -64,5 +64,7 @@ class RegistrationSaaS extends AppModel {
         
         return $data;
     }
+    
+   
 }
 

@@ -88,7 +88,7 @@
         <div class="box-content">
             <p>Currently we only accept Visa/Mastercard. Please enter your card information below</p>
             <?php
-            echo $this->Form->create('ORDER', array(
+            echo $this->Form->create('Order', array(
                 'novalidate' => true,
                 'inputDefaults' => array(
                     'div' => 'control-group',

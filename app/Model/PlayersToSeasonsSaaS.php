@@ -58,5 +58,18 @@ class PlayersToSeasonsSaaS extends AppModel {
 	}
 	return $players;
     }
+    
+    public function addPlayer($season_id, $player, $div, $product_id, $opts = array()) {
+        $data['PlayersToSeasonsSaaS'] = array();
+        $data['PlayersToSeasonsSaaS']['season_id'] = (int) $season_id;
+        $data['PlayersToSeasonsSaaS']['site_id'] = Configure::read('Settings.site_id');
+        $data['PlayersToSeasonsSaaS']['player_id'] = (int) $player;
+        $data['PlayersToSeasonsSaaS']['division_id'] = (int) $div;
+        $data['PlayersToSeasonsSaaS']['product_id'] = (int) $product_id;
+        $data['PlayersToSeasonsSaaS']['haspaid'] = (isset($opts['haspaid'])) ? $opts['haspaid'] : 0;
+        $data['PlayersToSeasonsSaaS']['formcomplete'] = (isset($opts['haspaid'])) ? $opts['haspaid'] : 0;
+        $data['PlayersToSeasonsSaaS']['verifydocs'] = (isset($opts['haspaid'])) ? $opts['haspaid'] : 0;
 
+        return $data;
+    }
 }

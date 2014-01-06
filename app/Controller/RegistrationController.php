@@ -9,7 +9,7 @@ App::uses('AppController', 'Controller');
 class RegistrationController extends AppController {
 
     public $name = 'Registration';
-    public $uses = array('RegistrationSaaS','Sites','OrderSaaS','RoleSaaS', 'AccountSaaS', 'PlayersSaaS', 'SeasonSaaS', 'PlayersToSeasonsSaaS', 'DivisionsSaaS', 'ProductsSaaS');
+    public $uses = array('RegistrationSaaS', 'Sites', 'OrderSaaS', 'RoleSaaS', 'AccountSaaS', 'PlayersSaaS', 'SeasonSaaS', 'PlayersToSeasonsSaaS', 'DivisionsSaaS', 'ProductsSaaS');
     public $helpers = array('Session');
     public $components = array(
         'Session',
@@ -173,10 +173,10 @@ class RegistrationController extends AppController {
             foreach ($this->request->data['Addon'] AS $k => $v) {
                 $vars = explode("_", $k);
                 if ($v == 'yes') {
-                    $this->Saascart->add($vars[1], 2,$vars[0],$this->Session->read('Registration.Players.' . $vars[0] . '.season_id'));
+                    $this->Saascart->add($vars[1], 2, $vars[0], $this->Session->read('Registration.Players.' . $vars[0] . '.season_id'));
                 }
             }
-            $this->redirect(array('action'=>'step4'));
+            $this->redirect(array('action' => 'step4'));
         }
         $hasUpsell = false;
         foreach ($players AS $play) {
@@ -196,23 +196,22 @@ class RegistrationController extends AppController {
         $players = $this->Session->read('Registration.Players');
         $this->set(compact('players'));
         // User Details
-        if($this->request->is('post')){
+        if ($this->request->is('post')) {
             $this->RegistrationSaaS->set($this->request->data);
-            if($this->RegistrationSaaS->validates()){
+            if ($this->RegistrationSaaS->validates()) {
                 $shop = $this->Session->read('Shop');
                 // Rock on we validated
                 $data = $this->RegistrationSaaS->prepareAddress($this->request->data);
                 $newshop = $shop['Order'] + $data['RegistrationSaaS'];
                 $this->Session->write('Shop.Order', $shop['Order'] + $data['RegistrationSaaS']);
-                
+
                 // Promo Code Logic
-                
-                $this->redirect(array('action'=>'confirm'));
+
+                $this->redirect(array('action' => 'confirm'));
             } else {
                 $this->validateErrors($this->RegistrationSaaS);
             }
         }
-
     }
 
     public function step5() {
@@ -220,24 +219,47 @@ class RegistrationController extends AppController {
     }
 
     public function confirm() {
-        if($this->request->is('post')){
+        if ($this->request->is('post')) {
             $this->OrderSaaS->set($this->request->data);
-            if($this->OrderSaaS->validateCC()){
-                $authorizeNet = $this->AuthorizeNet->charge($order['OrderSaaS'], $this->request->data['Sites'], $site);
+            if ($this->OrderSaaS->validateCC()) {
+                $shop = $this->Session->read('Shop');
+                $reg = $this->Session->read('Registration');
+                $authorizeNet = $this->AuthorizeNet->charge($shop['Order'], $this->request->data['Order'], $reg);
                 if (is_string($authorizeNet)) {
                     $this->Session->setFlash($authorizeNet);
                 }
-                $data['id'] = $order['OrderSaaS']['id'];
-                $data['order_type'] = 'authnet';
-                $data['authorization'] = $authorizeNet[4];
-                $data['transaction'] = $authorizeNet[6];
-                $data['status'] = 2;
+                $shop['Order']['order_type'] = 'authnet';
+                $shop['Order']['authorization'] = $authorizeNet[4];
+                $shop['Order']['transaction'] = $authorizeNet[6];
+                $shop['Order']['status'] = 2;
+
+                App::uses('CakeEmail', 'Network/Email');
+                $email = new CakeEmail();
+                $email->to($order['OrderSaaS']['email'])
+                        ->subject($site['Sites']['leaguename'] . ' Payment')
+                        ->template('credit_card_paid')
+                        ->emailFormat('text')
+                        ->theme('default')
+                        ->viewVars(array('order' => $order, 'site' => $site, 'authnet' => $data))
+                        ->send();
+
+                // Update the Order
+                $data['OrderSaaS'] = $shop['Order'];
+                $data['OrderItemSaas'] = $shop['OrderItem'];
+                $save = $this->OrderSaaS->saveAll($data, array('validate' => 'first'));
+                // Update Players
+                foreach ($reg['Players'] AS $row) {
+                    
+                    if ($row['player_id'] != 0 && $row['season_id'] != 0) {
+                        $this->PlayersToSeasonsSaaS->updatePlayerHasPaid($player, $row['season_id'], $this->request->data['Sites']['sid']);
+                    }
+                }
             } else {
                 $this->validateErrors($this->OrderSaaS);
             }
         }
-        $this->set('shop',$this->Session->read('Shop'));
-        $this->set('registration',$this->Session->read('Registration'));
+        $this->set('shop', $this->Session->read('Shop'));
+        $this->set('registration', $this->Session->read('Registration'));
     }
 
     public function pay() {

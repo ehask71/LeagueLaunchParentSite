@@ -9,7 +9,7 @@ App::uses('AppController', 'Controller');
 class RegistrationController extends AppController {
 
     public $name = 'Registration';
-    public $uses = array('RegistrationSaaS','Sites', 'RoleSaaS', 'AccountSaaS', 'PlayersSaaS', 'SeasonSaaS', 'PlayersToSeasonsSaaS', 'DivisionsSaaS', 'ProductsSaaS');
+    public $uses = array('RegistrationSaaS','Sites','OrderSaaS','RoleSaaS', 'AccountSaaS', 'PlayersSaaS', 'SeasonSaaS', 'PlayersToSeasonsSaaS', 'DivisionsSaaS', 'ProductsSaaS');
     public $helpers = array('Session');
     public $components = array(
         'Session',
@@ -220,6 +220,22 @@ class RegistrationController extends AppController {
     }
 
     public function confirm() {
+        if($this->request->is('post')){
+            $this->OrderSaaS->set($this->request->data);
+            if($this->OrderSaaS->validateCC()){
+                $authorizeNet = $this->AuthorizeNet->charge($order['OrderSaaS'], $this->request->data['Sites'], $site);
+                if (is_string($authorizeNet)) {
+                    $this->Session->setFlash($authorizeNet);
+                }
+                $data['id'] = $order['OrderSaaS']['id'];
+                $data['order_type'] = 'authnet';
+                $data['authorization'] = $authorizeNet[4];
+                $data['transaction'] = $authorizeNet[6];
+                $data['status'] = 2;
+            } else {
+                $this->validateErrors($this->OrderSaaS);
+            }
+        }
         $this->set('shop',$this->Session->read('Shop'));
         $this->set('registration',$this->Session->read('Registration'));
     }

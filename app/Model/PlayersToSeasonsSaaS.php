@@ -50,7 +50,7 @@ class PlayersToSeasonsSaaS extends AppModel {
 	    foreach ($seasons AS $k => $season) {
 		foreach ($players AS $k => $play) {
 		    if ($this->checkAlreadyRegistered($play['PlayersSaaS']['player_id'], $season['SeasonSaaS']['id'], $site_id)) {
-			CakeSession::write('Registration.already_registered.'.$play['PlayersSaaS']['player_id'], $play['PlayersSaaS']['firstname'] . ' ' . $play['PlayersSaaS']['lastname']);
+			CakeSession::write('Registration.already_registered.' . $play['PlayersSaaS']['player_id'], $play['PlayersSaaS']['firstname'] . ' ' . $play['PlayersSaaS']['lastname']);
 			unset($players[$k]);
 		    }
 		}
@@ -58,22 +58,19 @@ class PlayersToSeasonsSaaS extends AppModel {
 	}
 	return $players;
     }
-    
+
     public function addPlayer($season_id, $player, $div, $site_id, $opts = array()) {
-        $data['PlayersToSeasonsSaaS'] = array();
-        $data['PlayersToSeasonsSaaS']['season_id'] = (int) $season_id;
-        $data['PlayersToSeasonsSaaS']['site_id'] = $site_id;
-        $data['PlayersToSeasonsSaaS']['player_id'] = (int) $player;
-        $data['PlayersToSeasonsSaaS']['division_id'] = (int) $div;
-        $data['PlayersToSeasonsSaaS']['product_id'] = (int) 0;
-        $data['PlayersToSeasonsSaaS']['haspaid'] = (isset($opts['haspaid'])) ? $opts['haspaid'] : 0;
-        $data['PlayersToSeasonsSaaS']['formcomplete'] = (isset($opts['formcomplete'])) ? $opts['formcomplete'] : 0;
-        $data['PlayersToSeasonsSaaS']['verifydocs'] = (isset($opts['verifydocs'])) ? $opts['verifydocs'] : 0;
+	$data['PlayersToSeasonsSaaS'] = array();
+	$data['PlayersToSeasonsSaaS']['season_id'] = (int) $season_id;
+	$data['PlayersToSeasonsSaaS']['site_id'] = $site_id;
+	$data['PlayersToSeasonsSaaS']['player_id'] = (int) $player;
+	$data['PlayersToSeasonsSaaS']['division_id'] = (int) $div;
+	$data['PlayersToSeasonsSaaS']['product_id'] = (int) 0;
+	$data['PlayersToSeasonsSaaS']['haspaid'] = (isset($opts['haspaid'])) ? $opts['haspaid'] : 0;
+	$data['PlayersToSeasonsSaaS']['formcomplete'] = (isset($opts['formcomplete'])) ? $opts['formcomplete'] : 0;
+	$data['PlayersToSeasonsSaaS']['verifydocs'] = (isset($opts['verifydocs'])) ? $opts['verifydocs'] : 0;
 
-        return $data;
-        
+	return $data;
     }
 
-        return $data;
-    }
 }

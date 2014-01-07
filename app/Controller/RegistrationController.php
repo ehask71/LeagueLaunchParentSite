@@ -247,11 +247,12 @@ class RegistrationController extends AppController {
                 $data['OrderSaaS'] = $shop['Order'];
                 $data['OrderItemSaas'] = $shop['OrderItem'];
                 $save = $this->OrderSaaS->saveAll($data, array('validate' => 'first'));
-                // Update Players
+                // Update Players.
                 foreach ($reg['Players'] AS $row) {
                     
                     if ($row['player_id'] != 0 && $row['season_id'] != 0) {
-                        $this->PlayersToSeasonsSaaS->updatePlayerHasPaid($player, $row['season_id'], $this->request->data['Sites']['sid']);
+                        $this->PlayersToSeasonsSaaS->addPlayer($row['season_id'], $row['player_id'], $row['division_id'], $reg['site_id'], array('haspaid'=>1));
+                        //$this->PlayersToSeasonsSaaS->addPlayer($player, $row['season_id'], $this->request->data['Sites']['sid']);
                     }
                 }
             } else {

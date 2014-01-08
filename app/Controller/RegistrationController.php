@@ -246,12 +246,19 @@ class RegistrationController extends AppController {
                 // Update the Order
                 $data['OrderSaaS'] = $shop['Order'];
                 $data['OrderItemSaas'] = $shop['OrderItem'];
-                $save = $this->OrderSaaS->saveAll($data, array('validate' => 'first'));
-                // Update Players.
-                foreach ($reg['Players'] AS $row) {  
-                    if ($row['player_id'] != 0 && $row['season_id'] != 0) {
-                        $this->PlayersToSeasonsSaaS->addPlayer($row['season_id'], $row['player_id'], $row['division_id'], $reg['site_id'], array('haspaid'=>1));
+                try {
+                    $save = $this->OrderSaaS->saveAll($data, array('validate' => 'first'));
+                    // Update Players.
+                    foreach ($reg['Players'] AS $row) {
+                        if ($row['player_id'] != 0 && $row['season_id'] != 0) {
+                            $this->PlayersToSeasonsSaaS->addPlayer($row['season_id'], $row['player_id'], $row['division_id'], $reg['site_id'], array('haspaid' => 1));
+                        }
                     }
+                } catch (Exception $e) {
+                    $this->Session->setFlash(__('Oops! There was a problem please contact'), 'alert', array(
+                    'plugin' => 'BoostCake',
+                    'class' => 'alert-info'
+                ));
                 }
             } else {
                 $this->validateErrors($this->OrderSaaS);

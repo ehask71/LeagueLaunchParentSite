@@ -44,11 +44,7 @@ class LeagueAgeComponent extends Component {
         } else {
             $now = $leaguedate;
         }
-	/* if (function_exists('date_diff')) {
-	  $diff = date_diff(date_create($birthdate), date_create($now));
-	  } else { */
-	//$diff = $this->date_diff($bday, $now);
-	//}
+	
 	$bday = new DateTime($bday);
 	$today = new DateTime($now);
 	$diff = $today->diff($bday); // This is actually not today

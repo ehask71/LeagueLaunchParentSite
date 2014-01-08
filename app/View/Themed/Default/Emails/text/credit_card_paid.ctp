@@ -1,12 +1,12 @@
 
 
-Hello <?php echo $order['OrderSaaS']['first_name'] .' '. $order['OrderSaaS']['last_name'];?>,
+Hello <?php echo $order['Order']['first_name'] .' '. $order['Order']['last_name'];?>,
 
-You successfully paid via Credit Card in the amount of $<?php echo $order['OrderSaaS']['total'];?>
+You successfully paid via Credit Card in the amount of $<?php echo $order['Order']['total'];?>
     
 Date Paid:  <?php echo date('m-d-Y')."\r\n";?>
-Order#:  <?php echo $order['OrderSaaS']['id'];?>
-Credit Card Transaction#: <?php echo $authnet['transaction'];?>
+Order#:  <?php echo $order['Order']['id'];?>
+Credit Card Transaction#: <?php echo $authnet['Order']['transaction'];?>
 
 
 Thank You,

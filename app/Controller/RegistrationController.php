@@ -235,12 +235,12 @@ class RegistrationController extends AppController {
 
                 App::uses('CakeEmail', 'Network/Email');
                 $email = new CakeEmail();
-                $email->to($order['OrderSaaS']['email'])
-                        ->subject($site['Sites']['leaguename'] . ' Payment')
+                $email->to($shop['Order']['email'])
+                        ->subject($reg['site']['Sites']['leaguename'] . ' Payment')
                         ->template('credit_card_paid')
                         ->emailFormat('text')
                         ->theme('default')
-                        ->viewVars(array('order' => $order, 'site' => $site, 'authnet' => $data))
+                        ->viewVars(array('order' => $shop, 'site' => $reg['site'], 'authnet' => $shop))
                         ->send();
 
                 // Update the Order
